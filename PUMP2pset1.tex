@@ -1,0 +1,240 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb, amsmath, amsthm, changepage}
+
+\title{PUMP II Problem Set 1}
+\author{Nick Coballe, Krishna Cheemalapati, Daniel Xu}
+
+\newcommand{\bproof}{\begin{proof}
+$ $ \\
+\begin{adjustwidth}{3em}{0pt}
+}
+
+\newcommand{\eproof}{\end{adjustwidth}
+\end{proof}}
+
+\begin{document}
+
+\maketitle
+\begin{flushleft}
+
+\emph{\textbf{lemma. 1.0}} ${n \choose k} = 0$
+\bproof
+By Pascal's inequality:
+\begin{align*}
+{n \choose k-1} & = {n+1 \choose k} - {n \choose k} \\
+{n \choose -1} & = {n+1 \choose 0} - {n \choose 0} \\
+& = \frac{(n+1)!}{0!(n+1-0)!} - \frac{n!}{0!(n-0)!} \\
+& = 1 - 1 \\
+& = 0
+\end{align*}
+\eproof
+
+1. a)\bigskip
+
+
+
+$\mathcal{P}(A \cup B)= \{ A \cup B, A, B, \{ 1 \}, \{ 2 \}, \{ cat \}, \{ dog \}, \{ 1, dog \}, \{ 1, cat \}, \linebreak \{ 2, dog \}, \{ 2, cat \}, \{ 1, 2, cat \}, \{ 1, 2, dog \}, \{ 1, cat, dog \}, \{ 2, cat ,dog \}, \emptyset \}$
+\bigskip
+
+$ \mathcal{P} (\mathcal{P} (B)) = \{ \mathcal{P} (B), \{ B \}, \{ cat \}, \{ dog \}, \{ \emptyset \} , \{ B, \{ cat \} \},  \{B, \{ dog \} \}, \{ B, \emptyset \}, \linebreak \{ B \{ cat \}, \{ dog \} \}, \{ B, \{ cat \}, \{ \emptyset \} \}, \{ B, \{ cat \}, \emptyset \}, \{ \{ cat \}, \{ dog \} \}, \{ \{ cat \}, \emptyset \}, \linebreak \{ \{ dog \}, \emptyset \}, \{ \{ cat \}, \{ dog \}, \emptyset \}, \emptyset \}  $
+
+\newpage
+
+b) \bigskip
+
+\bproof
+The total number of ways that $n$ objects in a set can be arranged into $s = \{1, 2, 3,..., n\}$ sized subsets is equal to $\sum\limits_{k=0}^n {n \choose k}$ Thus it is sufficient to prove that $\sum\limits_{k=0}^n {n \choose k} = 2^n$. We prove this statement through induction on $n$. \\
+Base Case: $n = 0$ \\
+\begin{align*}
+\sum\limits_{k=0}^0 {0 \choose k} = \frac{0!}{0!(0-0)!} = 1 = 2^0
+\end{align*}
+Thus the base case is true.\\
+Inductive Step: $j=n+1$ \\
+\begin{align*}
+\sum\limits_{k=0}^{n+1} {n+1 \choose k} & = \sum\limits_{k=0}^{n+1} \Bigg({n \choose k}+ {n \choose k-1}\Bigg), \text{ via Pascal's inequality} \\
+& = \sum\limits_{k=0}^{n+1} {n \choose k} + \sum\limits_{k=0}^n {n \choose k-1} \\
+& = \sum\limits_{k=0}^n {n \choose k} + {n \choose n+1} + \sum\limits_{k=0}^n {n \choose k-1}, \text{ via reindexing} \\
+& = 2^n + 2^n + 0 + 0, \text{ by lemma 1.1} \\
+& = 2^{n+1}
+\end{align*}
+\eproof
+
+\bigskip c) \bigskip
+
+\begin{proof} $ $ \\
+
+\begin{adjustwidth}{3em}{0pt}
+
+We will induct on n.
+
+\begin{center}
+$ |\mathcal{P}(S)| = 2^n $\\
+\end{center}
+Base case: $n=0, S = \emptyset$\\
+\begin{center}
+$|\mathcal{P}(S)| = 1 = 2^0$
+\end{center}
+Thus the base case is true.\\
+Inductive Step: $j = n+1$ Let $A$ be a set s.t. $A \cap S = \emptyset , |A| = 1$\\
+We can construct some set $V$ s.t. $V = \{ x: \forall y \in \mathcal{P}(S), x = y \cup A \}$\\
+$V$ and $\mathcal{P}(S)$ are equal in size but disjoint.
+\\
+\begin{center}
+$\mathcal{P}(A \cup S) = \{ T: T \in \mathcal{P}(S)$ or $ T \in V \}$ \\
+$|V| = |\mathcal{P}(S)| = 2^n \ $ \\
+\end{center}
+Thus $| \mathcal{P}(A \cup S)| = |V| + |\mathcal{P}(S)| = 2^n + 2^n = 2^{n+1}$
+
+
+\end{adjustwidth}
+
+\end{proof}
+
+\newpage
+
+\emph{\textbf{lemma. 2.0}} If $x^2$ is a multiple of 7, then $x$ is a multiple of 7.
+\begin{proof}
+$ $ \\
+\begin{adjustwidth}{3em}{0pt}
+Take the contrapositive.
+\begin{align*}
+x & =7n + a, n \in \mathbb{Z}, a \in \{ 1,2,3,4,5,6 \}\\
+x^2 & = 49k^2 + 14ak + a^2 \\
+& = 7(7k^2 + 2ak) + a^2
+\end{align*}
+$a^2$ can never be a multiple of 7, and thus $x^2$ is not a multiple of 7.
+\end{adjustwidth}
+\end{proof}
+
+\emph{\textbf{lemma. 2.1}} If $x \in \mathbb{Q}$ and $y \notin \mathbb{Q}$, then $x+y \notin \mathbb{Q}$.
+
+\bproof
+Assume $x+y \in \mathbb{Q}$.
+\begin{align*}
+\frac{p}{q} + x & = \frac{m}{n}, p,q,m,n \in \mathbb{Z} \\
+x & = \frac{m}{n} - \frac{p}{q} \\
+\end{align*}
+Thus $x$ must be in $\mathbb{Q}$, a contradiction.
+\eproof
+
+\emph{\textbf{lemma. 2.3}} 0 is the only rational that when multiplied with an irrational results in a rational.
+\bproof
+Assume there is a rational, $x \in \mathbb{Q}$ s.t. $x \neq 0$ and $x$ multiplied by an irrational is rational.
+\begin{align*}
+yx & = \frac{m}{n}, y \notin \mathbb{Q}, x \in \mathbb{Q}, m,n \in \mathbb{Z} \\
+y\frac{p}{q} & = \frac{m}{n}, p,q \in \mathbb{Z} \\
+y & = \frac{mq}{np}
+\end{align*}
+Thus, $y$ would be rational, a contradiction.
+\eproof
+
+\bigskip 2. a)\bigskip
+\begin{proof}
+$ $ \\
+\begin{adjustwidth}{3em}{0pt}
+Assume that $x \in \mathbb{Q}$
+\begin{align*}
+x^2 & = 7 \\
+\frac{p^2}{q^2} & = 7, p \in \mathbb{N}, q \in \mathbb{Z} \\
+p^2 & = 7q^2
+\end{align*}
+From lemma 2.0 if $p^2$ is a multiple of 7, then $p$ is a multiple of 7.
+Thus we can write $p = 7n, n \in \mathbb{Z}, n<p$. 
+\begin{align*}
+(7n)^2 & = 7q^2 \\
+49n^2 & = 7q^2 \\
+7n^2 & = q^2
+\end{align*}
+Thus we can do the same thing we did to q as we did to p, where
+$k<q, k \in \mathbb{Z}$. Thus we get to the stage where $n^2 = 7k^2$. We then get to the equality that we started, and we can repeat the steps we've taken; however, since $n<p$ then we need to be able to descend infinitely on the naturals, which we cannot, and thus we reach a contradiction.
+\end{adjustwidth}
+\end{proof}
+\bigskip
+
+\bproof
+Assume that $x \in \mathbb{Q}$
+\begin{align*}
+7\frac{p^2}{q^2} - 2 & = 0,p,q \in \mathbb{Q} \\
+\frac{p^2}{q^2} & = \frac{2}{7}
+\end{align*}
+Therefore $p^2 = 2$ and $q^2 = 7$, but we have already proven that these equalities do no have integer solutions; thus, we have reached a contradiction.
+\eproof
+
+\bigskip b) \bigskip
+
+\bproof
+$u = \frac{x}{x^2-7y^2}, v = \frac{-y}{x^2-7y^2}$ \\
+Because $x,y,7 \in \mathbb{Q}$, and $\mathbb{Q}$ being a field, $u,v \in \mathbb{Q}$.
+\eproof
+
+\bigskip c) \bigskip
+
+\bproof
+Assume $\sqrt{2} \in \mathbb{Q}(\sqrt{7})$
+\begin{align*}
+\sqrt{2} & = (u + \sqrt{7}v), u,v \in \mathbb{Q} \\
+2 & = u^2 + 2 \sqrt{7} uv + 7v^2
+\end{align*}
+Because 2 is rational, and the sum of a rational and an irrational is always irrational by lemma 2.2, either $u = 0$ or $v = 0$ for $2\sqrt{7} uv = 0 $ (by lemma 2.3).\\
+Case 1: $u = 0$
+\begin{align*}
+7v^2 & = 2 \\
+v^2 & = \frac{2}{7}
+\end{align*}
+We have already proven that this equation has no solution in $\mathbb{Q}$, thus a contradiction. \\
+Case 2: $v = 0$
+\begin{align*}
+u^2 = 2
+\end{align*}
+We have already proven that this equation has no solutions in $\mathbb{Q}$, thus a contradiction. \\
+Case 3: $u=v=0$
+\begin{align*}
+2 = 0
+\end{align*}
+This is clearly a contradiction.
+\eproof
+
+\newpage
+
+3. a) \\ \bigskip
+The fallacy that the student is employing is that every subset of students of size $n$ have the same grade. It is only true that the \emph{first} $n$ students have the same grade.
+
+\bigskip b) i) \bigskip
+We need to prove $P(1)$.
+
+\bigskip ii) \bigskip
+We need to prove $P(2)$ and $P(3)$.
+
+\bigskip iii) \bigskip
+We have to prove that $P(n) \Rightarrow P(n+1)$.
+
+\newpage
+
+
+
+4. a) \\ \bigskip
+$\neg ( \forall \epsilon > 0, \exists \delta > 0 : 0 < |x-a| < \delta \Rightarrow 0 < |f(x) - f(a)| < \epsilon ) $ \\
+Is the same as: \\
+$\exists \epsilon > 0, \forall \delta > 0 : 0 < |x-a| < \delta \wedge  |f(x) - f(a)| \geq \epsilon $ \\
+
+\bigskip b) i) \bigskip
+
+$\emptyset$, because $|f(x)-f(a)| \geq 0$ \\
+
+\bigskip ii) \bigskip
+
+$\{ f: f$ is continuous at $x \}$, because if $|f(x)-f(a)| = \frac{\epsilon}{2}$ then $|f(x)-f(a)| < \epsilon$
+
+\bigskip iii) \bigskip
+
+$\{ f: f$ is a function$\}$, because if $\delta = 0$, then the condition is vacuously satisfied.
+
+\bigskip iv) \bigskip
+
+$f: D \rightarrow C$ \\
+$\{ f: \exists \delta > 0, \exists x \in D$ s.t. $f$ is constant on the interval $(x- \delta, x+ \delta ) \}$
+
+
+\end{flushleft}
+\end{document}
