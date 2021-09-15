@@ -18,13 +18,62 @@ $ $ \\
 \maketitle
 \begin{flushleft}
 
-3. a) \bigskip \newline
-
+3. a)
 \bproof
 
-a
+Consider $ g $ and $ g' $ are both inverses of $f$. \\
+\begin{center}
+ $ g(f(x)) = x = g'(f(x)), \ \forall x \in X $ \\
+\end{center}
+Since $x$ was chosen arbitrarily, $f(x)$ is just an arbitrary object in $Y$. 
+Thus, $g(y) = g'(y), \ \forall y \in Y$ and $g = g'$
 
 \eproof
+
+b) $f:\mathbb{R} \rightarrow \mathbb{R}, \ f(x) = x^2$ is not invertible because it is not a bijection. This is because $1 \neq -1$ but $f(1) = f(-1)$ (This is shown by the problem below.)
+
+\bigskip
+
+c) 
+\bproof
+$\Rightarrow$ \\
+We will first prove that $f$ is a surjection. \\
+By assumption $\forall y \in Y, \ f(g(y)) = y$ and because $g(y)$ is just an arbitrary element of $X$, this shows that $\forall y \in Y, \ \exists x \in X \ \text{st} \ f(x) = y$ \newline
+\\
+We will now show that $f$ is an injection. \\
+Assume that $f$ is not an injection. \\
+Thus, $\exists x, x' \in X$ st $x \neq x'$ and $f(x) = f(x')$ \\
+Then $g(f(x)) = g(f(x')) = x = x'$ and thus we have reached a contradiction. \newline
+\\
+Thus we have proven that $f$ is bijective. \newline
+\\
+$\Leftarrow$ \\
+Because $f:X \rightarrow Y$ is a bijective function, then \\
+$\forall y \in Y, \exists ! x \in X$ st $f(x) = y$ \\
+Thus we can construct a function $g: Y \rightarrow X$ that maps all $y \in Y$ to the unique $x \in X$ st $f(x) = y$ \\
+Thus, by construction $g(f(x)) = x$ and $f(g(y)) = y$
+
+\eproof
+
+\bigskip
+
+d) It does not follow that $f \circ g = I_Y$ \\
+
+\bproof
+Consider the function $f:\{ a \} \rightarrow \{ 1,2 \}$ such that $f(a) = 1$ 
+and the function $g:\{ 1,2 \} \rightarrow \{ a \}$ such that $g(1) = a$ and $g(2) = a$ \\
+Thus $(g \circ f)(a) = a$ and $(g \circ f) = I_X$
+But $(f \circ g)(2) = 1$ so $(f \circ g) \neq I_Y$ \\
+Thus we have constructed a counterexample.
+\eproof
+
+e) It does follow that $f \circ g = I_Y$ now.
+
+\bproof
+If $g \circ f = I_X$ then $f$ is injective because if we assume $f$ is not injective, then we result in the contradiction where $g(f(x)) = g(f(x')) = x = x'$ when $x \neq x'$ \\
+Thus $f$ is injective and surjective, making it a bijection, and by part c, this implies that it is invertible and there exists a $g$ st $f \circ g = I_Y$
+\eproof
+
 
 \end{flushleft}
 \end{document}
