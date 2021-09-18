@@ -1,0 +1,31 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb, amsmath, amsthm, changepage}
+
+\title{MAT157 Assignment 1}
+\author{Nicolas Coballe}
+
+\newcommand{\bproof}{\begin{proof}
+$ $ \\
+\begin{adjustwidth}{3em}{0pt}
+}
+
+\newcommand{\eproof}{\end{adjustwidth}
+\end{proof}}
+
+\begin{document}
+
+\maketitle
+\begin{flushleft}
+
+5. a) We will prove this using contradiction.
+
+\bproof
+
+Assume all functions $f: A \rightarrow B$ are not bijective. Then, consider $A := \mathbb{R}$ and $f:A \rightarrow A, \ f(x) = \frac{1}{x}$ if $x \neq 0$ and $f(x) = 0$ otherwise. $f$ is injective because it only maps zero to itself and strictly decreases on the interval $(- \infty ,0)$ and $(0, \infty )$ We will show this by taking $0<x<y \implies 0< \frac{x}{y} < 1 \implies 0 < \frac{1}{x} < \frac{1}{y} $. A similar argument works for $x<y<0$. Because $f$ is strictly decreasing on intervals  $(- \infty ,0)$ and $(0, \infty )$ and the images of $f((- \infty ,0) )$ and $f( (0, \infty ))$ are clearly disjoint, $f$ must be an injection. Now let $B := f(A)$ and thus, $f(A) \subseteq B \subseteq A$. Now consider the map $h: A \rightarrow B, \ f(x) = \frac{1}{x}$ if $x \neq 0$ and $f(x) = 0$ otherwise. We have already proven that this function is injective and because $h(A) = B, \  h$ is surjective. Thus $h$ is bijective, a contradicition.
+
+\eproof
+
+
+\end{flushleft}
+\end{document}
