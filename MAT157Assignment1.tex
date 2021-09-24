@@ -18,14 +18,294 @@ $ $ \\
 \maketitle
 \begin{flushleft}
 
-5. a) We will prove this using contradiction.
+1. a) $sin(\frac{11}{24} \pi) = \sqrt{\frac{\sqrt{\frac{\frac{\sqrt{3}}{2} + 1}{2}} + 1}{2}}$
 
 \bproof
-
-Assume all functions $f: A \rightarrow B$ are not bijective. Then, consider $A := \mathbb{R}$ and $f:A \rightarrow A, \ f(x) = \frac{1}{x}$ if $x \neq 0$ and $f(x) = 0$ otherwise. $f$ is injective because it only maps zero to itself and strictly decreases on the interval $(- \infty ,0)$ and $(0, \infty )$ We will show this by taking $0<x<y \implies 0< \frac{x}{y} < 1 \implies 0 < \frac{1}{x} < \frac{1}{y} $. A similar argument works for $x<y<0$. Because $f$ is strictly decreasing on intervals  $(- \infty ,0)$ and $(0, \infty )$ and the images of $f((- \infty ,0) )$ and $f( (0, \infty ))$ are clearly disjoint, $f$ must be an injection. Now let $B := f(A)$ and thus, $f(A) \subseteq B \subseteq A$. Now consider the map $h: A \rightarrow B, \ f(x) = \frac{1}{x}$ if $x \neq 0$ and $f(x) = 0$ otherwise. We have already proven that this function is injective and because $h(A) = B, \  h$ is surjective. Thus $h$ is bijective, a contradicition.
+Consider the double angle formula for cosine. $cos(2 \theta ) = 2cos^2( \theta)-1 = 1 - 2sin^2( \theta)$  . If $ \theta = \frac{\pi}{12}$ and $ \alpha = \frac{\pi}{24}$, then we can write $cos(\frac{\pi}{6}) = 2cos^2(\frac{\pi}{12})-1$. By rearrangement:
+\begin{align*}
+cos( \frac{\pi}{12}) = & \sqrt{\frac{cos(\frac{\pi}{6}) + 1}{2}} \\
+= &\sqrt{\frac{\frac{\sqrt{3}}{2} + 1}{2}} \\
+cos( \frac{\pi}{24}) = & \sqrt{\frac{cos(\frac{\pi}{12}) + 1}{12}} \\
+= &\sqrt{\frac{\sqrt{\frac{\frac{\sqrt{3}}{2} + 1}{2}} + 1}{2}} \\
+\end{align*}
+Because $\frac{\pi}{12}$ is in the first quadrant, we can take the positive root for $cos( \frac{\pi}{12})$.\\
+\bigskip
+Consider $sin( \frac{11}{24} \pi )$. $\frac{11}{24} \pi = \frac{\pi}{2} - \frac{\pi}{24}$; thus, $sin( \frac{11}{24} \pi ) = sin(\frac{\pi}{2} - \frac{\pi}{24})$. With the compound angle formula, we can write: \\
+$sin( \frac{\pi}{2} - \frac{\pi}{24} ) = sin( \frac{\pi}{2} )cos (- \frac{\pi}{24}) + cos( \frac{\pi}{2} )sin (- \frac{\pi}{24})$ \\
+Thus we can use our known trigonometric values, our own formula, and the fact that cosine is an even function to evaluate the statement to be: \\
+\begin{align*}
+ & \sqrt{\frac{\sqrt{\frac{\frac{\sqrt{3}}{2} + 1}{2}} + 1}{2}} + 0(sin(- \frac{\pi}{24})) \\
+=& \sqrt{\frac{\sqrt{\frac{\frac{\sqrt{3}}{2} + 1}{2}} + 1}{2}}
+\end{align*}
 
 \eproof
 
+b) $sin(\alpha)sin(\beta)sin(\gamma) = \frac{1}{4}sin( \alpha - \beta + \gamma) - \frac{1}{4}sin( \alpha - \beta - \gamma) - \frac{1}{4}sin( \alpha + \beta + \gamma) + \frac{1}{4}sin( \alpha + \beta - \gamma)$
+
+\bproof
+
+By the product formula: $sin(\alpha)sin(\beta) = \frac{1}{2}(cos( \alpha - \beta) - cos( \alpha + \beta ))$. \\
+Then,
+\begin{align*}
+sin(\alpha)sin(\beta)sin(\gamma) = & \frac{1}{2}(cos( \alpha - \beta) - cos( \alpha + \beta ))(sin(\gamma)) \\
+= & \frac{1}{2}(cos( \alpha - \beta)sin(\gamma) - cos( \alpha + \beta )sin(\gamma))
+\end{align*}
+Using the other product formula: $cos(\alpha)sin(\beta) = \frac{1}{2}(sin( \alpha + \beta) - sin( \alpha - \beta ))$. \\
+Substituting that formula leads us to 
+\begin{align*}
+& \frac{1}{2}(cos( \alpha - \beta)sin(\gamma) - cos( \alpha + \beta )sin(\gamma)) \\
+= & \frac{1}{2}(\frac{1}{2}(sin(\alpha - \beta + \gamma) - sin( \alpha - \beta - \gamma ))- \frac{1}{2}(sin( \alpha + \beta + \gamma ) - sin( \alpha + \beta - \gamma))) \\
+= & \frac{1}{4}sin( \alpha - \beta + \gamma ) - \frac{1}{4}sin( \alpha - \beta - \gamma ) - \frac{1}{4}sin( \alpha + \beta + \gamma ) + \frac{1}{4}sin( \alpha + \beta - \gamma )
+\end{align*}
+\eproof
+
+c) $sin( \omega_1 t) + sin ( \omega_2 t) = 2sin(\frac{ t (\omega_1 + \omega_2)}{2})cos(\frac{ t (\omega_1 - \omega_2)}{2})$
+
+\bproof
+
+Using the product formula: $sin(\alpha)cos(\beta) = \frac{1}{2}(sin( \alpha + \beta) + sin( \alpha - \beta ))$. Setting $\alpha := \frac{ t (\omega_1 + \omega_2)}{2}$ and $\beta := \frac{ t (\omega_1 - \omega_2)}{2}$, we are given $sin(\frac{ t (\omega_1 + \omega_2)}{2})cos(\frac{ t (\omega_1 - \omega_2)}{2}) = \frac{1}{2}(sin(\frac{ t (\omega_1 + \omega_2)}{2} + \frac{ t (\omega_1 - \omega_2)}{2}) + sin(\frac{ t (\omega_1 + \omega_2)}{2} - \frac{ t (\omega_1 - \omega_2)}{2}) $ \\
+From here we can simplify terms:
+\begin{align*}
+sin(\frac{ t (\omega_1 + \omega_2)}{2})cos(\frac{ t (\omega_1 - \omega_2)}{2}) = & \frac{1}{2}(sin(\omega_1 t) + sin( \omega_2 t)) \\
+2sin(\frac{ t (\omega_1 + \omega_2)}{2})cos(\frac{ t (\omega_1 - \omega_2)}{2}) = & sin(\omega_1 t) + sin( \omega_2 t)
+\end{align*}
+Thus we have written $sin( \omega_1 t) + sin ( \omega_2 t)$ as the product of two trigonometric functions.
+\eproof
+
+\newpage
+
+2. a)
+
+\bproof
+
+Consider that $\sqrt{243}$ is rational.
+
+\begin{align*}
+\sqrt{243} = & \frac{p}{q} \\
+243 = & \frac{p^2}{q^2} \\
+243q^2 = & p^2 \\
+3^5q^2 = & p^2 \\
+\end{align*}
+
+Because $p$ is raised to the power of 2, then it has to have an even amount of factors of 3, but because $3^5q^2$ has a even amount plus 5 factors of 3 (because an even number plus an odd number is always odd), $3^5q^2$ will never have an even amount of factors of 3, contradicting the fundamental theorem of arithmetic.
+
+\eproof
+
+b)
+
+\bproof
+
+Consider that $\sqrt[11]{11}$ is rational.
+
+\begin{align*}
+\sqrt[11]{11} = & \frac{p}{q} \\
+11 = & \frac{p^{11}}{q^{11}} \\
+11q^{11} = & p^{11}
+\end{align*}
+
+Because $p$ is raised to the power of 11, then it has to have a multiple of 11 factors of 11, but because $11q^{11}$ has a multiple of 11 plus 1 factors of 11 (never a multiple of 11), this contradicts the fundamental theorem of arithmetic.
+
+\eproof
+
+c)
+
+\bproof
+
+First we will show that $\sqrt{35}$ is irrational. Assume that $\sqrt{35}$ is rational first.
+\begin{align*}
+\sqrt{35} = & \frac{p}{q} \\
+35 = & \frac{p^2}{q^2} \\
+35q^2 = & p^2 \\
+5\cdot7q^2 = & p^2 \\
+\end{align*}
+Thus, $5\cdot7q^2$ will always have a odd amount of factors of 5, while $p^2$ will always have an even amount of factors of 5, contradicting the fundamental theorem of arithmetic. \\
+\bigskip
+
+Assume $\sqrt{2} + \sqrt{5} + \sqrt{7}$ is rational. Then:
+\begin{align*}
+\sqrt{2} + \sqrt{5} + \sqrt{7} = & \frac{p}{q} \\
+\sqrt{5} + \sqrt{7} = & \frac{p}{q} - \sqrt{2} \\
+(\sqrt{5} + \sqrt{7})^2 = & (\frac{p}{q} - \sqrt{2})^2 \\
+12 + 2 \sqrt{35} = & \frac{p^2}{q^2} - 2 \sqrt{2} \frac{p}{q} +2 \\
+10 + 2 \sqrt{35} = & \frac{p^2}{q^2} - 2 \sqrt{2} \frac{p}{q} \\
+\frac{p^2}{q^2} - 10 - 2\sqrt{35} = & 2 \sqrt{2} \frac{p}{q} \\
+\end{align*}
+Because $\frac{p^2}{q^2} - 10$ is clearly rational, we can rewrite it as $\frac{m}{n}$.
+\begin{align*}
+\frac{m}{n} - 2\sqrt{35} = & 2 \sqrt{2} \frac{p}{q} \\
+(\frac{m}{n} - 2\sqrt{35})^2 = & (2 \sqrt{2} \frac{p}{q})^2 \\
+\frac{m^2}{n^2} +140 - 4 \frac{m}{n} \sqrt{35} = & 8 \frac{p^2}{q^2}
+\end{align*}
+Because $\frac{m^2}{n^2} +140$ is clearly rational, we can rewrite it as $\frac{a}{b}$.
+\begin{align*}
+4 \sqrt{35} = 8 \frac{p^2}{q^2} - \frac{a}{b} \\
+\sqrt{35} = 8 \frac{p^2}{4q^2} - \frac{a}{4b} \\
+\end{align*}
+This shows that $\sqrt{35}$ is rational, clearly a contradiction.
+
+\eproof
+
+\newpage
+
+3. 1) $ \bigcup_{n \in \mathbb{N}} X_n = (-2,2]$ and $ \bigcap_{n \in \mathbb{N}} X_n = [-1,1]$
+\bproof
+
+We will prove the first statement by showing that for every $n>1, \ X_n \subseteq X_1$. The set $X_n = \{x : -1 - \frac{1}{n} < x \leq 1 + \frac{1}{n} \}$. If we let $n>1$, then $1 + \frac{1}{n} < 2$ and conversely, $-1 - \frac{1}{n} > -2 $. Thus, for every element of $x \in X_n, \ -2 < x < 2$; therefore, $\forall x \in X_n, \ x \in X_1$, making $X_n \subseteq X_1, \ \forall n>1$. Furthermore, the union of all $X_n$ and $X_1$ must just be $X_1$. \\
+\bigskip
+We will prove the second by proving that $x \in [-1,1] \iff x \in X_n, \ \forall n \in \mathbb{N}$. Because $[-1,1]$ is an interval, we can simply prove that the boundary of $(-1,1]$ is in all $X_n$ and then prove that if $y \notin [-1, 1]$, then there exists an $n \in \mathbb{N}$ such that $y \notin X_n$. We will take the boundaries, namely 1 and -1. Because $\frac{1}{n}$ is just some positive rational number, then $-1 - \frac{1}{n} < -1 < 1 < 1 + \frac{1}{n}, \ \forall n \in \mathbb{N}$ is trivially true. Now take some objects outside of the interval, namely $a:=1+ \epsilon$ and $b:=-1 - \epsilon, \ \forall \epsilon >0$. $\forall \epsilon, \ \exists n \in \mathbb{N}$ such that $1 + \frac{1}{n} < a$ and similarly $\exists m \in \mathbb{N}$ such that $b < -1 - \frac{1}{m}$. Thus for every object, $x \in [-1,1], \ x \in X_n, \ \forall n \in \mathbb{N}$ and for every object, $y \notin [-1,1], \exists m \in \mathbb{N}$ st $y \notin X_m$.
+
+\eproof
+
+2) a)
+
+\bproof
+$ \subseteq $ \\
+Consider some $x \in f( \bigcup_{i \in I} S_i)$. Then, $x = f(y)$ for some $y \in  \bigcup_{i \in I} S_i$. Because $ \bigcup_{i \in I} f(S_i)$ is the union of all $f(S_i)$ for some $i \in I$, $x$ is also in $ \bigcup_{i \in I} f(S_i)$.
+
+\bigskip
+$ \supseteq $ \\
+Consider some $x \in \bigcup_{i \in I} f(S_i)$. Then, there exists some $i \in I$ such that $x = f(y)$ for some $y \in S_i$. Because $f( \bigcup_{i \in I} S_i)$ is the image of $f$ on $ \bigcup_{i \in I} S_i$, $x$ is also in $ f( \bigcup_{i \in I} S_i)$
+
+\eproof
+
+b)
+
+\bproof
+
+Consider the indexing set $I := \{ 1, 2 \}$ and the sets $S_i \subseteq \{ 1,2,3 \}$ such that $i \in I$. $S_1 := \{ 1, 2 \}$ and $S_2 := \{ 2,3 \}$. Take the function $f: \{ 1,2,3 \} \rightarrow \{ 0 ,1 \}, \ f(x) = 1 \text{ if $x$ is odd and } 0$ otherwise. Thus $\bigcap_{i \in I} f(S_i) = \{ 1 \}$, but $f( \bigcap_{i \in I} S_i) =  \{ 0 \}$; therefore, $\bigcap_{i \in I} f(S_i) \neq f( \bigcap_{i \in I} S_i)$, so we have constructed an example.
+
+\eproof
+
+\newpage
+
+4. a)
+
+\bproof
+
+By assumption, $\exists n,m \in \mathbb{Z}$ such that $a - a' = nk$ and $b - b' = mk$. We can rewrite these formulas as $a = nk + a'$ and $b = mk + b'$. We will now prove that addition is well-defined:
+\begin{align*}
+a+b = & (nk + a') + (mk + b') \\
+= & a' + b' + k(n + m) \\
+(a+b)-(a'+b') = & k(n + m)
+\end{align*}
+Thus, $[a+b]_k=[a'+b']_k$. We will now prove that multiplication is well defined:
+\begin{align*}
+ab = & (nk + a')(mk + b') \\
+= & nmk^2 +  ka' + mk  b' + a'b' \\
+= & k  (nmk + na' + mb') + a'b' \\
+(ab) - (a'b') = & k(nmk + na' + mb')
+\end{align*}
+Thus, $[ab]_k = [a'b']_k$
+
+\eproof
+
+b)
+
+\bproof
+
+P1 \\
+Like the integers, the integers modulo $k$ is also associative under addition.
+\begin{align*}
+\forall x,y,z \in \mathbb{Z}, \ [x]_k + ([y]_k + [z]_k) = & [x]_k + [y+z]_k \\
+= & [x+y+z]_k \\
+= & [x+y]_k + [z]_k \\
+= & ([x]_k + [y]_k) + [z]_k
+\end{align*} \\
+\bigskip
+P2 \\
+There exists a 0-element, namely $[0]_k$. \\
+$\forall x \in \mathbb{Z}, \ [x]_k+[0]_k = [0]_k + [x]_k = [x]_k$ \\
+\bigskip
+P3 \\
+Addition under the integers modulo $k$ also has inverses.
+$\forall x \in \mathbb{Z},\exists y \in \mathbb{Z}$ such that $[x]_k + [y]_k = [0]_k$. We can choose that element $y := -x$, and thus: $[x]_k + [-x]_k = [x-x]_k = [0]_k$
+\bigskip
+P4 \\
+Inherited from the integers, the integers modulo k is also commutative under addition. \\
+$\forall x,y \in \mathbb{Z}, \ [x]_k+[y]_k = [x+y]_k = [y+x]_k = [y]_k+[x]_k$ \\
+\bigskip
+P5 \\
+Integers modulo $k$ is similarly associative under multiplication.
+\begin{align*}
+\forall x,y,z \in \mathbb{Z}, \ [x]_k \cdot ([y]_k \cdot [z]_k) = & [x]_k + [yz]_k \\
+= & [xyz]_k \\
+= & [xy]_k \cdot [z]_k \\
+= & ([x]_k \cdot [y]_k) \cdot [z]_k
+\end{align*} \\
+\bigskip
+P6 \\
+There exists a $e$-element, namely $[1]_k$. \\
+$\forall x \in \mathbb{Z}, \ [x]_k \cdot [1]_k = [1x]_k = [1]_k \cdot [x]_k = [x]_k$ \\
+\bigskip
+P7 \\
+This is the problematic axiom. \\
+\bigskip
+P8 \\
+Modular multiplication is also commutative. \\
+$\forall x,y \in \mathbb{Z}, \ [x]_k \cdot [y]_k = [xy]_k = [yx]_k = [y]_k \cdot [x]_k$ \\
+\bigskip
+P9 \\
+Finally, the distributive property holds true.
+\begin{align*}
+\forall x,y,z \in \mathbb{Z}, \ [x]_k \cdot ([y]_k + [z]_k) = & [x]_k \cdot [y+z]_k \\
+= & [x(y+z)]_k \\
+= & [xy + xz]_k \\
+= & [xy]_k + [xz]_k
+\end{align*}
+
+\eproof
+\newpage
+c)
+\bproof
+
+We will prove this by showing that each non-zero element of $\mathbb{Z}_{13}$ has a multiplicative inverse.
+\begin{align*}
+[1]_{13} \cdot [1]_{13} & =  [1]_{13} \\
+[2]_{13} \cdot [7]_{13} & =  [14]_{13} =  [1]_{13} \\
+[3]_{13} \cdot [9]_{13} & =  [27]_{13} =  [1]_{13} \\
+[4]_{13} \cdot [10]_{13} & =  [40]_{13} =  [1]_{13} \\
+[5]_{13} \cdot [8]_{13} & =  [40]_{13} = [1]_{13} \\
+[6]_{13} \cdot [11]_{13} & =  [66]_{13} =  [1]_{13} \\
+[7]_{13} \cdot [2]_{13} & =  [14]_{13} =  [1]_{13} \\
+[8]_{13} \cdot [5]_{13} & =  [40]_{13} =  [1]_{13} \\
+[9]_{13} \cdot [3]_{13} & =  [27]_{13} =  [1]_{13} \\
+[10]_{13} \cdot [4]_{13} & =  [40]_{13} =  [1]_{13} \\
+[11]_{13} \cdot [6]_{13} & =  [66]_{13} =  [1]_{13} \\
+[12]_{13} \cdot [12]_{13} & =  [144]_{13} =  [1]_{13} 
+\end{align*}
+
+\eproof
+
+d)
+\bproof
+There exists an $a \in \{ 1, 2, 3, \cdots , 12 \}$ that satisfies the equation, namely $a = 2$.
+\begin{align*}
+\frac{1}{ \frac{[4]_{13}}{[3]_{13}} + \frac{[2]_{13} }{[7]_{13}} } - \frac{[3]_{13}}{[10]_{13}} = & \frac{1}{([4]_{13} \cdot [3]_{13}^{-1}) + ([2]_{13} \cdot [7]_{13}^{-1})} - [3]_{13} [10]_{13}^{-1} \\
+= & \frac{1}{([4]_{13} \cdot [9]_{13}) + ([2]_{13} \cdot [2]_{13})} - [3]_{13} [4]_{13} \\
+= & \frac{1}{[10]_{13} + [4]_{13}} - [12]_{13} \\
+= & \frac{1}{[1]_{13}} - [12]_{13} \\
+= & [1]_{13} + [-12]_{13} \\
+= & [2]_{13}
+\end{align*}
+\eproof
+
+\newpage
+
+5. a) We will prove these statements using contradiction.
+
+\bproof
+
+Assume all functions $f: A \rightarrow B$ are not bijective. Then, consider $A := \{ 1 \}$ and $f:A \rightarrow A, \ f(x) = x$. $f$ is injective because there is only one element in the domain. Now let $B := f(A)$ and thus, $f(A) \subseteq B \subseteq A$. Now consider the map $h: A \rightarrow B, \ h(x) = f(x)$. We have already proven that this function is injective and because $h(A) = B, \  h$ is surjective. Thus $h$ is bijective, a contradiction.
+
+\eproof
+
+b)
+
+\bproof
+
+Assume all functions from $h:A \rightarrow B$ are not bijective. Consider $A := \{ 1 \} $; $B:= \{ 1 \}$; $f: A \rightarrow B, \ f(1) = 1$; and $g: B \rightarrow A, \ g(1) = 1$. These functions are both clearly injective. $f$ is also clearly bijective, contradicting the assumption that all functions $h:A \rightarrow B$ are not bijective.
+
+\eproof
 
 \end{flushleft}
 \end{document}

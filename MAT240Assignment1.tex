@@ -48,9 +48,82 @@ Taking into the consideration when $n = 0$ and $X_n = \emptyset$, there is only 
 
 \bproof
 
-
+We will prove that composition of functions is associative:
+\begin{align*}
+\forall x \in S, ((h \circ g) \circ f )(x) = & (h \circ g )(f(x)) \\
+= & h(g(f(x))) \\
+= &h((g \circ f) (x)) \\
+= & (h \circ (g \circ f))(x)
+\end{align*}
+And thus, $(h \circ g) \circ f = h \circ (g \circ f)$
 
 \eproof
+
+b) We will show all the bracketing of the compositions of 4 functions and prove that they are equivalent, and then we will show how many ways you can bracket 5 functions.
+
+\bproof
+
+Let us fix any $x \in S$.
+\begin{align*}
+(((k \circ h) \circ g ) \circ f)(x) = & ((k \circ h \circ g) \circ f)(x) \\
+= & (k \circ h \circ g)(f(x)) \\
+= & k(h(g(f(x)))) \\
+((k \circ (h \circ g )) \circ f)(x) = & ((k \circ h \circ g) \circ f)(x) \\
+= & (k \circ h \circ g)(f(x)) \\
+= & k(h(g(f(x)))) \\
+(k \circ ((h \circ g) \circ f))(x) = & (k \circ (h \circ g \circ f))(x) \\
+= & k((h \circ g \circ f)(x)) \\
+= & k(h(g(f(x))))\\
+(k \circ (h \circ (g \circ f)))(x) = & (k \circ (h \circ g \circ f))(x) \\
+= & k((h \circ g \circ f)(x)) \\
+= & k(h(g(f(x)))) \\
+((k \circ h) \circ (g \circ f))(x) = & (k \circ h) ((g \circ f)(x)) \\
+= & k((h \circ g \circ f)(x)) \\
+= & k(h(g(f(x)))) \\
+\end{align*} \\
+Thus all bracketing of the composition of 4 functions all agree with each other.
+
+\eproof
+
+\bproof
+
+Consider a new function $j:W \rightarrow X$ and the composition of the 5 functions $f,g,h,k,j$, with all their different bracketing.
+\begin{align*}
+(((j \circ k) \circ h) \circ g) \circ f, \ & ((j \circ (k \circ h)) \circ g) \circ f, \ (j \circ ((k \circ h) \circ g)) \circ f \\
+(j \circ (k \circ (h \circ g))) \circ f, \ & ((j \circ k) \circ (h \circ g)) \circ f, \ j \circ (((k \circ h) \circ g) \circ f) \\
+j \circ ((k \circ (h \circ g)) \circ f), \ & j \circ (k \circ ((h \circ g) \circ f)), \ j \circ (k \circ (h \circ (g \circ f))) \\
+j \circ ((k \circ h) \circ (g \circ f)), & (j \circ k) \circ ((h \circ g) \circ f), (j \circ k) \circ (h \circ (g \circ f)) \\
+((j \circ k) \circ h) \circ (g \circ f), & ((j \circ k) \circ h) \circ (g \circ f)
+\end{align*} 
+Thus there are 14 ways to bracket 5 functions.
+
+\eproof
+
+c) We will prove this using induction.
+
+\bproof
+
+Base Case: $n = 3$, which is already proven from part a. \\
+\bigskip
+Induction Step: $k = n + 1$. We will prove this through cases of how to bracket $n+1$ function compositions.
+If $f:X_0 \rightarrow X_{n+1}$, then because the composition of functions is a binary operation, either we have: \\
+\bigskip
+Case 1: $f = f_{n+1} \circ f_c $, where $f_c:X_0 \rightarrow X_n$ is a composition of $n$ functions with arbitrary bracketing. Because compositions of $n$ functions is well-defined without bracketing by the induction hypothesis, we can simply write $f_c = f_n \circ f_{n-1} \circ \cdots \circ f_1$. Thus:
+\begin{align*}
+\forall x \in X_0, \ (f_{n+1} \circ (f_n \circ f_{n-1} \circ \cdots \circ f_1))(x) = & f_{n+1} (f_n \circ f_{n-1} \circ \cdots \circ f_1)(x)) \\
+= & f_{n-1}(f_n (f_{n-1} ... f_1(x)))
+\end{align*} \\
+\bigskip
+Case 2: $f = f_c \circ f_1 $, where $f_c:X_1 \rightarrow X_{n+1}$ is a composition of $n$ functions with arbitrary bracketing. Because compositions of $n$ functions is well-defined without bracketing by the induction hypothesis, we can simply write $f_c = f_{n+1} \circ f_{n} \circ \cdots \circ f_2$. Thus:
+\begin{align*}
+\forall x \in X_0, \ ((f_{n+1} \circ f_{n} \circ \cdots \circ f_2) \circ f_1 )(x) = & (f_{n+1} \circ f_{n} \circ \cdots \circ f_2)(f_1(x)) \\
+= & f_{n-1}(f_n (f_{n-1} ... f_1(x)))
+\end{align*} \\
+\bigskip
+Case 3: There exists way bracketing such that $f = f_a  \circ f_b$, where $f_a:X_b \rightarrow X_{n+1}$ and $f_b:X_0 \rightarrow X_b$ are arbitrary composition of less than $n$ functions. Because $f_a$ and $f_b$ are of compositions of less than $n$ functions, it is also well defined without bracketing by the induction hypothesis (strong induction). Thus without confusion we can substitute $f_a=f_{n+1} \circ f_a'$, where $f_a':X_b \rightarrow X_n$. Thus, $f = (f_{n+1} \circ f_a') \circ f_b$. By the associativity of the composition of 3 functions we can rewrite each as $f = f_{n+1} \circ (f_a' \circ f_b)$. Since $(f_a' \circ f_b):X_0 \rightarrow X_n$ is an arbitrary composition of less than $n$ functions, it reduces this to just case 1.
+\eproof
+
+\newpage
 
 3. a)
 \bproof
@@ -106,6 +179,453 @@ e) It does follow that $f \circ g = I_Y$ now.
 \bproof
 If $g \circ f = I_X$ then $f$ is injective because if we assume $f$ is not injective, then we result in the contradiction where $g(f(x)) = g(f(x')) = x = x'$ when $x \neq x'$ \\
 Thus $f$ is injective and surjective, making it a bijection, and by part c, this implies that it is invertible and there exists a $g$ st $f \circ g = I_Y$
+\eproof
+
+\newpage
+
+4. a) I have italicized the elements in the domain of $f_i: \{ 1, 2, 3, 4 \} \rightarrow \{ 1, 2, 3, 4 \}$ that are fixed points.
+
+\begin{align*}
+f_1 = &
+\begin{pmatrix}
+\mathit{1} & \rightarrow & 1\\
+\mathit{2} & \rightarrow & 2\\
+\mathit{3} & \rightarrow & 3\\
+\mathit{4} & \rightarrow & 4\\
+\end{pmatrix} &
+f_2 = & 
+\begin{pmatrix}
+\mathit{1} & \rightarrow & 1\\
+\mathit{2} & \rightarrow & 2\\
+3 & \rightarrow & 4\\
+4 & \rightarrow & 3\\
+\end{pmatrix} &
+f_3 = & 
+\begin{pmatrix}
+\mathit{1} & \rightarrow & 1\\
+2 & \rightarrow & 3\\
+3 & \rightarrow & 4\\
+4 & \rightarrow & 2\\
+\end{pmatrix} \\
+f_4 = &
+\begin{pmatrix}
+\mathit{1} & \rightarrow & 1\\
+2 & \rightarrow & 3\\
+3 & \rightarrow & 2\\
+4 & \rightarrow & 4\\
+\end{pmatrix} &
+f_5 = & 
+\begin{pmatrix}
+\mathit{1} & \rightarrow & 1\\
+2 & \rightarrow & 4\\
+3 & \rightarrow & 2\\
+4 & \rightarrow & 3\\
+\end{pmatrix} &
+f_6 = & 
+\begin{pmatrix}
+\mathit{1} & \rightarrow & 1\\
+2 & \rightarrow & 4\\
+\mathit{3} & \rightarrow & 3\\
+4 & \rightarrow & 2\\
+\end{pmatrix} \\
+f_7 = &
+\begin{pmatrix}
+1 & \rightarrow & 2\\
+2 & \rightarrow & 1\\
+\mathit{3} & \rightarrow & 3\\
+\mathit{4} & \rightarrow & 4\\
+\end{pmatrix} &
+f_8 = & 
+\begin{pmatrix}
+1 & \rightarrow & 2\\
+2 & \rightarrow & 1\\
+3 & \rightarrow & 4\\
+4 & \rightarrow & 3\\
+\end{pmatrix} &
+f_9 = & 
+\begin{pmatrix}
+1 & \rightarrow & 2\\
+2 & \rightarrow & 3\\
+3 & \rightarrow & 1\\
+4 & \rightarrow & 4\\
+\end{pmatrix} \\
+f_{10} = &
+\begin{pmatrix}
+1 & \rightarrow & 2\\
+2 & \rightarrow & 3\\
+3 & \rightarrow & 4\\
+4 & \rightarrow & 1\\
+\end{pmatrix} &
+f_{11} = & 
+\begin{pmatrix}
+1 & \rightarrow & 2\\
+2 & \rightarrow & 4\\
+3 & \rightarrow & 1\\
+4 & \rightarrow & 3\\
+\end{pmatrix} &
+f_{12} = & 
+\begin{pmatrix}
+1 & \rightarrow & 2\\
+2 & \rightarrow & 4\\
+\mathit{3} & \rightarrow & 3\\
+4 & \rightarrow & 1\\
+\end{pmatrix} \\
+f_{13} = &
+\begin{pmatrix}
+1 & \rightarrow & 3\\
+2 & \rightarrow & 1\\
+3 & \rightarrow & 2\\
+\mathit{4} & \rightarrow & 4\\
+\end{pmatrix} &
+f_{14} = & 
+\begin{pmatrix}
+1 & \rightarrow & 3\\
+2 & \rightarrow & 1\\
+3 & \rightarrow & 4\\
+4 & \rightarrow & 2\\
+\end{pmatrix} &
+f_{15} = & 
+\begin{pmatrix}
+1 & \rightarrow & 3\\
+\mathit{2} & \rightarrow & 2\\
+3 & \rightarrow & 1\\
+\mathit{4} & \rightarrow & 4\\
+\end{pmatrix} \\
+f_{16} = &
+\begin{pmatrix}
+1 & \rightarrow & 3\\
+\mathit{2} & \rightarrow & 2\\
+3 & \rightarrow & 4\\
+4 & \rightarrow & 1\\
+\end{pmatrix} &
+f_{17} = & 
+\begin{pmatrix}
+1 & \rightarrow & 3\\
+2 & \rightarrow & 4\\
+3 & \rightarrow & 1\\
+4 & \rightarrow & 2\\
+\end{pmatrix} &
+f_{18} = & 
+\begin{pmatrix}
+1 & \rightarrow & 3\\
+2 & \rightarrow & 4\\
+3 & \rightarrow & 2\\
+4 & \rightarrow & 1\\
+\end{pmatrix} \\
+f_{19} = &
+\begin{pmatrix}
+1 & \rightarrow & 4\\
+2 & \rightarrow & 1\\
+3 & \rightarrow & 2\\
+4 & \rightarrow & 3\\
+\end{pmatrix} &
+f_{20} = & 
+\begin{pmatrix}
+1 & \rightarrow & 4\\
+2 & \rightarrow & 1\\
+\mathit{3} & \rightarrow & 3\\
+4 & \rightarrow & 2\\
+\end{pmatrix} &
+f_{21} = & 
+\begin{pmatrix}
+1 & \rightarrow & 4\\
+\mathit{2} & \rightarrow & 2\\
+3 & \rightarrow & 1\\
+4 & \rightarrow & 3\\
+\end{pmatrix} \\
+f_{22} = &
+\begin{pmatrix}
+1 & \rightarrow & 4\\
+\mathit{2} & \rightarrow & 2\\
+\mathit{3} & \rightarrow & 3\\
+4 & \rightarrow & 1\\
+\end{pmatrix} &
+f_{23} = & 
+\begin{pmatrix}
+1 & \rightarrow & 4\\
+2 & \rightarrow & 3\\
+3 & \rightarrow & 1\\
+4 & \rightarrow & 2\\
+\end{pmatrix} &
+f_{24} = & 
+\begin{pmatrix}
+1 & \rightarrow & 4\\
+2 & \rightarrow & 3\\
+3 & \rightarrow & 2\\
+4 & \rightarrow & 1\\
+\end{pmatrix} \\
+\end{align*}
+
+\newpage
+
+b) Let $M = \{ f_1, f_2, \cdots, f_{24} \}$ and let $i: M \rightarrow M, \ i(f) = $ the inverse of $f$. Again, I will italicize the elements of the domain that are fixed points.
+
+\begin{align*}
+i = &
+\begin{pmatrix}
+\mathit{f_1} & \rightarrow & f_1 \\
+\mathit{f_2} & \rightarrow & f_2 \\
+\mathit{f_3} & \rightarrow & f_3 \\
+f_4 & \rightarrow & f_5 \\
+f_5 & \rightarrow & f_4 \\
+\mathit{f_6} & \rightarrow & f_6 \\
+\mathit{f_7} & \rightarrow & f_7 \\
+\mathit{f_8} & \rightarrow & f_8 \\
+f_9 & \rightarrow & f_{13} \\
+f_{10} & \rightarrow & f_{19} \\
+f_{11} & \rightarrow & f_{14} \\
+f_{12} & \rightarrow & f_{20} \\
+f_{13} & \rightarrow & f_9 \\
+f_{14} & \rightarrow & f_{11} \\
+\mathit{f_{15}} & \rightarrow & f_{15} \\
+f_{16} & \rightarrow & f_{21} \\
+\mathit{f_{17}} & \rightarrow & f_{17} \\
+f_{18} & \rightarrow & f_{23} \\
+f_{19} & \rightarrow & f_{10} \\
+f_{20} & \rightarrow & f_{12} \\
+f_{21} & \rightarrow & f_{16} \\
+\mathit{f_{22}} & \rightarrow & f_{22} \\
+f_{23} & \rightarrow & f_{18} \\
+\mathit{f_{24}} & \rightarrow & f_{24}
+\end{pmatrix}
+\end{align*}
+
+\newpage
+
+5. There are 203 distinct partitions of the set $\{ 1, 2, 3, 4, 5, 6 \}$.
+
+\bproof
+
+\begin{align*}
+\{ \{ 1, 2, 3, 4, 5, 6 \} \} \\
+\{\{1\}, \{2, 3, 4, 5, 6\}\}\\
+\{\{1\}, \{2\}, \{3, 4, 5, 6\}\}\\
+\{\{1\}, \{2\}, \{3\}, \{4, 5, 6\}\}\\
+\{\{1\}, \{2\}, \{3\}, \{4\}, \{5, 6\}\}\\
+\{\{1\}, \{2\}, \{3\}, \{4\}, \{5\}, \{6\}\}\\
+\{\{1\}, \{2\}, \{3\}, \{4, 5\}, \{6\}\}\\
+\{\{1\}, \{2\}, \{3\}, \{4, 6\}, \{5\}\}\\
+\{\{1\}, \{2\}, \{3, 4\}, \{5, 6\}\}\\
+\{\{1\}, \{2\}, \{3, 4\}, \{5\}, \{6\}\}\\
+\{\{1\}, \{2\}, \{3, 5\}, \{4, 6\}\}\\
+\{\{1\}, \{2\}, \{3, 5\}, \{4\}, \{6\}\}\\
+\{\{1\}, \{2\}, \{3, 6\}, \{4, 5\}\}\\
+\{\{1\}, \{2\}, \{3, 6\}, \{4\}, \{5\}\}\\
+\{\{1\}, \{2\}, \{3, 4, 5\}, \{6\}\}\\
+\{\{1\}, \{2\}, \{3, 4, 6\}, \{5\}\}\\
+\{\{1\}, \{2\}, \{3, 5, 6\}, \{4\}\}\\
+\{\{1\}, \{2, 3\}, \{4, 5, 6\}\}\\
+\{\{1\}, \{2, 3\}, \{4\}, \{5, 6\}\}\\
+\{\{1\}, \{2, 3\}, \{4\}, \{5\}, \{6\}\}\\
+\{\{1\}, \{2, 3\}, \{4, 5\}, \{6\}\}\\
+\{\{1\}, \{2, 3\}, \{4, 6\}, \{5\}\}\\
+\{\{1\}, \{2, 4\}, \{3, 5, 6\}\}\\
+\{\{1\}, \{2, 4\}, \{3\}, \{5, 6\}\}\\
+\{\{1\}, \{2, 4\}, \{3\}, \{5\}, \{6\}\}\\
+\{\{1\}, \{2, 4\}, \{3, 5\}, \{6\}\}\\
+\{\{1\}, \{2, 4\}, \{3, 6\}, \{5\}\}\\
+\end{align*}
+\begin{align*}
+\{\{1\}, \{2, 5\}, \{3, 4, 6\}\}\\
+\{\{1\}, \{2, 5\}, \{3\}, \{4, 6\}\}\\
+\{\{1\}, \{2, 5\}, \{3\}, \{4\}, \{6\}\}\\
+\{\{1\}, \{2, 5\}, \{3, 4\}, \{6\}\}\\
+\{\{1\}, \{2, 5\}, \{3, 6\}, \{4\}\}\\
+\{\{1\}, \{2, 6\}, \{3, 4, 5\}\}\\
+\{\{1\}, \{2, 6\}, \{3\}, \{4, 5\}\}\\
+\{\{1\}, \{2, 6\}, \{3\}, \{4\}, \{5\}\}\\
+\{\{1\}, \{2, 6\}, \{3, 4\}, \{5\}\}\\
+\{\{1\}, \{2, 6\}, \{3, 5\}, \{4\}\}\\
+\{\{1\}, \{2, 3, 4\}, \{5, 6\}\}\\
+\{\{1\}, \{2, 3, 4\}, \{5\}, \{6\}\}\\
+\{\{1\}, \{2, 3, 5\}, \{4, 6\}\}\\
+\{\{1\}, \{2, 3, 5\}, \{4\}, \{6\}\}\\
+\{\{1\}, \{2, 3, 6\}, \{4, 5\}\}\\
+\{\{1\}, \{2, 3, 6\}, \{4\}, \{5\}\}\\
+\{\{1\}, \{2, 4, 5\}, \{3, 6\}\}\\
+\{\{1\}, \{2, 4, 5\}, \{3\}, \{6\}\}\\
+\{\{1\}, \{2, 4, 6\}, \{3, 5\}\}\\
+\{\{1\}, \{2, 4, 6\}, \{3\}, \{5\}\}\\
+\{\{1\}, \{2, 5, 6\}, \{3, 4\}\}\\
+\{\{1\}, \{2, 5, 6\}, \{3\}, \{4\}\}\\
+\{\{1\}, \{2, 3, 4, 5\}, \{6\}\}\\
+\{\{1\}, \{2, 3, 4, 6\}, \{5\}\}\\
+\{\{1\}, \{2, 3, 5, 6\}, \{4\}\}\\
+\{\{1\}, \{2, 4, 5, 6\}, \{3\}\}\\
+\end{align*}
+\begin{align*}
+\{\{1, 2\}, \{3, 4, 5, 6\}\}\\
+\{\{1, 2\}, \{3\}, \{4, 5, 6\}\}\\
+\{\{1, 2\}, \{3\}, \{4\}, \{5, 6\}\}\\
+\{\{1, 2\}, \{3\}, \{4\}, \{5\}, \{6\}\}\\
+\{\{1, 2\}, \{3\}, \{4, 5\}, \{6\}\}\\
+\{\{1, 2\}, \{3\}, \{4, 6\}, \{5\}\}\\
+\{\{1, 2\}, \{3, 4\}, \{5, 6\}\}\\
+\{\{1, 2\}, \{3, 4\}, \{5\}, \{6\}\}\\
+\{\{1, 2\}, \{3, 5\}, \{4, 6\}\}\\
+\{\{1, 2\}, \{3, 5\}, \{4\}, \{6\}\}\\
+\{\{1, 2\}, \{3, 6\}, \{4, 5\}\}\\
+\{\{1, 2\}, \{3, 6\}, \{4\}, \{5\}\}\\
+\{\{1, 2\}, \{3, 4, 5\}, \{6\}\}\\
+\{\{1, 2\}, \{3, 4, 6\}, \{5\}\}\\
+\{\{1, 2\}, \{3, 5, 6\}, \{4\}\}\\
+\{\{1, 3\}, \{2, 4, 5, 6\}\}\\
+\{\{1, 3\}, \{2\}, \{4, 5, 6\}\}\\
+\{\{1, 3\}, \{2\}, \{4\}, \{5, 6\}\}\\
+\{\{1, 3\}, \{2\}, \{4\}, \{5\}, \{6\}\}\\
+\{\{1, 3\}, \{2\}, \{4, 5\}, \{6\}\}\\
+\{\{1, 3\}, \{2\}, \{4, 6\}, \{5\}\}\\
+\{\{1, 3\}, \{2, 4\}, \{5, 6\}\}\\
+\{\{1, 3\}, \{2, 4\}, \{5\}, \{6\}\}\\
+\{\{1, 3\}, \{2, 5\}, \{4, 6\}\}\\
+\{\{1, 3\}, \{2, 5\}, \{4\}, \{6\}\}\\
+\{\{1, 3\}, \{2, 6\}, \{4, 5\}\}\\
+\{\{1, 3\}, \{2, 6\}, \{4\}, \{5\}\}\\
+\{\{1, 3\}, \{2, 4, 5\}, \{6\}\}\\
+\end{align*}
+\begin{align*}
+\{\{1, 3\}, \{2, 4, 6\}, \{5\}\}\\
+\{\{1, 3\}, \{2, 5, 6\}, \{4\}\}\\
+\{\{1, 4\}, \{2, 3, 5, 6\}\}\\
+\{\{1, 4\}, \{2\}, \{3, 5, 6\}\}\\
+\{\{1, 4\}, \{2\}, \{3\}, \{5, 6\}\}\\
+\{\{1, 4\}, \{2\}, \{3\}, \{5\}, \{6\}\}\\
+\{\{1, 4\}, \{2\}, \{3, 5\}, \{6\}\}\\
+\{\{1, 4\}, \{2\}, \{3, 6\}, \{5\}\}\\
+\{\{1, 4\}, \{2, 3\}, \{5, 6\}\}\\
+\{\{1, 4\}, \{2, 3\}, \{5\}, \{6\}\}\\
+\{\{1, 4\}, \{2, 5\}, \{3, 6\}\}\\
+\{\{1, 4\}, \{2, 5\}, \{3\}, \{6\}\}\\
+\{\{1, 4\}, \{2, 6\}, \{3, 5\}\}\\
+\{\{1, 4\}, \{2, 6\}, \{3\}, \{5\}\}\\
+\{\{1, 4\}, \{2, 3, 5\}, \{6\}\}\\
+\{\{1, 4\}, \{2, 3, 6\}, \{5\}\}\\
+\{\{1, 4\}, \{2, 5, 6\}, \{3\}\}\\
+\{\{1, 5\}, \{2, 3, 4, 6\}\}\\
+\{\{1, 5\}, \{2\}, \{3, 4, 6\}\}\\
+\{\{1, 5\}, \{2\}, \{3\}, \{4, 6\}\}\\
+\{\{1, 5\}, \{2\}, \{3\}, \{4\}, \{6\}\}\\
+\{\{1, 5\}, \{2\}, \{3, 4\}, \{6\}\}\\
+\{\{1, 5\}, \{2\}, \{3, 6\}, \{4\}\}\\
+\{\{1, 5\}, \{2, 3\}, \{4, 6\}\}\\
+\{\{1, 5\}, \{2, 3\}, \{4\}, \{6\}\}\\
+\{\{1, 5\}, \{2, 4\}, \{3, 6\}\}\\
+\{\{1, 5\}, \{2, 4\}, \{3\}, \{6\}\}\\
+\{\{1, 5\}, \{2, 6\}, \{3, 4\}\}\\
+\end{align*}
+\begin{align*}
+\{\{1, 5\}, \{2, 6\}, \{3\}, \{4\}\}\\
+\{\{1, 5\}, \{2, 3, 4\}, \{6\}\}\\
+\{\{1, 5\}, \{2, 3, 6\}, \{4\}\}\\
+\{\{1, 5\}, \{2, 4, 6\}, \{3\}\}\\
+\{\{1, 6\}, \{2, 3, 4, 5\}\}\\
+\{\{1, 6\}, \{2\}, \{3, 4, 5\}\}\\
+\{\{1, 6\}, \{2\}, \{3\}, \{4, 5\}\}\\
+\{\{1, 6\}, \{2\}, \{3\}, \{4\}, \{5\}\}\\
+\{\{1, 6\}, \{2\}, \{3, 4\}, \{5\}\}\\
+\{\{1, 6\}, \{2\}, \{3, 5\}, \{4\}\}\\
+\{\{1, 6\}, \{2, 3\}, \{4, 5\}\}\\
+\{\{1, 6\}, \{2, 3\}, \{4\}, \{5\}\}\\
+\{\{1, 6\}, \{2, 4\}, \{3, 5\}\}\\
+\{\{1, 6\}, \{2, 4\}, \{3\}, \{5\}\}\\
+\{\{1, 6\}, \{2, 5\}, \{3, 4\}\}\\
+\{\{1, 6\}, \{2, 5\}, \{3\}, \{4\}\}\\
+\{\{1, 6\}, \{2, 3, 4\}, \{5\}\}\\
+\{\{1, 6\}, \{2, 3, 5\}, \{4\}\}\\
+\{\{1, 6\}, \{2, 4, 5\}, \{3\}\}\\
+\{\{1, 2, 3\}, \{4, 5, 6\}\}\\
+\{\{1, 2, 3\}, \{4\}, \{5, 6\}\}\\
+\{\{1, 2, 3\}, \{4\}, \{5\}, \{6\}\}\\
+\{\{1, 2, 3\}, \{4, 5\}, \{6\}\}\\
+\{\{1, 2, 3\}, \{4, 6\}, \{5\}\}\\
+\{\{1, 2, 4\}, \{3, 5, 6\}\}\\
+\{\{1, 2, 4\}, \{3\}, \{5, 6\}\}\\
+\{\{1, 2, 4\}, \{3\}, \{5\}, \{6\}\}\\
+\{\{1, 2, 4\}, \{3, 5\}, \{6\}\}\\
+\{\{1, 2, 4\}, \{3, 6\}, \{5\}\}\\
+\end{align*}
+\begin{align*}
+\{\{1, 2, 5\}, \{3, 4, 6\}\}\\
+\{\{1, 2, 5\}, \{3\}, \{4, 6\}\}\\
+\{\{1, 2, 5\}, \{3\}, \{4\}, \{6\}\}\\
+\{\{1, 2, 5\}, \{3, 4\}, \{6\}\}\\
+\{\{1, 2, 5\}, \{3, 6\}, \{4\}\}\\
+\{\{1, 2, 6\}, \{3, 4, 5\}\}\\
+\{\{1, 2, 6\}, \{3\}, \{4, 5\}\}\\
+\{\{1, 2, 6\}, \{3\}, \{4\}, \{5\}\}\\
+\{\{1, 2, 6\}, \{3, 4\}, \{5\}\}\\
+\{\{1, 2, 6\}, \{3, 5\}, \{4\}\}\\
+\{\{1, 3, 4\}, \{2, 5, 6\}\}\\
+\{\{1, 3, 4\}, \{2\}, \{5, 6\}\}\\
+\{\{1, 3, 4\}, \{2\}, \{5\}, \{6\}\}\\
+\{\{1, 3, 4\}, \{2, 5\}, \{6\}\}\\
+\{\{1, 3, 4\}, \{2, 6\}, \{5\}\}\\
+\{\{1, 3, 5\}, \{2, 4, 6\}\}\\
+\{\{1, 3, 5\}, \{2\}, \{4, 6\}\}\\
+\{\{1, 3, 5\}, \{2\}, \{4\}, \{6\}\}\\
+\{\{1, 3, 5\}, \{2, 4\}, \{6\}\}\\
+\{\{1, 3, 5\}, \{2, 6\}, \{4\}\}\\
+\{\{1, 3, 6\}, \{2, 4, 5\}\}\\
+\{\{1, 3, 6\}, \{2\}, \{4, 5\}\}\\
+\{\{1, 3, 6\}, \{2\}, \{4\}, \{5\}\}\\
+\{\{1, 3, 6\}, \{2, 4\}, \{5\}\}\\
+\{\{1, 3, 6\}, \{2, 5\}, \{4\}\}\\
+\{\{1, 4, 5\}, \{2, 3, 6\}\}\\
+\{\{1, 4, 5\}, \{2\}, \{3, 6\}\}\\
+\{\{1, 4, 5\}, \{2\}, \{3\}, \{6\}\}\\
+\end{align*}
+\begin{align*}
+\{\{1, 4, 5\}, \{2, 3\}, \{6\}\}\\
+\{\{1, 4, 5\}, \{2, 6\}, \{3\}\}\\
+\{\{1, 4, 6\}, \{2, 3, 5\}\}\\
+\{\{1, 4, 6\}, \{2\}, \{3, 5\}\}\\
+\{\{1, 4, 6\}, \{2\}, \{3\}, \{5\}\}\\
+\{\{1, 4, 6\}, \{2, 3\}, \{5\}\}\\
+\{\{1, 4, 6\}, \{2, 5\}, \{3\}\}\\
+\{\{1, 5, 6\}, \{2, 3, 4\}\}\\
+\{\{1, 5, 6\}, \{2\}, \{3, 4\}\}\\
+\{\{1, 5, 6\}, \{2\}, \{3\}, \{4\}\}\\
+\{\{1, 5, 6\}, \{2, 3\}, \{4\}\}\\
+\{\{1, 5, 6\}, \{2, 4\}, \{3\}\}\\
+\{\{1, 2, 3, 4\}, \{5, 6\}\}\\
+\{\{1, 2, 3, 4\}, \{5\}, \{6\}\}\\
+\{\{1, 2, 3, 5\}, \{4, 6\}\}\\
+\{\{1, 2, 3, 5\}, \{4\}, \{6\}\}\\
+\{\{1, 2, 3, 6\}, \{4, 5\}\}\\
+\{\{1, 2, 3, 6\}, \{4\}, \{5\}\}\\
+\{\{1, 2, 4, 5\}, \{3, 6\}\}\\
+\{\{1, 2, 4, 5\}, \{3\}, \{6\}\}\\
+\{\{1, 2, 4, 6\}, \{3, 5\}\}\\
+\{\{1, 2, 4, 6\}, \{3\}, \{5\}\}\\
+\{\{1, 2, 5, 6\}, \{3, 4\}\}\\
+\{\{1, 2, 5, 6\}, \{3\}, \{4\}\}\\
+\{\{1, 3, 4, 5\}, \{2, 6\}\}\\
+\end{align*}
+\begin{align*}
+\{\{1, 3, 4, 5\}, \{2\}, \{6\}\}\\
+\{\{1, 3, 4, 6\}, \{2, 5\}\}\\
+\{\{1, 3, 4, 6\}, \{2\}, \{5\}\}\\
+\{\{1, 3, 5, 6\}, \{2, 4\}\}\\
+\{\{1, 3, 5, 6\}, \{2\}, \{4\}\}\\
+\{\{1, 4, 5, 6\}, \{2, 3\}\}\\
+\{\{1, 4, 5, 6\}, \{2\}, \{3\}\}\\
+\{\{1, 2, 3, 4, 5\}, \{6\}\}\\
+\{\{1, 2, 3, 4, 6\}, \{5\}\}\\
+\{\{1, 2, 3, 5, 6\}, \{4\}\}\\
+\{\{1, 2, 4, 5, 6\}, \{3\}\}\\
+\{\{1, 3, 4, 5, 6\}, \{2\}\}\\
+\end{align*}
+Thus, these are all the 203 distinct partitions of the set $\{ 1, 2, 3, 4, 5, 6 \}$.
+\eproof
+
+\newpage
+
+6. $| \mathcal{P}(X) | = 2^n$
+
+\bproof
+
+Consider $X$ is a set with $n \in \mathbb{N}$ elements. Then for every element $x \in \mathcal{P}(X)$ and for every element $y \in X$, there are two choices: either $y \in x$ or $y \notin x$. For $n$ objects in $X$, this gives us $\underbrace{2 \cdot 2 \cdots 2}_\text{$n$ times}$ distinct objects in $\mathcal{P}(X)$. Hence, the cardinality of $\mathcal{P}(X)$ is $2^n$
+
 \eproof
 
 
