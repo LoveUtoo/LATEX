@@ -1,0 +1,71 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb, amsmath, amsthm, changepage}
+
+\title{MAT157 Problem Set 2}
+\author{Nicolas Coballe}
+
+\newcommand{\bproof}{\begin{proof}
+$ $ \\
+\begin{adjustwidth}{3em}{0pt}
+}
+
+\newcommand{\eproof}{\end{adjustwidth}
+\end{proof}}
+
+\begin{document}
+
+\maketitle
+\begin{flushleft}
+
+1. a) $\forall x \in F, \ \exists y \in F : \forall z \in F, \ z \neq x, \ xy = 1 \implies yz \neq 1$ \\
+The negation: \\
+$\exists x \in F, \ \forall y \in F: \exists z \in F, z \neq x, xy = 1 \text{ and } yz = 1$ \\
+Plain English: \\
+There exists an element $x$ that for all $y$ such that there exists $z$ with $z \neq x$, $xy = 1$ and $yz = 1$ \\
+\bigskip
+b) Let $a(x)$ be the angle sum of polygon $x$ and let $H$ be the set of all hyperbolic octagons. \\
+$\forall x \in H, \ a(x) > \pi$ \\
+The negation:  \\
+$\exists x \in H, \ a(x) \leq \pi$ \\
+Plain English: \\
+There exists a hyperbolic octagon with an angle sum less than or equal to $\pi$. \\
+\bigskip
+c) Let $Q$ be the set of all flavors of quarks, $c(x)$ be the charge of quark $x$, and $m(x)$ be the mass of quark $x$. \\
+$\forall x,y \in Q, c(x) = c(y) \text{ and } m(x) = m(y)$ \\
+The negation: \\
+$\exists x,y \in Q, c(x) \neq c(y) \text{ op } m(x) \neq m(y)$ \\
+Plain English: \\
+There exists two flavors of quarks that do not have the same charge or the same mass. \\
+\bigskip
+d) Let $S$ be the set of students in this class, $H$ be the set of all homework assignments, $L$ be the set of all lectures, $h(x,y)$ be student $x$ does homework $y$, $l(x,y)$ be student $x$ goes to lecture $y$, and $f(x)$ be the percentage that student $x$ gets on the final exam. \\
+$\forall x \in S: h(x,y), \forall y \in H \text{ and } l(x,z), \forall z \in L \implies f(x) \geq 50$ \\
+The negation: \\
+$\exists x \in S: (h(x,y), \forall y \in H \text{ and } l(x,z), \forall z \in L) \text{ and } f(x) < 50$ \\
+Plain English: \\
+There exists a student who does all the homework and all the assignments but scores less than 50 percent on the final exam. \\
+
+\newpage
+
+2. a)
+
+\bproof
+
+$\Rightarrow$ \\
+If $a = b$ then $|a - b| = |a - a| = 0 < \epsilon$. \\
+\bigskip
+
+$\Leftarrow$ \\
+We will take the contrapositive. If $a \neq b$ then $\exists x \in \mathbb{R} \setminus \{ 0 \}$ such that $b = a + x$. Thus, $|a - b| = |a - (a + x)| = |x| > \epsilon$
+\eproof
+
+\bproof
+
+b) Assume that for all rational numbers $x$, $a \geq x$ or $x \geq b$. Let $a = 0$ and $b = 2$, giving us $a < b$. Consider $x = 1$. Clearly $x$ is rational, but $a < x$ and $x < b$. This contradicts our assumption that for all rational numbers $x$, $a \geq x$ or $x \geq b$
+
+\eproof
+                                                                                                                                                            \newpage
+
+
+\end{flushleft}
+\end{document}
