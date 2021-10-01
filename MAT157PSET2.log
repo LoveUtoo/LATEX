@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.9.14)  25 SEP 2021 20:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.9.14)  1 OCT 2021 03:19
 entering extended mode
 **./MAT157PSET2.tex
 (MAT157PSET2.tex
@@ -151,27 +151,33 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 [1
 
 {C:/Users/Nicolas/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [2]
-[3] (MAT157PSET2.aux) ) 
+[3] [4] [5] [6] [7] [8] [9] (MAT157PSET2.aux) ) 
 Here is how much of TeX's memory you used:
  1724 strings out of 478927
  23297 string characters out of 2851587
- 318918 words of memory out of 3000000
+ 323918 words of memory out of 3000000
  19609 multiletter control sequences out of 15000+600000
  410268 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,6n,66p,324b,216s stack positions out of 5000i,500n,10000p,200000b,80000s
-<C:/Users/Nicolas/AppData/Local/Programs/MiKTeX/fonts/ty
-pe1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Nicolas/AppData/Local/Programs/MiKT
-eX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Nicolas/AppData/Local/Pro
-grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Nicolas/AppData
-/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/Nicol
-as/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/
-Users/Nicolas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti
-10.pfb><C:/Users/Nicolas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
-nts/symbols/msbm10.pfb>
-Output written on MAT157PSET2.pdf (3 pages, 86422 bytes).
+ 56i,8n,66p,654b,307s stack positions out of 5000i,500n,10000p,200000b,80000s
+<C:/Users/Nicolas/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Nicolas/App
+Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/
+Nicolas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb>
+<C:/Users/Nicolas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
+cmr10.pfb><C:/Users/Nicolas/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
+sfonts/cm/cmr12.pfb><C:/Users/Nicolas/AppData/Local/Programs/MiKTeX/fonts/type1
+/public/amsfonts/cm/cmr17.pfb><C:/Users/Nicolas/AppData/Local/Programs/MiKTeX/f
+onts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Nicolas/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Nicolas/AppData/Local
+/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Nicolas/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/
+Nicolas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb
+><C:/Users/Nicolas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/sy
+mbols/msbm10.pfb>
+Output written on MAT157PSET2.pdf (9 pages, 150096 bytes).
 PDF statistics:
- 47 PDF objects out of 1000 (max. 8388607)
+ 92 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

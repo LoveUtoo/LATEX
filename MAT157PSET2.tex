@@ -34,7 +34,7 @@ There exists a hyperbolic octagon with an angle sum less than or equal to $\pi$.
 c) Let $Q$ be the set of all flavors of quarks, $c(x)$ be the charge of quark $x$, and $m(x)$ be the mass of quark $x$. \\
 $\forall x,y \in Q, c(x) = c(y) \text{ and } m(x) = m(y)$ \\
 The negation: \\
-$\exists x,y \in Q, c(x) \neq c(y) \text{ op } m(x) \neq m(y)$ \\
+$\exists x,y \in Q, c(x) \neq c(y) \text{ or } m(x) \neq m(y)$ \\
 Plain English: \\
 There exists two flavors of quarks that do not have the same charge or the same mass. \\
 \bigskip
@@ -43,7 +43,7 @@ $\forall x \in S: h(x,y), \forall y \in H \text{ and } l(x,z), \forall z \in L \
 The negation: \\
 $\exists x \in S: (h(x,y), \forall y \in H \text{ and } l(x,z), \forall z \in L) \text{ and } f(x) < 50$ \\
 Plain English: \\
-There exists a student who does all the homework and all the assignments but scores less than 50 percent on the final exam. \\
+There exists a student who does all the homework and all the assignments, but scores less than 50 percent on the final exam. \\
 
 \newpage
 
@@ -61,10 +61,140 @@ We will take the contrapositive. If $a \neq b$ then $\exists x \in \mathbb{R} \s
 
 \bproof
 
-b) Assume that for all rational numbers $x$, $a \geq x$ or $x \geq b$. Let $a = 0$ and $b = 2$, giving us $a < b$. Consider $x = 1$. Clearly $x$ is rational, but $a < x$ and $x < b$. This contradicts our assumption that for all rational numbers $x$, $a \geq x$ or $x \geq b$
+b) Because the distance between $a$ and $b$ is a positive real number, $\forall \epsilon > 0$ we can choose $q \in \mathbb{N}$ arbitrarily large such that $q(b-a) > \epsilon$. Thus we can choose $q$ such that $(qb-qa) > 10$. Using the ceiling function, $ \lceil qa \rceil - qa < 1$. If we take $ \lceil qa \rceil + 1$, the distance $ (\lceil qa \rceil + 1) - qa < 2$. Note that $\lceil qa \rceil + 1$ is a rational number, greater that $qa$ and less than $qb$ because it's distance from $qa$ is less than 10. Thus, $qa < \lceil qa \rceil + 1 < qb$. If we take $x = \frac{\lceil qa \rceil + 1}{q}$, then $a < x < b$.
 
 \eproof
                                                                                                                                                             \newpage
+                                                                                                                                                            
+                                                                                                                                                         
+3. a)
+
+\bproof
+
+$\Rightarrow$ \\
+We will prove this using the contrapositive: If $\exists a \in F$ such that $a \cdot a + 1 = 0$, then $F^c$ is not a field. For the sake of contradiction, assume that $F^c$ is a field. Then, take product of two non-zero elements, $(a,1)\cdot (-a,1)$. We can rewrite this as $-a^2 -ai +ai +i^2$. But this is simply $-1(a^2 + 1)$, which is 0. This is a contradiction because two non-zero elements cannot have a product of zero. \\
+\bigskip
+
+$\Leftarrow$ \\
+We will show that every non-zero element has a well-defined multiplicative inverse. Consider the arbitrary element in $F^c$, $(a,b)$. Then, $(a,b)$ has multiplicative inverse, $(c,d)$ where $c = \frac{a}{a^2 + b^2}$ and $d = \frac{-b}{a^2+b^2}$ (it is very easy to find $c$ and $d$, just use the conjugate). This inverse is only well-defined, if $a^2 + b^2 \neq 0$. Because $(a,b)$ is non-zero, we have 3 cases: \\
+Case 1: $a = 0, \ b \neq 0$. Thus we have $a^2 + b^2 = 0 + b^2$, and since $b^2$ is non-zero, $0 + b^2$ is not zero. \\
+Case 2: $a \neq 0, \ b = 0$. This is the same as case 1 except reversed. \\
+Case 3: $a,b \neq 0$, Thus if $a^2 + b^2 = 0$, then $\frac{a^2}{b^2} + 1 = 0$, which contradicts our assumption that there does not exists an element in $F$ such that $a \cdot a + 1 = 0$.
+
+\eproof
+
+b)
+
+\bproof
+
+$\Rightarrow$\\
+We will prove this using the contrapositive: If $\exists a \in F$ such that $a^2 + a + 1 = 0$, then $F'$ is not a field. For the sake of contradiction, assume that $F'$ is a field. Then, take product of two non-zero elements, $(a+1,1)\cdot (-a,1)$. We can rewrite this as $-a^2 +ai -a +i -ai + i^2$. But this is simply $(-a^2 -a) + (i^2+i) = 1 - 1$, which is 0. This is a contradiction because two non-zero elements cannot have a product of zero. \\
+\bigskip
+
+$\Leftarrow$ \\
+We will show that every non-zero element has a well-defined multiplicative inverse. Consider the arbitrary element in $F'$, $(a,b)$. Then, we will do a series of steps to find out what the inverse of $(a,b)$ is:
+\begin{align*}
+(a+bi)\frac{1}{a+bi} = & 1 \\
+(a+bi)\frac{(b+ai)}{(a+bi)(b+ai)} = & 1 \\
+(a+bi)\frac{(b+ai)}{ab + a^2i +b^2i+abi^2} = & 1 \\
+(a+bi)\frac{(b+ai)}{ab + a^2i + b^2i -ab -abi} = & 1 \\
+(a+bi)\frac{(b+ai)}{a^2i + b^2i-abi} = & 1 \\
+(a+bi)\frac{(b+ai)}{i(a^2 + b^2-ab)} = & 1 \\
+(a+bi)\frac{(b+ai)(1+i)}{i(a^2 + b^2-ab)(1 + i)} = & 1 \\
+(a+bi)\frac{(b+bi+ai+ai^2)}{(a^2 + b^2-ab)(i + i^2)} = & 1 \\
+(a+bi)\frac{(b + bi + ai -a -ai)}{(a^2 + b^2-ab)(-1)} = & 1 \\
+(a+bi)\frac{(b-a)+(b)i}{(-a^2 + -b^2+ab)} = & 1 \\
+\end{align*}
+Thus there is an inverse to $(a,b)$, namely, $(c,d)$ where $c = \frac{b-a}{-a^2 + -b^2+ab}$ and $d = \frac{b}{-a^2 + -b^2+ab}$. This inverse is only well defined, if $ -a^2 + -b^2+ab \neq 0$. Because $(a,b)$ is non-zero, we have 3 cases: \\
+Case 1: $a = 0, \ b \neq 0$. Thus we have $-a^2 + -b^2 +ab = 0 + -b^2 = 0$, and since $b^2$ is non-zero, $0  -b^2 +0$ is not zero. \\
+Case 2: $a \neq 0, \ b = 0$. This is the same as case 1 except reversed. \\
+Case 3: $a,b \neq 0$, Thus if $-a^2  -b^2 +ab = 0$, then $\frac{a^2}{b^2} + \frac{a}{-b} + 1 = 0$, which contradicts our assumption that there does not exists an element in $F$ such that $a^2 + a + 1 = 0$.
+
+\eproof
+
+c) If $F \in \{ \mathbb{Z}_3, \mathbb{Z}_7 \}$, then $F^c$ is a field and $F'$ is not a field, and if $F \in \{ \mathbb{Z}_2, \mathbb{Z}_5 \}$, then $F'$ is a field and $F^c$ is a field.
+
+\bproof
+
+If $F \in \{ \mathbb{Z}_3, \mathbb{Z}_7 \}$, then $\forall a \in F, \ a \cdot a + 1 \neq 0$; thus, $F^c$ is a field by part a. If $F \in \{ \mathbb{Z}_3, \mathbb{Z}_7 \}$, then $\exists a \in F, \ a^2 + a + 1 = 0$, namely, $a = 1 \in \mathbb{Z}_3$ and $a = 2 \in \mathbb{Z}_7$; thus, $F'$ is not a field. \\
+\bigskip
+If $F \in \{ \mathbb{Z}_2, \mathbb{Z}_5 \}$, then $\forall a \in F, \ a^2 + a + 1 \neq 0$; thus, $F'$ is a field by part b. If $F \in \{ \mathbb{Z}_2, \mathbb{Z}_5 \}$, then $\exists a \in F, \ a \cdot a + 1 = 0$, namely, $a = 1 \in \mathbb{Z}_2$ and $a = 2 \in \mathbb{Z}_5$; thus, $F^c$ is not a field.
+
+\eproof
+
+\newpage
+
+4. a) 
+
+\bproof
+
+We will consider every other case to be true and show that they all lead to contradictions: \\
+Case 1: $xy = 0$. This contradicts the fact that no non-zero elements can have a product of 0. \\
+Case 2: $xy = x$. This contradicts the fact that the multiplicative identity is unique. \\
+Case 3: $xy = y$. This also contradicts the fact that the multiplicative identity is unique. \\
+Thus $xy = 1$ must be true.
+
+\eproof
+
+b)
+
+\bproof
+
+We will consider every other case to be true and show that they will lead to contradictions: \\
+Case 1: $xx = 0$ and $yy = 0$. This contradicts the fact that no non-zero elements can have a product of 0. \\
+Case 2: $xx = 1$ and $yy = 1$. This contradicts the fact that we already know that $x$ and $y$ are multiplicative inverses of each other, and multiplicative inverses are unique. \\
+Case 3:  $xx = x$ and $yy = y$. This contradicts the fact that the multiplicative identity is unique.\\
+Thus $xx = y$ and $yy = x$ must be true.
+
+\eproof
+
+c) 
+
+\bproof
+
+We will consider every other case to be true and show that they will lead to contradictions: \\
+Case 1: $x + y = 0$. Multiplying both side by $x$ gives us the equation $xx + xy = 0$, and thus, $y + 1= 0$. If instead we multiply the original equation by $y$ gives us the equation $xy + yy = 0$, and thus, $x + 1 = 0$. Using the transitive property of the equality relation, we can say that $x+1 = y+1$. Hence, $x = y$ which is a contradiction because $x$ and $y$ are distinct. \\
+Case 2: $x + y = x$. This contradicts the fact that the additive identity is unique. \\
+Case 3:  $x + y = y$. This contradicts the fact that the additive identity is unique. \\
+Thus $x + y = 1$ must be true.
+
+\eproof
+
+d)
+
+\bproof
+
+We will consider every other case to be true and show that they will lead to contradictions: \\
+Case 1: $x + x = 1$. By the transitive property, we can say that $x + x = x + y$, and if we apply the additive inverse of $x$ to both sides, we get $x = y$, a contradiction. \\
+Case 2: $x + x = x$. This contradicts the fact that additive identities are unique. \\
+Case 3: $x + x = y$. If we multiply $x$ on both sides, we get $xx + xx = xy$. That leaves us with $y + y = 1$. This allows us to use the transitive property to say $y + y = x + y$, and by applying the additive inverse of $y$ we get $y = x$, a contradiction. \\
+Thus $x + x = 0$ must be true, and in a similar fashion, we can show that $y + y = 1$ must be true. \\
+\bigskip
+
+Because $x$ and $y$ are their own additive inverses, $x + 1 =y$ and $y + 1 = x$ is trivially true through rearrangement. $1 + 1 = 0$ because 1 needs an additive inverse, and we have already shown it cannot be $y$ or $x$; thus, it has to be 1.
+
+\eproof
+
+\newpage
+
+5. a)
+
+\bproof
+
+Considering $[a_n,b_n]$ is non-empty, then as $n$ becomes sufficiently large, then either two things happen: $b_n - a_n \geq 0$. We will investigate both cases: \\
+Case 1: $b_n - a_n = 0$. If this is the case then the set $[a_n, b_n]$ is just the singleton set $\{ a_n \}$. In this case $\bigcap_{n \in \mathbb{N}}I_n = \{ a_n \}$, and thus it is non-empty and closed. \\
+Case 2: $b_n - a_n > 0$. Then, there exists some $\epsilon > 0$ such that $b_n -a_n = \epsilon$; thus we can rewrite the interval as $[a_n, a_n + \epsilon]$. Because $a_n$ and $a_n + \epsilon$ are real, we know that $a_n$ and $a_n + \epsilon$ are in $[a_n, a_n + \epsilon]$; thus, the interval contains all of it boundaries, making the interval closed. Also, if we know that $a_n \in [a_n, a_n + \epsilon]$, that is sufficient prove that $[a_n, a_n + \epsilon]$ is non-empty.
+
+\eproof
+
+b)
+
+\bproof
+
+Consider $I_n = [a_n,b_n]$, where $a_n \in \{ x | x \in \mathbb{Q} \text{ and } \pi - \frac{1}{n} < x < \pi \}$ and $b_n \in \{ x | x \in \mathbb{Q} \text{ and } \pi < x < \pi + \frac{1}{n} \}$ (These sets are non-empty because of 2b). As $n$ becomes arbitrarily large, the distance $| \pi - x | < \epsilon, \ \forall x \in I_n $. Because $\pi \notin \mathbb{Q}$, $\bigcap_{n \in \mathbb{N}}I_n = \emptyset$. Thus, we have provided a counterexample.
+
+\eproof
+
 
 
 \end{flushleft}
