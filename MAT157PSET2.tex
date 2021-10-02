@@ -59,9 +59,11 @@ $\Leftarrow$ \\
 We will take the contrapositive. If $a \neq b$ then $\exists x \in \mathbb{R} \setminus \{ 0 \}$ such that $b = a + x$. Thus, $|a - b| = |a - (a + x)| = |x| > \epsilon$
 \eproof
 
+b)
+
 \bproof
 
-b) Because the distance between $a$ and $b$ is a positive real number, $\forall \epsilon > 0$ we can choose $q \in \mathbb{N}$ arbitrarily large such that $q(b-a) > \epsilon$. Thus we can choose $q$ such that $(qb-qa) > 10$. Using the ceiling function, $ \lceil qa \rceil - qa < 1$. If we take $ \lceil qa \rceil + 1$, the distance $ (\lceil qa \rceil + 1) - qa < 2$. Note that $\lceil qa \rceil + 1$ is a rational number, greater that $qa$ and less than $qb$ because it's distance from $qa$ is less than 10. Thus, $qa < \lceil qa \rceil + 1 < qb$. If we take $x = \frac{\lceil qa \rceil + 1}{q}$, then $a < x < b$.
+Because the distance between $a$ and $b$ is a positive real number, $\forall \epsilon > 0$ we can choose $q \in \mathbb{N}$ arbitrarily large such that $q(b-a) > \epsilon$. Thus we can choose $q$ such that $(qb-qa) > 10$. Using the ceiling function, $ \lceil qa \rceil - qa < 1$. If we take $ \lceil qa \rceil + 1$, the distance $ (\lceil qa \rceil + 1) - qa < 2$. Note that $\lceil qa \rceil + 1$ is a rational number, greater that $qa$ and less than $qb$ because it's distance from $qa$ is less than 10. Thus, $qa < \lceil qa \rceil + 1 < qb$. If we take $x = \frac{\lceil qa \rceil + 1}{q}$, then $a < x < b$.
 
 \eproof
                                                                                                                                                             \newpage
@@ -182,7 +184,7 @@ Because $x$ and $y$ are their own additive inverses, $x + 1 =y$ and $y + 1 = x$ 
 \bproof
 
 Considering $[a_n,b_n]$ is non-empty, then as $n$ becomes sufficiently large, then either two things happen: $b_n - a_n \geq 0$. We will investigate both cases: \\
-Case 1: $b_n - a_n = 0$. If this is the case then the set $[a_n, b_n]$ is just the singleton set $\{ a_n \}$. In this case $\bigcap_{n \in \mathbb{N}}I_n = \{ a_n \}$, and thus it is non-empty and closed. \\
+Case 1: $b_n - a_n = 0$. If this is the case then the set $[a_n, b_n]$ is just the singleton set $\{ a_n \}$. We know that $a_n$ is real because it has a supremum, namely $Sup( \{ a_n \} ) = a_n$. In this case we can say that $\bigcap_{n \in \mathbb{N}}I_n = \{ a_n \}$ because $I_n$ is the smallest possible subset of $I_1 \cap I_2 \cap \cdots \cap I_{n-1}$ such that $I_n$ is non-empty, making all subsequent $I_m = I_n$ where $m>n$; thus, it is non-empty and closed. \\
 Case 2: $b_n - a_n > 0$. Then, there exists some $\epsilon > 0$ such that $b_n -a_n = \epsilon$; thus we can rewrite the interval as $[a_n, a_n + \epsilon]$. Because $a_n$ and $a_n + \epsilon$ are real, we know that $a_n$ and $a_n + \epsilon$ are in $[a_n, a_n + \epsilon]$; thus, the interval contains all of it boundaries, making the interval closed. Also, if we know that $a_n \in [a_n, a_n + \epsilon]$, that is sufficient prove that $[a_n, a_n + \epsilon]$ is non-empty.
 
 \eproof
@@ -191,7 +193,7 @@ b)
 
 \bproof
 
-Consider $I_n = [a_n,b_n]$, where $a_n \in \{ x | x \in \mathbb{Q} \text{ and } \pi - \frac{1}{n} < x < \pi \}$ and $b_n \in \{ x | x \in \mathbb{Q} \text{ and } \pi < x < \pi + \frac{1}{n} \}$ (These sets are non-empty because of 2b). As $n$ becomes arbitrarily large, the distance $| \pi - x | < \epsilon, \ \forall x \in I_n $. Because $\pi \notin \mathbb{Q}$, $\bigcap_{n \in \mathbb{N}}I_n = \emptyset$. Thus, we have provided a counterexample.
+Consider $I_n = [a_n,b_n]$, where $a_1 = -10$ and $b_1 = 10$ $a_n \in \{ x | x \in \mathbb{Q} \text{ and } \pi - \frac{1}{n} < x < \pi \text{ and } x > a_{n-1} \}$ and $b_n \in \{ x | x \in \mathbb{Q} \text{ and } \pi < x < \pi + \frac{1}{n} \text{ and } x < b_{n-1} \}$ (These sets are non-empty because of 2b). As $n$ becomes arbitrarily large, the distance $| \pi - x | < \epsilon, \ \forall x \in I_n $. If we choose any object $x \in I_n$, then either $x>\pi$ or $x<\pi$. If we consider the case where $x > \pi$ then $\exists \epsilon > 0$ such that $x = \pi + \epsilon$. Therefore, we can find some $m>n$ such that $\pi < b_m < x$; thus, $x$ cannot be in $\bigcap_{n \in \mathbb{N}}I_n$. We can make a similar argument if $x< \pi$. Because $\pi \notin \mathbb{Q}$, $\bigcap_{n \in \mathbb{N}}I_n = \emptyset$. Thus, we have provided a counterexample.
 
 \eproof
 
