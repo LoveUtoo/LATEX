@@ -78,7 +78,7 @@ We will prove this using the contrapositive: If $\exists a \in F$ such that $a \
 \bigskip
 
 $\Leftarrow$ \\
-We will show that every non-zero element has a well-defined multiplicative inverse. Consider the arbitrary element in $F^c$, $(a,b)$. Then, $(a,b)$ has multiplicative inverse, $(c,d)$ where $c = \frac{a}{a^2 + b^2}$ and $d = \frac{-b}{a^2+b^2}$ (it is very easy to find $c$ and $d$, just use the conjugate). This inverse is only well-defined, if $a^2 + b^2 \neq 0$. Because $(a,b)$ is non-zero, we have 3 cases: \\
+We will show that every non-zero element has a well-defined multiplicative inverse. Consider the arbitrary element in $F^c$, $(a,b)$. Then, $(a,b)$ has multiplicative inverse, $(c,d)$ where $c = \frac{a}{a^2 + b^2}$ and $d = \frac{-b}{a^2+b^2}$ (it is very easy to find $c$ and $d$ by multiplying $\frac{1}{a+bi}$ by its conjugate). This inverse is only well-defined, if $a^2 + b^2 \neq 0$. Because $(a,b)$ is non-zero, we have 3 cases: \\
 Case 1: $a = 0, \ b \neq 0$. Thus we have $a^2 + b^2 = 0 + b^2$, and since $b^2$ is non-zero, $0 + b^2$ is not zero. \\
 Case 2: $a \neq 0, \ b = 0$. This is the same as case 1 except reversed. \\
 Case 3: $a,b \neq 0$, Thus if $a^2 + b^2 = 0$, then $\frac{a^2}{b^2} + 1 = 0$, which contradicts our assumption that there does not exists an element in $F$ such that $a \cdot a + 1 = 0$.
@@ -118,9 +118,32 @@ c) If $F \in \{ \mathbb{Z}_3, \mathbb{Z}_7 \}$, then $F^c$ is a field and $F'$ i
 
 \bproof
 
-If $F \in \{ \mathbb{Z}_3, \mathbb{Z}_7 \}$, then $\forall a \in F, \ a \cdot a + 1 \neq 0$; thus, $F^c$ is a field by part a. If $F \in \{ \mathbb{Z}_3, \mathbb{Z}_7 \}$, then $\exists a \in F, \ a^2 + a + 1 = 0$, namely, $a = 1 \in \mathbb{Z}_3$ and $a = 2 \in \mathbb{Z}_7$; thus, $F'$ is not a field. \\
+If $F \in \{ \mathbb{Z}_3, \mathbb{Z}_7 \}$, then $\forall a \in F, \ a \cdot a + 1 \neq 0$; thus, $F^c$ is a field by part a. We can show this exhaustively by making $f: \mathbb{Z}_3 \rightarrow \mathbb{Z}_3$ such that $f(x) := x \cdot x + 1$ and $g: \mathbb{Z}_7 \rightarrow \mathbb{Z}_7$ such that $g(x) := x \cdot x + 1$.
+\begin{align*}
+f(0) \neq & 0 \\
+f(1) \neq & 0 \\
+f(2) \neq & 0 \\
+g(0) \neq & 0 \\
+g(1) \neq & 0 \\
+g(2) \neq & 0 \\
+g(3) \neq & 0 \\
+g(4) \neq & 0 \\
+g(5) \neq & 0 \\
+g(6) \neq & 0
+\end{align*}
+If $F \in \{ \mathbb{Z}_3, \mathbb{Z}_7 \}$, then $\exists a \in F, \ a^2 + a + 1 = 0$, namely, $a = 1 \in \mathbb{Z}_3$ and $a = 2 \in \mathbb{Z}_7$; thus, $F'$ is not a field. \\
 \bigskip
-If $F \in \{ \mathbb{Z}_2, \mathbb{Z}_5 \}$, then $\forall a \in F, \ a^2 + a + 1 \neq 0$; thus, $F'$ is a field by part b. If $F \in \{ \mathbb{Z}_2, \mathbb{Z}_5 \}$, then $\exists a \in F, \ a \cdot a + 1 = 0$, namely, $a = 1 \in \mathbb{Z}_2$ and $a = 2 \in \mathbb{Z}_5$; thus, $F^c$ is not a field.
+If $F \in \{ \mathbb{Z}_2, \mathbb{Z}_5 \}$, then $\forall a \in F, \ a^2 + a + 1 \neq 0$; thus, $F'$ is a field by part b. We can show this exhaustively by making $f: \mathbb{Z}_2 \rightarrow \mathbb{Z}_2$ such that $f(x) := x^2 + x + 1$ and $g: \mathbb{Z}_5 \rightarrow \mathbb{Z}_5$ such that $g(x) := x^2 + x + 1$.
+\begin{align*}
+f(0) \neq & 0 \\
+f(1) \neq & 0 \\
+g(0) \neq & 0 \\
+g(1) \neq & 0 \\
+g(2) \neq & 0 \\
+g(3) \neq & 0 \\
+g(4) \neq & 0
+\end{align*}
+If $F \in \{ \mathbb{Z}_2, \mathbb{Z}_5 \}$, then $\exists a \in F, \ a \cdot a + 1 = 0$, namely, $a = 1 \in \mathbb{Z}_2$ and $a = 2 \in \mathbb{Z}_5$; thus, $F^c$ is not a field.
 
 \eproof
 
@@ -183,9 +206,7 @@ Because $x$ and $y$ are their own additive inverses, $x + 1 =y$ and $y + 1 = x$ 
 
 \bproof
 
-Considering $[a_n,b_n]$ is non-empty, then as $n$ becomes sufficiently large, then either two things happen: $b_n - a_n \geq 0$. We will investigate both cases: \\
-Case 1: $b_n - a_n = 0$. If this is the case then the set $[a_n, b_n]$ is just the singleton set $\{ a_n \}$. We know that $a_n$ is real because it has a supremum, namely $Sup( \{ a_n \} ) = a_n$. In this case we can say that $\bigcap_{n \in \mathbb{N}}I_n = \{ a_n \}$ because $I_n$ is the smallest possible subset of $I_1 \cap I_2 \cap \cdots \cap I_{n-1}$ such that $I_n$ is non-empty, making all subsequent $I_m = I_n$ where $m>n$; thus, it is non-empty and closed. \\
-Case 2: $b_n - a_n > 0$. Then, there exists some $\epsilon > 0$ such that $b_n -a_n = \epsilon$; thus we can rewrite the interval as $[a_n, a_n + \epsilon]$. Because $a_n$ and $a_n + \epsilon$ are real, we know that $a_n$ and $a_n + \epsilon$ are in $[a_n, a_n + \epsilon]$; thus, the interval contains all of it boundaries, making the interval closed. Also, if we know that $a_n \in [a_n, a_n + \epsilon]$, that is sufficient prove that $[a_n, a_n + \epsilon]$ is non-empty.
+Consider the sequence $(a_n)_{n \in \mathbb{N}}$ of real numbers and notice that for $I_{n+1} \subseteq I_n$, $a_n \leq a_{n+1}$. Because $(a_n)$ is bounded above by at most $b_1$, then by definition the set of all $a_n$ has a supremum. Consider $x := Sup(\{ a_n \})$, if $\exists n \in \mathbb{N}$ such that $a_n > x$ then it contradicts $x$ being an upper bound. If $\exists \epsilon > 0, \ \forall n > N \in \mathbb{N}: \ |x-a_n| \geq \epsilon$, then it contradicts that $x$ is the lowest upper bound of $\{ a_n \}$. Thus $\forall \epsilon > 0, \ \exists n > N \in \mathbb{N}: |x-a_n| < \epsilon$. Because $(a_n)$ is non-decreasing then $\forall n > N \in \mathbb{N}, \ |x-a_n| \leq |x-a_N| < \epsilon$. Thus we can say that $(a_n)$ converges to $Sup( \{ a_n \} )$. Similarly, it is easy to prove that $(b_n)_{n \in \mathbb{N}}$ converges to $Inf( \{ b_n \} )$. Because $(a_n)$ and $(b_n)$ converge, then $ \bigcap_{n \in \mathbb{N}}I_n$ is a defined interval. We know that $Sup( \{ a_n \} ) \in \bigcap_{n \in \mathbb{N}}I_n$ and $Inf( \{ b_n \} ) \in \bigcap_{n \in \mathbb{N}}I_n$ due to the least upper bound property of $\mathbb{R}$; thus, $\bigcap_{n \in \mathbb{N}}I_n$ contains all of its boundaries and has at least 1 element, making it closed and non-empty. (This makes heavy use of the monotone convergence theorem).
 
 \eproof
 
@@ -193,7 +214,7 @@ b)
 
 \bproof
 
-Consider $I_n = [a_n,b_n]$, where $a_1 = -10$ and $b_1 = 10$ $a_n \in \{ x | x \in \mathbb{Q} \text{ and } \pi - \frac{1}{n} < x < \pi \text{ and } x > a_{n-1} \}$ and $b_n \in \{ x | x \in \mathbb{Q} \text{ and } \pi < x < \pi + \frac{1}{n} \text{ and } x < b_{n-1} \}$ (These sets are non-empty because of 2b). As $n$ becomes arbitrarily large, the distance $| \pi - x | < \epsilon, \ \forall x \in I_n $. If we choose any object $x \in I_n$, then either $x>\pi$ or $x<\pi$. If we consider the case where $x > \pi$ then $\exists \epsilon > 0$ such that $x = \pi + \epsilon$. Therefore, we can find some $m>n$ such that $\pi < b_m < x$; thus, $x$ cannot be in $\bigcap_{n \in \mathbb{N}}I_n$. We can make a similar argument if $x< \pi$. Because $\pi \notin \mathbb{Q}$, $\bigcap_{n \in \mathbb{N}}I_n = \emptyset$. Thus, we have provided a counterexample.
+Consider $I_n = [a_n,b_n]$, where $a_1 = -10$ and $b_1 = 10$ $a_{n+1} \in \{ x | x \in \mathbb{Q} \text{ and } \pi - \frac{1}{n+1} < x < \pi \text{ and } x > a_n \}$ and $b_{n+1} \in \{ x | x \in \mathbb{Q} \text{ and } \pi < x < \pi + \frac{1}{n+1} \text{ and } x < b_n \}$ (These sets are non-empty because of 2b; thus, we can invoke the Axiom of Choice). As $n$ becomes arbitrarily large, the distance $| \pi - x | < \epsilon, \ \forall x \in I_n $. If we choose any object $x \in I_n$, then either $x>\pi$ or $x<\pi$. If we consider the case where $x > \pi$ then $\exists \epsilon > 0$ such that $x = \pi + \epsilon$. Therefore, we can find some $m>n$ such that $\pi < b_m < x$; thus, $x$ cannot be in $\bigcap_{n \in \mathbb{N}}I_n$. We can make a similar argument if $x< \pi$. Because $\pi \notin \mathbb{Q}$, $\bigcap_{n \in \mathbb{N}}I_n = \emptyset$. Thus, we have provided a counterexample.
 
 \eproof
 
