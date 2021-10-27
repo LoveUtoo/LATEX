@@ -1,0 +1,209 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb, amsmath, amsthm, changepage}
+
+\title{MAT240 Problem Set 4}
+\author{Nicolas Coballe}
+
+\newcommand{\bproof}{\begin{proof}
+$ $ \\
+\begin{adjustwidth}{3em}{0pt}
+}
+
+\newcommand{\eproof}{\end{adjustwidth}
+\end{proof}}
+
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\F}{\mathbb{F}}
+
+\begin{document}
+
+\maketitle
+\begin{flushleft}
+
+\textsl{Lemma 1.0}: If a list of vectors $(v_1,...,v_n)$ in a vector space $V$ over $\F$ is linearly independent, and we add a vector $w \notin \text{ Span}(v_1,...,v_n)$, then the list $(v_1,...,v_n,w)$ is linearly independent.
+
+\bproof
+
+Consider for sake of contradiction that $(v_1,...,v_n,w)$ is linearly dependent. Then there exists $a_i,...,a_n,a_{n+1} \in \F$ that are not all equal to 0 such that $a_1v_1 + \cdots + a_nv_n + a_{n+1}w = 0$. $a_{n+1} \neq 0$ or else that would imply that $a_1,...a_n \neq 0$ contradicting the fact that $(v_1,...,v_n)$ is linearly independent. However, if $a_{n+1} \neq 0$, then $w = \frac{a_1v_1 + \cdots + a_nv_n}{a_{n+1}}$. And this clearly contradicts the fact that $w \notin \text{ Span}(v_1,...,v_n,w)$
+
+\eproof
+
+1. a)
+
+\bproof
+
+This list is linearly independent because $(-1,1,1,1),(1,-1,1,1)$ are not scalar multiples of each other, making them linearly independent, $(1,1,-1,1) \notin \text{ Span}((-1,1,1,1),(1,-1,1,1))$, and $(1,1,1,-1) \notin \text{ Span}((-1,1,1,1),(1,-1,1,1)(1,1,-1,1))$. \textsl{Lemma 1.0}
+
+\eproof
+
+b)
+
+\bproof
+
+This list is linearly dependent because we can write the 0-vector as $(1,0) + i(i,0) + 0(0,1) + 0(0,i) = (1,0) + (-1, 0) = 0$. Because $a_i \neq 0$ for at least one $a_i$, the list is linearly dependent. 
+
+\eproof
+
+c)
+
+\bproof
+
+This list is linearly dependent because we can write the 0-vector as $-1(x^2) + 2(x^2+1) -( x^2+2) = -x^2 + 2x^2 + 2 -x^2 -2 = 0$. Because $a_i \neq 0$ for at least one $a_i$, the list is not linearly dependent.
+
+\eproof
+
+d)
+
+\bproof
+
+This list is linearly independent because $(x+1)^2,(x+2)^2$ are not scalar multiples of each other, making them linearly independent, and $(x^2) \notin \text{ Span}((x+1)^2,(x+2)^2)$, thus the whole list is linearly independent. \textsl{Lemma 1.0}
+
+\eproof
+
+e)
+
+\bproof
+
+This list is linearly dependent because we can write the 0-vector as $(1,1,0) + (1,0,1) + (0,1,1) = 0$. Because $a_i \neq 0$ for at least one $a_i$, the list is not linearly dependent.
+
+\eproof
+
+\newpage
+
+2. a)
+
+\bproof
+
+If $(a,b)$ are linearly independent then, that means that there exists at least one coordinate in $b$ such that $b_i \neq \lambda a_i, \ \lambda \in \R$, while all other coordinates are scalar multiples of $a$'s coordinates. \\
+\bigskip
+We will show this through cases. Consider $a \in \R^3$: \\
+\bigskip
+Case 1: $b = (b_1, b_2, b_3), \ b_1 \neq \lambda a_1, b_2 \neq \lambda a_2, b_3 \neq \lambda a_3, \ \lambda \in \R$. Then $U \cap V = \{0 \}$. Thus $U \cap V = \text{ Span}()$.\\
+\bigskip
+Case 2: $b = (b_1, b_2, b_3), \ b_1 \neq \lambda a_1, b_2 = \lambda a_2, b_3 = \lambda a_3, \ \lambda \in \R$. Thus, $U \cap V = \text{ Span}((0, a_3, -a_2))$.\\
+\bigskip
+Case 3: $b = (b_1, b_2, b_3), \ b_1 = \lambda a_1, b_2 = \lambda a_2, b_3 \neq \lambda a_3, \ \lambda \in \R$. Thus, $U \cap V = \text{ Span}((a_2, -a_1, 0))$.\\
+\bigskip
+Case 4: $b = (b_1, b_2, b_3), \ b_1 = \lambda a_1, b_2 \neq \lambda a_2, b_3 = \lambda a_3, \ \lambda \in \R$. Thus, $U \cap V = \text{ Span}((a_3, 0, -a_1))$.\\
+\bigskip
+Case 5: $b = (b_1, b_2, b_3), \ b_1 = \lambda a_1, b_2 \neq \lambda a_2, b_3 \neq \lambda a_3, \ \lambda \in \R$. Because one coordinate is not a scalar multiple of $a$, then the union of $U \cap V = \{0 \}$. Thus, $U \cap V = \text{ Span}()$.\\
+\bigskip
+Case 6: $b = (b_1, b_2, b_3), \ b_1 \neq \lambda a_1, b_2 \neq \lambda a_2, b_3 = \lambda a_3, \ \lambda \in \R$. Because one coordinate is not a scalar multiple of $a$, then the union of $U \cap V = \{0 \}$. Thus, $U \cap V = \text{ Span}()$.\\
+\bigskip
+Case 7: $b = (b_1, b_2, b_3), \ b_1 \neq \lambda a_1, b_2 = \lambda a_2, b_3 \neq \lambda a_3, \ \lambda \in \R$. Because one coordinate is not a scalar multiple of $a$, then the union of $U \cap V = \{0 \}$. Thus, $U \cap V = \text{ Span}()$.\\
+
+
+\eproof
+
+b)
+
+\bproof
+
+If $(a,b)$ is linearly dependent than that mean that there exists some $\lambda \in \R$ such that $b = a \lambda$. Thus we will show that $U \cap V = U = V$. \\
+\bigskip
+$\subseteq$ \\
+\bigskip
+Consider any vector $u \in U$. Then, $a_1u_1 + a_2u_2 + a_3u_3 = 0$, and $\lambda^{-1} u = (\lambda^{-1} u_1, \lambda^{-1} u_2, \lambda^{-1} u_3)$. Thus, $a_1 \lambda u_1 + a_2 \lambda u_2 + a_3 \lambda u_3 = b_1 u_1 + b_2 u_2 + b_3 u_3 = 0$. Therefore, for all $u \in U, \ u \in V$.
+\\
+\bigskip
+$\supseteq$ \\
+\bigskip
+Consider any vector $v \in U$. Then, $b_1v_1 + b_2v_2 + b_3v_3 = 0$, and $\lambda^{-1} v = (\lambda^{-1} v_1, \lambda^{-1} v_2, \lambda^{-1} v_3)$. Thus, $b_1 \lambda^{-1} v_1 + b_2 \lambda^{-1} v_2 + b_3 \lambda^{-1} v_3 = a_1v_1 + a_2v_2 + a3_v3 = 0$. Thus, for all $v \in V, \ v \in U$.\\
+\bigskip
+Thus, we will express $U \cap V = \text{ Span}((-\frac{a_2}{a_1},1,0),(-\frac{a_3}{a_1},0,1))$. Considering that the first coordinate in each vector is dependent on the other coordinates and the vector space is closed than, with our list we create get any vector with any combination of second and third coordinates with only the first coordinate being dependent on the others. This first coordinate is unique because linear equations have unique solutions.
+
+\eproof
+
+\newpage
+
+3. 
+
+\bproof
+
+If $(v_1 + w,..., v_n + w)$ is linearly dependent, then there exists $a_1,...,a_n \in \F$ such that there exists $a_i \neq 0$ and $a_1(v_1 + w) + \cdots + a_n(v_n + w) = 0$. Then:
+\begin{align*}
+a_1(v_1 + w) + \cdots + a_n(v_n + w) = & a_1v_1 + \cdots + a_nv_n + a_1w + \cdots + a_nw \\
+= & a_1v_1 + \cdots + a_nv_n + (a_1 + \cdots + a_n)w \\
+-a_1v_1 - \cdots - a_nv_n = & (a_1 + \cdots + a_n)w
+\end{align*}
+Notice that if $a_1 + \cdots + a_n = 0$ then we would end up with the contradiction that $(v_1,..., v_n)$ is linearly dependent; thus, $a_1 + \cdots + a_n \neq 0$. Then:
+\begin{align*}
+\frac{a_1v_1 - \cdots - a_nv_n}{a_1 + \cdots + a_n} = w
+\end{align*}
+Thus, $w \in \text{Span}(v_1,...,v_n)$.
+
+\eproof
+
+\newpage
+
+4.
+
+\bproof
+
+We will prove that $W$ is a subspace of $\mathcal{P}_4(\R)$. \\
+\bigskip
+Consider $0 \in \mathcal{P}_4(\R)$. $0(0) = 0$ and $0(1) = 0$. Thus, $0 \in W$.\\
+\bigskip
+Consider that $p$ is a polynomial in $W$ and $a \in \R$. Now consider $g \in \mathcal{P}_4(\R)$ such that $g:=a \cdot p$. $g(0) = af(0) = 0$ and $g(1) = af(1) = 0$. Thus, $g \in W$. \\
+\bigskip
+Consider $p,p' \in \mathcal{P}_4(\R)$. Now consider $g \in \mathcal{P}_4(\R)$ such that $g := p + p'$. $g(0) = (p + p')(0) = p(0) + p'(0) = 0$ and $g(0) = (p + p')(0) = p(0) + p'(0) = 0$. Thus, $g \in W$.\\
+\bigskip
+Therefore, $W$ has the 0-vector, is closed under vector addition and scalar multiplication, so $W$ defines a subspace of $\mathcal{P}_4(\R)$.\\
+\bigskip
+Considering that polynomials in $W$ can only be of the form $p(x)=x(x-1)p'(x)$ where $p'(x)$ is some polynomial of degree 2 or less; thus, every polynomial in $W$ can be written as $p(x) = x(x-1)(ax^2+bx+c), \ a,b,c \in \R$. Expanding this, we get $x(x-1)ax^2 + x(x-1)bx + x(x-1)c$. Thus, if we choose the list of vectors $(x(x-1)x^2, x(x-1)x, x(x-1))$, these vectors will span $W$ and this is the basis for $W$ because all the vectors are of different degrees; thus, they are linearly independent.
+
+\eproof
+
+\newpage
+
+5. a)
+
+\bproof
+
+We will prove that $H_f$ is a subspace of $V$. \\
+\bigskip
+Consider $0 \in V$. Then, $f(0) = f(1-1) = f(1) + f(-1) = f(1) -f(1) = 0$. Thus, $0 \in H_f$.\\
+\bigskip
+Consider $v \in V$ such that $f(v) = 0$. Now consider $\lambda v, \ \lambda \in \F$. Then, $f(\lambda v) = \lambda f(v) = \lambda 0 = 0$. Thus, $\lambda v \in H_f$. \\
+\bigskip
+Consider $v,v' \in V$ such that $f(v) = f(v') = 0$. Now consider $v + v' \in V$. Then, $f(v + v') = f(v) = f(v') = 0 + 0 = 0$. Thus, $v + v' \in H_f$. \\
+\bigskip
+Because $H_f$ includes the 0-vector, is closed under vector addition, and scalar multiplication, $H_f$ defines a subspace over $V$.
+
+\eproof
+
+b)
+
+\bproof
+
+We will prove that $H_{(a_1,...,a_n)}$ is a subspace of $\F^n$. \\
+\bigskip
+Consider $0 \in \F^n$ and any $(a_1,...,a_n) \in \F^n$. $a_10 + \cdots + a_n0 = 0 + \dots + 0 = 0$. Thus, $0 \in \F^n$.\\
+\bigskip
+Consider $v \in H_{(a_1,...,a_n)}$ and $\lambda \in \F$. $\lambda v = \lambda a_1v_1 + \cdots + \lambda a_nv_n = \lambda (a_1v_1 + \cdots + a_nv_n) = \lambda 0 = 0$. Thus, $\lambda v \in H_{(a_1,...,a_n)}$. \\
+\bigskip
+Consider $v, v' \in H_{(a_1,...,a_n)}$ and $v + v' \in \F^n$. $a_1(v + v')_1 + \cdots + a_n(v + v')_n = a_1v_1 + \cdots + a_nv_n + a_1v'_1 + \cdots + a_nv'_n = 0 + 0 = 0$. Thus, $v + v' \in H_{(a_1,...,a_n)}$. \\
+\bigskip
+Because $H_{(a_1,...,a_n)}$ includes the 0-vector, is closed under vector addition, and scalar multiplication, $H_f$ defines a subspace over $V$.\\
+\bigskip
+What part a is implying is $H_{(a_1,...,a_n)}$ is a linear subspace because its construction defines a linear transformation. This is because $a_1(x_1 + x'_1) + \cdots + a_n(x_n + x'_n) = a_1x_1 + \cdots + a_nx_n + a_1 x_1 + \cdots + a_n x_n$ and $a_1 \lambda x_1 + \cdots + a_n \lambda x_n = \lambda (a_1 x_1 + \cdots + a_n x_n)$.
+
+\eproof
+
+c)
+
+\bproof
+
+A basis for $H_{(1,2,3)}$ could be the list of vectors $((-2,1,0),(-3,0,1))$. We know that these are linearly independent because they are not scalar multiples of each other, and they span the whole space because for any vector $v \in H_{(1,2,3)}$ such that $v_1 + 2v_2 + 3v_3 = 0$ can be formed by $v_2(-2,1,0) + v_3(-3, 0, 1) = (-3v_3 + -2v_2, v_2, v_3)$. Because the first coordinate in the vector is based on the other coordinates, we would not consider our choice of the first coordinate to be free. Thus, $((-2,1,0),(-3,0,1))$ spans $H_{(1,2,3)}$. Because our list has a size of 2, the dimension of $H_{(1,2,3)}$ is 2.
+
+\eproof
+
+
+\end{flushleft}
+\end{document}

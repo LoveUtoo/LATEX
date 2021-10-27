@@ -1,0 +1,273 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb, amsmath, amsthm, changepage}
+
+\title{MAT240 Problem Set 3}
+\author{Nicolas Coballe}
+
+\newcommand{\bproof}{\begin{proof}
+$ $ \\
+\begin{adjustwidth}{3em}{0pt}
+}
+
+\newcommand{\eproof}{\end{adjustwidth}
+\end{proof}}
+
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\Z}{\mathbb{Z}}
+
+\begin{document}
+
+\maketitle
+\begin{flushleft}
+
+\textsl{Lemma 1.0}: $3n^2 + 3n + 6$ is divisible by 6 for all $n \in \N$. \\
+
+\bproof
+
+We will use induction. \\
+\bigskip
+Base Case: $n = 1$. \\
+$3+3+6 = 12 = 6(2)$ Thus, the base case is true. \\
+Induction Hypothesis: If $3n^2 + 3n + 6$ is divisible by 6, then $3(n+1)^2 + 3(n+1) + 6$ is divisible by 6. \\
+Inductive Step:
+\begin{align*}
+3(n+1)^2 + 3(n+1) + 6 = & 3(n^2 + 2n + 1) + 3n + 3 + 6 \\
+= & 3n^2 + 6n + 3 + 3n + 9 \\
+= & 3n^2 + 3n + 6 + 6n + 6 \\
+= & 6k + 6n + 6, \ k \in \N \\
+= & 6(k + n + 1)
+\end{align*}
+Therefore, $3(n+1)^2 + 3(n+1) + 6$ is divisible by 6; thus, $3n^2 + 3n + 6$ is divisible by 6 for all $n \in \N$.
+
+\eproof
+
+1. a)
+
+\bproof
+
+We will use induction. \\
+\bigskip
+Base Case: $n = 1$. \\
+$1^3 + 5 = 6 = 6(1)$ Thus, the base case is true. \\
+Induction Hypothesis: If $n^3 + 5n$ is divisible by 6, then $(n+1)^3 + 5(n+1)$ is divisible by 6. \\
+Inductive Step:
+\begin{align*}
+(n+1)^3 + 5(n+1) = & n^3 + 3n^2 + 3n + 1 + 5n + 5 \\
+= & n^3 + 5n + 3n^2 + 3n + 6 \\
+= & 6k + 3n^2 + 3n + 6, \ k \in \Z \\
+= & 6k + 6j, \ j \in \Z, \textsc{ Lemma 1.0}
+\end{align*}
+Then, $(n+1)^3 + 5(n+1)$ is divisible by 6; therefore, $n^3 + 5n$ is divisible by 6 for all $n \in \N$.
+
+\eproof
+
+b)
+
+\bproof
+
+We will use induction. \\
+\bigskip
+Base Case: $n = 1$. \\
+$\sum_{k = 1}^1 \frac{k}{2^k} = \frac{1}{2} = 2 - \frac{3}{2} = 2 - \frac{n+2}{2^n}$. Thus, the base case is true. \\
+Induction Hypothesis: If $\sum_{k = 1}^n \frac{k}{2^k} = 2 - \frac{n+2}{2^n}$, then $\sum_{k = 1}^{n+1} \frac{k}{2^k} = 2 - \frac{(n+1)+2}{2^{n+1}}$ \\
+Inductive Step:
+\begin{align*}
+\sum_{k = 1}^{n+1} \frac{k}{2^k} = & \sum_{k = 1}^{n} \frac{k}{2^k} + \frac{n+1}{2^{n+1}} \\
+= & 2 - \frac{n+2}{2^n} + \frac{n+1}{2^{n+1}} \\
+= & 2 - \frac{2n+4}{2^{n+1}} + \frac{n+1}{2^{n+1}} \\
+= & 2 + \frac{n + 1 -2n -4}{2^{n+1}} \\
+= & 2 + \frac{-n -3}{2^{n+1}} \\
+= & 2 - \frac{(n+1)+2}{2^{n+1}}
+\end{align*}
+Thus, $\sum_{k = 1}^{n+1} \frac{k}{2^k} = 2 - \frac{(n+1)+2}{2^{n+1}}$; therefore, $\sum_{k = 1}^n \frac{k}{2^k} = 2 - \frac{n+2}{2^n}$ for all $n \in \N$.
+
+\eproof
+
+c)
+
+\bproof
+
+Consider:
+\begin{align*}
+8 = & 3 + 5 \\
+9 = & 3(3) + 5(0) \\
+10 = & 3(0) + 5(2) \\
+11 = & 3(2) + 5 \\
+12 = & 3(4) + 5(0) \\
+13 = & 3 + 5(2) \\
+14 = & 3(3) + 5 \\
+15 = & 3(5) + 5(0) \\
+16 = & 3(2) + 5(2) \\
+17 = & 3(4) + 5
+\end{align*}
+Thus, integers from 8 to 17 can be expressed in the form $3a + 5b, \ a,b \in \N \cup \{ 0 \}$. \\
+\bigskip
+Now consider $n \geq 18$. Then, $n - 8 \geq 10$. Thus we can choose the largest (well-ordering principle) $k \in \N \cup \{ 0 \}$ such that $10k \leq n -8$. If we take the difference between the two. Then $n - 8 - 10k = j, \ j \in \{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 \}$. Notice that if we add 8 to both sides we get $n - 10k = z, \ z \in  \{ 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 \}$. But we know that this set of numbers can be expressed in the form $3a + 5b$. Thus, we can rewrite the equation as $n = 3a + 5b + 10k = 3a + 5b + 5(2k) = 3a + 5(b + 2k)$. Therefore, all numbers greater than 8 can be expressed in the form $3a + 5b, \ a,b \in \N \cup \{ 0 \}$. Hence, you are able to make any sum of rubles greater than equal to 8 with a non-negative integer sum of 3 ruble and 5 ruble bills. \\
+\bigskip
+Alternatively, assume that you cannot express $n \geq 8$ in the form $3a + 5b, \ a,b \in \N \cup \{ 0 \}$. This contradicts contradicts the \textit{Chicken McNugget Theorem}.
+
+\eproof
+
+%\textbf{Problem 1. c} \\
+%Prove that every full-ruble amount of at least 8 rubles can be paid using only 3-ruble and 5-ruble bills.
+
+%\bproof
+
+%Assume, for the sake of contradiction, that you cannot express $n \geq 8$ in the form $3a + 5b, \ a,b \in \N \cup \{ 0 \}$. This contradicts the \textit{Chicken McNugget Theorem}.
+
+%\eproof
+
+\newpage
+
+2. a)
+
+\bproof
+
+The largest sum you can make out of $\frac{1}{n_1} + \frac{1}{n_2} + \frac{1}{n_3}$ is the sum of the largest $\frac{1}{n_1}$, $\frac{1}{n_2}$, and $\frac{1}{n_3}$ individually. This is trivial because for all $x \in \R$, if $y > z$, then $x + y > x + z$. Since $f:\N \rightarrow \R, f(n) = \frac{1}{n}$ is a monotone decreasing function for all $n > 0$, then the largest value it can take is at $n = 1$; thus, $f(1) = 1$. Therefore, the supremum of $S$ is 3 and it is in $S$, so it is also the maximum of $S$. \\
+\bigskip
+0 is a lower bound for $S$ because a sum of 3 positive numbers is always greater than 0. We will now show that 0 is the greatest lower bound by assuming that there exists some $\epsilon > 0$ such that $\epsilon$ is a lower bound. But if we choose $n_1, n_2,$ and $n_3$ arbitrarily large such that $\frac{1}{n_1}, \frac{1}{n_2}, \frac{1}{n_3} < \frac{\epsilon}{3}$. Thus $\frac{1}{n_1} + \frac{1}{n_2} + \frac{1}{n_3} < \frac{\epsilon}{3} + \frac{\epsilon}{3} + \frac{\epsilon}{3} = \epsilon$. Thus we created an element that is smaller than $\epsilon$, thus $\epsilon$ cannot be a lower bound, making 0 the greatest lower bound. But since a sum of positive numbers can never be 0, 0 is not a minimum of $S$.
+
+\eproof
+
+b)
+
+\bproof
+
+Consider $f:[\frac{1}{2},2] \rightarrow \R, \ f(x) = x + \frac{1}{x}$. Notice that $T = f((\frac{1}{2},2])$. We can choose $a := 1 \in (\frac{1}{2}, 2]$. $f(a) = 2$. Suppose that 2 is a lower bound to $T$. We will show this by proving that $f(1 + \psi ) > 2, \ \forall \psi \in (0, 1]$ and $f(1 - \phi) > 2, \ \forall \phi \in (0, \frac{1}{2})$. If $\psi \in (0, 1]$, then $\frac{\psi}{1+\psi} < \psi$ because the denominator on the left is greater than 1. But we can rewrite the inequality as:
+\begin{align*}
+\psi > & \frac{\psi +1 -1}{\psi} \\
+= & \frac{1+ \psi}{1 + \psi} - \frac{1}{1 + \psi} \\
+= & 1 - \frac{1}{1 + \psi} \\
+\psi + \frac{1}{1 + \psi} > & 1
+\end{align*}
+
+Thus $2 = 1 + 1 < 1 + \psi + \frac{1}{1 + \psi}, \ \forall \psi \in (0,1]$; thus, $f(1 + \psi ) > 2, \ \forall \psi \in (0, 1]$. Now if $\phi \in (0, \frac{1}{2})$, then $\phi < \frac{\phi}{1- \phi}$. This is because the denominator on the right is in $(0, 1)$. Then:
+\begin{align*}
+- \phi > & \frac{- \phi}{1- \phi} \\
+> & \frac{- \phi +1 -1}{1- \phi} \\
+& \frac{ 1 - \phi}{1- \phi} - \frac{1}{1 - \phi} \\
+> & 1 - \frac{1}{1- \phi} \\
+- \phi + \frac{1}{1-\phi} > & 1
+\end{align*}
+Thus $2 = 1 + 1 < 1 - \psi + \frac{1}{1- \psi}, \ \forall \psi \in (0, \frac{1}{2})$; thus, $f(1 + \psi ) > 2, \ \forall \psi \in (0, 1]$. Therefore, 2 is less than equal to all elements in $T$, but 2 is the greatest element less than equal to all elements in $T$, making it a infimum. 2 is in $T$, so 2 is also a minimum. \\
+\bigskip
+To find the supremum we will show that $f$ is strictly increasing on the interval $(1, 2]$ and strictly decreasing on the interval $[\frac{1}{2}, 1)$. Then, we can take the $max \{ f(q) \} , \ q \in \partial [\frac{1}{2}, 2]$ (boundary of the interval). \\
+\bigskip
+To show that $f$ is strictly increasing on the interval $(1, 2]$, we will take $1<a<b \leq 2$. Because $a,b >1$, then $ab >1$. Thus:
+\begin{align*}
+b-a > & \frac{b-a}{ab} \\
+> & \frac{b}{ab} - \frac{a}{ab} \\
+> & \frac{1}{a} - \frac{1}{b} \\
+b + \frac{1}{b} > & a \frac{1}{a}
+\end{align*}
+Thus $f$ is strictly increasing on the interval $(1, 2]$. \\
+\bigskip
+To show that $f$ is strictly decreasing on the interval $[\frac{1}{2}, 1)$, we will take $\frac{1}{2} \leq a < b < 1$. Because $0< a < b < 1$, then $ab < 1$. Thus:
+\begin{align*}
+b-a < & \frac{b-a}{ab} \\
+< & \frac{b}{ab} - \frac{a}{ab} \\
+< & \frac{1}{a} - \frac{1}{b} \\
+b + \frac{1}{b} < & a + \frac{1}{a}
+\end{align*}
+Thus $f$ is strictly decreasing on the interval $(\frac{1}{2}, 1)$.
+Because $f$ strictly increases on the interval $(1, 2]$ and strictly decreases on the interval $(\frac{1}{2}, 1)$ then we can just take the maximum between the boundary $f(\frac{1}{2}) = \frac{3}{2}$ and $f(2) = \frac{3}{2}$. But because in the actual set $T$, $f(\frac{1}{2})$ is not included in the set, but $f(x), \ x \in (\frac{1}{2},1)$ is in the $T$, then $\forall x \in (\frac{1}{2},1), \ f(x) < \frac{3}{2}$ (because the function is decreasing on this interval). Since 2 is in $T$, then we can take $f(2)$ as the maximum of $T$ because it is equal to $\frac{3}{2}$. Because 2 is the maximum of $T$,  2 is also the supremum. (Consider that there is some supremum less than 2, well it would be less than 2, contradicting the fact that it is a supremum; thus, 2 is the least upper bound).
+\eproof
+
+\newpage
+
+\textsl{Lemma 3.0}: There exists $a,b \in \Z$ such that $0 < a + \sqrt{2}b < \frac{1}{n}, \ \forall n \in \N$.
+
+\bproof
+
+We will use induction. \\
+\bigskip
+Base Case: $n = 1$, $0 < \sqrt{2}(1) - 1 < \frac{1}{1}$ \\
+$n = 2$, $0 < \sqrt{2}(1) - 1 < \frac{1}{2}$ Thus, both base cases are true. \\
+Induction Hypothesis: If $\exists a,b \in \Z: 0 < a + \sqrt{2}b < \frac{1}{n}$, then $\exists c,d \in \Z: 0 < c + \sqrt{2}d < \frac{1}{n^2}$. \\
+Inductive Step: By the induction hypothesis $0 < a + \sqrt{2}b < \frac{1}{n}$, then $0 < a^2 + 2b^2 + 2b\sqrt{2} < \frac{1}{n^2}$ because $f: \R \rightarrow \R, \ f(x) = x^2$ is an increasing function on the interval $(0, + \infty)$. Thus if $c := a^2 + 2b^2$ and $d := 2b$, then $0 < c + \sqrt{2}d < \frac{1}{n^2}$. Thus there exists $a,b \in \Z$ such that $0 < a + \sqrt{2}b < \frac{1}{n}, \ \forall n \in \{2^{2^k}: k \in \N \}$. If we wanted $0 < a + b \sqrt{2} < \frac{1}{n}, \ \forall n \in \N$, then for any $n$ we can choose $k$ sufficiently large such that $n < 2^{2^k}$. Thus, there exists $0 < c + d \sqrt{2} < \frac{1}{2^{2^k}} < \frac{1}{n}$. This is because if $n < 2^{2^k}$ then $\frac{1}{n} > \frac{1}{2^{2^k}}$. Therefore, there exists $a,b \in \Z$ such that $0 < a + \sqrt{2}b < \frac{1}{n}, \ \forall n \in \N$.
+
+\eproof
+
+3.
+
+\bproof
+
+Clearly, 0 is a lower bound to $S$; thus, we will show that 0 is the greatest lower bound to $S$.\\
+\bigskip
+For the sake of contradiction assume that $inf(S) = \epsilon > 0$. But, by \textsl{Lemma 3.0}, there exists $a,b \in \Z$ such that $0 < a + \sqrt{2}b < \frac{1}{n}, \ \forall n \in \N$. Because we can choose $n$ arbitrarily large, we can choose $n$ such that $\frac{1}{n} < \epsilon$. Thus, there exists $a,b \in \Z$ such that $0 < a + \sqrt{2}b < \frac{1}{n} < \epsilon$. This contradicts the fact that $\epsilon$ is a lower bound of $S$. Therefore, the $inf(S) = 0$.
+
+\eproof
+
+\newpage
+
+4.
+
+\bproof
+
+Trivially, $A(0) = 0$, $A(1) = 0$, $A(2) = 0$, and $A(3) = 1$. We want to prove that $A(n) = \frac{(n-1)(n-2)}{2}, \ \forall n \in \N$. Notice that we can show the ways we can make $n$ as a sum of $n_1, n_2, n_3$ by listing the ordered pairs in the set $\{1, 2,... n-1\} \times \{1, 2,... n-2 \}$. For example, $(a,b)$ in the set corresponds to $n_1 := a, \ n_2 := b, \ n_3 := n - a + b$. Although, if $a + b \geq n$ then there will $n_3 < 1$. We want to ensure that each $n_i > 0$; thus, we will only permit elements $(a,b)$ such that $a + b \leq n$. Consider that $1 + j < n$ for all $j < n-2$; thus, there are $n-2$ elements $(a,b)$ where $a = 1$. $2 + j < n$ for all $j < n-3$; thus, there are $n-3$ elements $(a,b)$ where $a = 2$. If we continue this process we will get a series of $(n-1) + (n-2) + \cdots + 2 + 1$. We can rewrite this as $\sum_{i = 0}^{n-1} i$. But we know that $\sum_{i = 0}^{n} i = \frac{n(n-1)}{2}$; thus, by substituting $n-1$ into $n$ we get $\frac{(n-1)(n-2)}{2}$ elements as desired.
+\eproof
+
+\newpage
+
+5. a)
+
+\bproof
+
+Because ${3^n \choose \ell} = \frac{3^n(3^n-1) \cdots (3^n - \ell + 1)}{\ell !}$ is an integer and the numerator has at least $n$ multiples of 3 while $\ell!$ has at most $n-1$ multiples of 3, $\ell !$ cannot divide out enough prime factors of 3; thus, ${3^n \choose \ell}$ must be divisible by 3.
+
+\eproof
+
+b)
+
+\bproof
+
+We will use induction on $k$. \\
+\bigskip
+Base Case: $k = 0$. ${3^n \choose 1}$ is divisible by 3 via question 5 a. Thus, the base case is true. \\
+Induction Hypothesis: If ${3^n + k \choose k + 1}$ is divisible by 3, then ${3^n + k + 1 \choose k + 1 + 1}$ is divisible by 3.\\
+Inductive Step:
+\begin{align*}
+{3^n + k + 1 \choose k + 1 + 1} = & {3^n + k \choose k + 1} + {3^n + k \choose k + 1 + 1} \\
+= & 3i + 3j, \ i,j \in \Z, \text{ by the induction hypothesis} \\
+= & 3(i + j) \\
+\end{align*}
+Thus ${3^n + k \choose k + 1}$ is divisible by 3.
+
+\eproof
+
+c)
+
+\bproof
+
+We will start with $3^n + k \choose k + 1$. \\
+\bigskip
+We will induct on $k$.\\
+Base Case: $k = 0$. ${3^n \choose 0} = 1 \text{ mod 3}$. Thus the base case is true.
+Induction Hypthesis: If ${3^n + k \choose k} = 1 \text{ mod 3}$, then ${3^n + k + 1 \choose k + 1} = 1 \text{ mod 3}$. \\
+Inductive Step:
+\begin{align*}
+{3^n + k + 1 \choose k + 1} = & {3^n + k \choose k + 1} + {3^n + k \choose k} \\
+= & 0 + 1, \text{ by the induction hypothesis and 5 b} \\
+= & 1 \text{ mod 3}
+\end{align*}
+
+Now we will do ${3^n + k \choose 3^n}$. \\
+\bigskip
+We will induct on $k$. \\
+Base Case: $k = 0$. ${3^n \choose 3^n} = 1 \text{ mod 3}$. Thus, the base case is true. \\
+Induction hypothesis: If ${3^n + k \choose 3^n} = 1 \text{ mod 3}$, then ${3^n + k + 1 \choose 3^n} = 1 \text{ mod 3}$.\\
+Inductive Step:
+\begin{align*}
+{3^n + k + 1 \choose 3^n} = & {3^n + k \choose 3^n} + {3^n + k \choose 3^n -1} \\
+= & 0 + 1, \text{ by the induction hypothesis and 5 b} \\
+= & 1 \text{ mod 3}
+\end{align*}
+
+\eproof
+
+\end{flushleft}
+\end{document}

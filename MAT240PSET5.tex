@@ -1,0 +1,335 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb, amsmath, amsthm, changepage}
+
+\title{MAT240 Problem Set 5}
+\author{Nicolas Coballe}
+
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\F}{\mathbb{F}}
+
+\newenvironment{myproof}
+{\begin{proof} \begin{adjustwidth}{3em}{0pt}$ $\par\nobreak\ignorespaces}
+{\end{adjustwidth} \end{proof}} 
+
+\begin{document}
+
+\maketitle
+\begin{flushleft}
+
+2.
+
+\begin{myproof}
+\begin{align*}
+&p_1 = \text{ Span}((1,0,0)) \\ 
+&p_2 = \text{ Span}((0,1,0)) \\
+&p_3 = \text{ Span}((0,0,1)) \\
+&p_4 = \text{ Span}((1,0,1)) \\
+&p_5 = \text{ Span}((1,1,0)) \\
+&p_6 = \text{ Span}((0,1,1)) \\
+&p_7 = \text{ Span}((1,1,1)) \\
+&l_1 = \text{ Span}((1,0,0),(0,1,0)) \\
+&l_2 = \text{ Span}((1,0,0),(0,0,1)) \\
+&l_3 = \text{ Span}((0,1,0),(0,0,1)) \\
+&l_4 = \text{ Span}((1,1,0),(0,0,1)) \\
+&l_5 = \text{ Span}((1,0,0),(0,1,1)) \\
+&l_6 = \text{ Span}((1,0,1),(0,1,0)) \\
+&l_7 = \text{ Span}((1,1,0),(0,1,1)) \\
+\end{align*}
+\begin{center}
+\newpage
+$l$
+\end{center}
+\begin{align*}
+p
+&\begin{bmatrix}
+1 & 1 &0 &0 &1 &0 &0\\
+1 & 0 &1 &1 &0 &0 &0\\  
+0 & 1 &1 &0 &0 &1 &0\\
+0 & 0 &1 &0 &1 &0 &1\\
+1 & 0 &0 &0 &0 &1 &1\\
+0 & 1 &0 &1 &0 &0 &1\\
+0 & 0 &0 &1 &1 &1 &0\\
+\end{bmatrix}
+\end{align*}
+
+For each 3 points that are incident to each line, and there are 3 lines that are incident to each point. This is because for each point where the spanning vector has one non-zero coordinate, there are 3 different of writing lists of length two where that vector is free. As for points where the spanning vector has 2 non-zero coordinates, there are only two lists of length 2 where that vector is free, plus the list of two vectors that have one-non zero coordinate that sum to our vector. For point where the spanning list has 3 non-zero vectors, there are exactly 3 different lists of length two that where you can write our original vector.
+\end{myproof}
+
+\newpage
+
+3.
+
+\begin{myproof}
+To show that the list of vectors is a basis for $\R^4$ we will show that the list spans $\R^4$ and is linearly independent. To show that the list of vectors is a spanning list, we will show that the standard basis vectors are expressible in terms of our list of vectors. If the standard basis can be expressed in terms of our list of vectors, any arbitrary vector in $\R^4$ can be expressed using our list of vectors.
+\begin{align*}
+(1,0,0,0) = & (1,0,0,4) -2(0,0,0,2) \\
+(0,1,0,0) = & \frac{1}{3}(2,3,0,0) - \frac{2}{3}(1,0,0,4) -\frac{4}{3}(0,0,0,2) \\
+(0,0,1,0) = & (0,0,1,-1) + \frac{1}{2}(0,0,0,2) \\
+(0,0,0,1) = & \frac{1}{2}(0,0,0,2)
+\end{align*}
+Now we will show that the list is linearly independent by taking $v_1$ and $v_2$, noticing that they are not scalar multiples of each other, thus are linearly independent. We also notice that $v_3$ is not in the span of $(v_1, v_2)$ because both $v_1$ and $v_2$ have non-zero second and third coordinates. Lastly, $v_4$ is not in the span of $(v_1, v_2, v_3)$ because it has the first three coordinates being zero; thus, the list $(v_1, v_2, v_3, v_4)$ is a linearly independent list. \\
+\bigskip
+Because $(v_1, v_2, v_3, v_4)$ is linearly independent and spans $\R^4$, $(v_1, v_2, v_3, v_4)$ is a basis for $\R^4$.
+\end{myproof}
+
+\newpage
+
+4.
+
+\begin{myproof}
+A basis for $U$ is the list of vectors $((2,1,0,0,0), (0,0,1,0,0), (0,0,0,7,1))$. This list of vectors spans $U$ because for any arbitrary vector $(2a,a,b,7c,c) \in U, \ a,b,c \in \R$, we can express it in terms of our list of vectors: $a(2,1,0,0,0) + b(0,0,1,0,0) + c(0,0,0,7,1)$. Our list is also linearly independent because $(2,1,0,0,0)$ and $(0,0,1,0,0)$ are not scalar multiples of each other, and $(0,0,0,7,1)$ is not in the span of $((2,1,0,0,0), (0,0,1,0,0))$. Thus, $((2,1,0,0,0), (0,0,1,0,0), (0,0,0,7,1))$ is linearly independent. \\
+\bigskip
+Therefore, $((2,1,0,0,0), (0,0,1,0,0), (0,0,0,7,1))$ is a basis for $U$.
+\end{myproof}
+
+\newpage
+
+5.
+Let $\lambda R_i$ represent multiplying the $i$th row by $\lambda \in \F \setminus \{ 0 \}$, let $\lambda R_i \rightarrow R_j$ represent multiplying $\lambda$ times the $i$th row and adding it to the $j$th row, and let $R_i \leftrightarrow R_j$ represent switching the $i$th and $j$th row.
+
+\begin{align*}
+\begin{bmatrix}
+R_1 \\ R_2 \\ R_3 \\ R_4
+\end{bmatrix}
+&\begin{bmatrix}
+2 & -3 & 6 & 2 & -5 \\
+2 & -2 & 2 & 3 & -5 \\
+-2 & 2 & -2 & -4 & 8 \\
+5 & -6 & 9 & 7 & 14
+\end{bmatrix}\
+\begin{bmatrix}
+0 \\ 0 \\ 0 \\ 0
+\end{bmatrix}\\
+&\frac{1}{2}R_1\\
+&\begin{bmatrix}
+1 & -\frac{3}{2} & 3 & 1 & -\frac{5}{2} \\
+2 & -2 & 2 & 3 & -5 \\
+-2 & 2 & -2 & -4 & 8 \\
+5 & -6 & 9 & 7 & 14
+\end{bmatrix}\
+\begin{bmatrix}
+0 \\ 0 \\ 0 \\ 0
+\end{bmatrix}\\
+&-2 R_1 \rightarrow R_2 \\
+&\begin{bmatrix}
+1 & -\frac{3}{2} & 3 & 1 & -\frac{5}{2} \\
+0 & 1 & -4 & 1 & 0 \\
+-2 & 2 & -2 & -4 & 8 \\
+5 & -6 & 9 & 7 & 14
+\end{bmatrix}\
+\begin{bmatrix}
+0 \\ 0 \\ 0 \\ 0
+\end{bmatrix}\\
+&2R_1 \rightarrow R_3 \\
+&\begin{bmatrix}
+1 & -\frac{3}{2} & 3 & 1 & -\frac{5}{2} \\
+0 & 1 & -4 & 1 & 0 \\
+0 & -1 & 4 & -2 & 3 \\
+5 & -6 & 9 & 7 & 14
+\end{bmatrix}\
+\begin{bmatrix}
+0 \\ 0 \\ 0 \\ 0
+\end{bmatrix}\\
+& -5 R_1 \rightarrow R_4 \\
+&\begin{bmatrix}
+1 & -\frac{3}{2} & 3 & 1 & -\frac{5}{2} \\
+0 & 1 & -4 & 1 & 0 \\
+0 & -1 & 4 & -2 & 3 \\
+0 & \frac{3}{2} & -6 & 2 & -\frac{3}{2}
+\end{bmatrix}\
+\begin{bmatrix}
+0 \\ 0 \\ 0 \\ 0
+\end{bmatrix}\\
+\end{align*}
+\begin{align*}
+&-\frac{3}{2}R_2 \rightarrow R_4 \\
+&\begin{bmatrix}
+1 & -\frac{3}{2} & 3 & 1 & -\frac{5}{2} \\
+0 & 1 & -4 & 1 & 0 \\
+0 & -1 & 4 & -2 & 3 \\
+0 & 0 & 0 & \frac{1}{2} & -\frac{3}{2}
+\end{bmatrix}\
+\begin{bmatrix}
+0 \\ 0 \\ 0 \\ 0
+\end{bmatrix}\\
+&R_2 \rightarrow R_3 \\
+&\begin{bmatrix}
+1 & -\frac{3}{2} & 3 & 1 & -\frac{5}{2} \\
+0 & 1 & -4 & 1 & 0 \\
+0 & 0 & 0 & -1 & 3 \\
+0 & 0 & 0 & \frac{1}{2} & -\frac{3}{2}
+\end{bmatrix}\
+\begin{bmatrix}
+0 \\ 0 \\ 0 \\ 0
+\end{bmatrix}\\
+&-1R_3 \\
+&\begin{bmatrix}
+1 & -\frac{3}{2} & 3 & 1 & -\frac{5}{2} \\
+0 & 1 & -4 & 1 & 0 \\
+0 & 0 & 0 & 1 & -3 \\
+0 & 0 & 0 & \frac{1}{2} & -\frac{3}{2}
+\end{bmatrix}\
+\begin{bmatrix}
+0 \\ 0 \\ 0 \\ 0
+\end{bmatrix}\\
+&-\frac{1}{2}R_3 \rightarrow R_4 \\
+&\begin{bmatrix}
+1 & -\frac{3}{2} & 3 & 1 & -\frac{5}{2} \\
+0 & 1 & -4 & 1 & 0 \\
+0 & 0 & 0 & 1 & -3 \\
+0 & 0 & 0 & 0 & 0
+\end{bmatrix}\
+\begin{bmatrix}
+0 \\ 0 \\ 0 \\ 0
+\end{bmatrix}\\
+&-1R_3 \rightarrow R_2 \\
+&\begin{bmatrix}
+1 & -\frac{3}{2} & 3 & 1 & -\frac{5}{2} \\
+0 & 1 & -4 & 0 & 3 \\
+0 & 0 & 0 & 1 & -3 \\
+0 & 0 & 0 & 0 & 0
+\end{bmatrix}\
+\begin{bmatrix}
+0 \\ 0 \\ 0 \\ 0
+\end{bmatrix}\\
+&-1R_3 \rightarrow R_1 \\
+&\begin{bmatrix}
+1 & -\frac{3}{2} & 3 & 0 & \frac{1}{2} \\
+0 & 1 & -4 & 0 & 3 \\
+0 & 0 & 0 & 1 & -3 \\
+0 & 0 & 0 & 0 & 0
+\end{bmatrix}\
+\begin{bmatrix}
+0 \\ 0 \\ 0 \\ 0
+\end{bmatrix}\\
+\end{align*}
+
+\begin{align*}
+&\frac{3}{2}R_2 \rightarrow R_3 \\
+&\begin{bmatrix}
+1 & 0 & -3 & 0 & 5 \\
+0 & 1 & -4 & 0 & 3 \\
+0 & 0 & 0 & 1 & -3 \\
+0 & 0 & 0 & 0 & 0
+\end{bmatrix}\
+\begin{bmatrix}
+0 \\ 0 \\ 0 \\ 0
+\end{bmatrix}\\
+\end{align*}
+
+Thus:
+\begin{align*}
+&x_1 -3x_3 + 5x_5 = 0 \\
+&x_2 -4x_3 +3x_5 = 0 \\
+&x_4 -3x_5 = 0\\
+\end{align*}
+
+\newpage
+
+6.
+
+\begin{align*}
+\begin{bmatrix}
+R_1 \\ R_2 \\ R_3
+\end{bmatrix}
+&\begin{bmatrix}
+4 & 2 & 3 \\
+4 & 2 & 2 \\
+2 & 2 & 1
+\end{bmatrix}
+\begin{bmatrix}
+2 \\ 1 \\ 3
+\end{bmatrix}\\
+&4R_1 \\
+&\begin{bmatrix}
+1 & 3 & 2 \\
+4 & 2 & 2 \\
+2 & 2 & 1
+\end{bmatrix}
+\begin{bmatrix}
+3 \\ 1 \\ 3
+\end{bmatrix}\\
+&R_1 \rightarrow R_2 \\
+&\begin{bmatrix}
+1 & 3 & 2 \\
+0 & 0 & 4 \\
+2 & 2 & 1
+\end{bmatrix}
+\begin{bmatrix}
+3 \\ 4 \\ 3
+\end{bmatrix}\\
+&3R_1 \rightarrow R_3 \\
+&\begin{bmatrix}
+1 & 3 & 2 \\
+0 & 0 & 4 \\
+0 & 1 & 2
+\end{bmatrix}
+\begin{bmatrix}
+3 \\ 4 \\ 2
+\end{bmatrix}\\
+&R_2 \leftrightarrow R_3 \\
+&\begin{bmatrix}
+1 & 3 & 2 \\
+0 & 1 & 2 \\
+0 & 0 & 4
+\end{bmatrix}
+\begin{bmatrix}
+3 \\ 2 \\ 4
+\end{bmatrix}\\
+&4R_3 \\
+&\begin{bmatrix}
+1 & 3 & 2 \\
+0 & 1 & 2 \\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+3 \\ 2 \\ 1
+\end{bmatrix}\\
+&3R_3 \rightarrow R_2 \\
+&\begin{bmatrix}
+1 & 3 & 2 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+3 \\ 0 \\ 1
+\end{bmatrix}\\
+&3R_3 \rightarrow R_1 \\
+&\begin{bmatrix}
+1 & 3 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+1 \\ 0 \\ 1
+\end{bmatrix}\\
+\end{align*}
+
+\begin{align*}
+&2R_2 \rightarrow R_1 \\
+&\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+1 \\ 0 \\ 1
+\end{bmatrix}\\
+\end{align*}
+
+Thus:
+
+\begin{align*}
+x_1 =& 1 \\
+x_2 =& 0 \\
+x_3 =& 1
+\end{align*}
+
+\end{flushleft}
+\end{document}
