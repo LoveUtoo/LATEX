@@ -1,0 +1,123 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb, amsmath, amsthm, changepage, graphicx, caption, subcaption}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{comment}
+\excludecomment{ignore}
+\includecomment{solution}
+\includecomment{question}
+\def\nats {{\mathbb N}}
+\def\ints {{\mathbb Z}}
+\newcommand{\Implies}{\mbox{ IMPLIES }}
+\newcommand{\Or}{\mbox{ OR }}
+\newcommand{\Andd}{\mbox{ AND }}
+\newcommand{\Not}{\mbox{NOT }}
+\newcommand{\Iff}{\mbox{ IFF }}
+\newcommand{\True}{\mbox{T}}
+\newcommand{\False}{\mbox{F}}
+\newcommand{\Subsets}[1]{\mathscr{P}_{#1}(\{1,\ldots N\})}
+
+\title{CSC240 Problem Set 4}
+\author{Nicolas}
+
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\F}{\mathbb{F}}
+
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\Q}{\mathbb{Q}}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\inn}[2]{\langle#1,#2\rangle}
+
+
+\newenvironment{myproof}
+{\begin{proof} \begin{adjustwidth}{3em}{0pt}$ $\par\nobreak\ignorespaces}
+{\end{adjustwidth} \end{proof}} 
+
+\begin{document}
+
+\maketitle
+\begin{flushleft}
+
+\textit{Lemma 1: If $b$ is a binary string consisting of $n$ trailing 1s, we can apply $f$ some amount of times to such that $b$ is mapped to a string with $n$ trailing 0s.}
+
+\begin{myproof}
+Let $h: \{ 0, 1 \}^+ \to \{ 0, 1 \}^+, \ h(x) = x \cdot 1$. Our predicate will be $H(n)$ = "If $b$ is a binary string consisting of $n$ trailing 1s, we can apply $f$ some amount of times to such that $b$ is mapped to a string with $n$ trailing 0s." We will use strong induction on $n$. \\
+\bigskip
+Base Case: $n = 1$ $f(h(b)) = f(b \cdot 1) = v \cdot 0$ for some $v \in \{ 0 , 1 \}^+$. Thus, $H(1)$. \\
+\bigskip
+Induction Hypothesis: If $j < n$ then $H(j)$. \\
+\bigskip
+Inductive Step: Consider $g^{(n)}(b) = g^{(n-1)}( b \cdot 1)$ but by the induction $f$ can be applied some amount of times such that $b$ is mapped to $c \cdot 1$ followed by $(n-1)$ 0s for some $c \in \{ 0, 1 \}^+$. If we apply $f$ again, we will get $h^{(n-1)}(k)$ for some $k \in \{ 0 , 1 \}^+$. But by induction hypothesis again, $f$ can be applied some amount of times such that $h^{(n-1)}(k)$ is mapped to $v$ followed by $(n-1)$ trailing 0s for some $v \in \{0, 1 \}^+$.
+\end{myproof}
+
+1. a)
+
+\begin{myproof}
+Let $g: \{ 0, 1 \}^+ \to \{ 0, 1 \}^+, \ g(x) = x \cdot 0$. Our predicate will be $Z(n) = \forall x \in \{ 0, 1 \}. \exists v \in \{ 0, 1 \}^+. \exists i \in \N$.$f^{(i)}(g^{(n)}(x \cdot 1)) = g^{(n+1)}(v)$. \\
+\bigskip
+Base Case: $n = 1$ Thus $f^{(2)}(g^{(1)}(x \cdot 1)) = f^{(2)}(x \cdot 1 \cdot 0) =  f(m \cdot 01) = v \cdot 00$. Thus $Z(1)$. \\
+\bigskip
+Induction Hypothesis: If $j < n$, then $Z(j)$. \\
+\bigskip
+Inductive Step: Consider $f(g^{(n)}(b \cdot 1)) = m \cdot 1 \cdot w$ where m is some binary string and $w$ is a binary string consisting of only $(n-1)$ 1 bits. However, we know that if we apply $f$ $n$ times, we can sequentially turn every 1 in $w$ into a 0 (using \textit{Lemma 1}). Thus $f^{(n+1)}(g^{(n)}(x \cdot 1) = g^{(n+1)}(v)$, Thus $Z(n)$ as desired. \\
+\bigskip
+Let $b \in \{ 0 , 1 \}^+$ be arbitrary. We have two cases: $b^1 = 1$ or $b^1 = 0$. \\
+\bigskip
+Case 1: $b^1  = 1$. This string has at most $|b|$ 1's. If the last bit is 0, then we can apply $f$ so $b$'s rightmost 1 bit turns into consecutive 0s. If the last bit is 1 then $f(b)^{|b|} = 1$ and $f(b)^{|b+1|} = 0$, so we can use the above. Notice that applying $f$ to $b$ will keep the first bit, while adding consecutive 0s between $b^1$ the rest of $b$. However, we know that the the rest of $b$ will become 0 because we can make any binary string with 1 and some amount of 0s following at the end turn into all 0s, giving us a binary string $s$ consisting of a single 1 followed by consecutive 0s. Apply $f$ to this will give us 0 followed by 1s, which we know we can apply $f$ finite amount of times to convert all of the consecutive 1s into 0s (by \textit{Lemma 1} again). \\
+\bigskip
+Case 2: $b^1 = 0$. We can apply the same process as case 1, but we do not have to consider changing the leading 1 into a 0 because applying $f$ multiple times will only add leading 0s to $b$.
+
+Because $b$ was arbitrary, this holds for all $b \in \{ 0, 1 \}^+$ as desired
+\end{myproof}
+
+\newpage
+
+2. a)
+
+\begin{myproof}
+Our predicate is $P(n)$ = "Any horsie on the border of an $n \times n$ chess board can move to the bottom left square". For clarity, we will refer to the squares on the chessboard as the set of $\{1,...,n\} \times \{1,...,n\}$, with the bottom left square being denoted as $(1,1)$.
+We will prove this using strong induction induction on $n$. \\
+\bigskip
+Base Case: $n = 3$. We will prove the base case by cases. \\
+Case 1: The horsie starts on square $(1,1)$. The horsie is already on $(1,1)$. \\
+Case 2: The horsie starts on square $(1,2)$. The horsie can move to $(3,1)$ to $(2,3)$ to $(1,1)$. \\
+Case 3: The horsie starts on square $(1,3)$. The horsie can move to $(3,2)$ to $(1,1)$. \\
+Case 4: The horsie starts on square $(2,1)$. The horsie can move to $(1,3)$ to $(3,2)$ to $(1,1)$. \\
+Case 5: The horsie starts on square $(2,3)$. The horsie can move to $(1,1)$. \\
+Case 6: The horsie starts on square $(3,1)$. The horsie can move to $(2,3)$ to $(1,1)$. \\
+Case 7: The horsie starts on square $(3,2)$. The horise can move to $(1,1)$. \\
+Case 8: The horsie starts on square $(3,3)$. The horsie can move to $(2,1)$ to $(1,3)$ to $(3,2)$ to $(1,1)$. \\
+\bigskip
+These are all the cases, thus $P(3)$. \\
+\bigskip
+Induction Hypothesis: If $j < n$ then $P(j)$. \\
+\bigskip
+Inductive Step: \\
+
+There are two disjoint cases: The horsie starts on $(x,y) \in \{1,...,n-1\} \times \{1,...,n-1\}$ or the horsie starts on $(n,i)$ or $(i,n)$ for $1 \leq i \leq n$. \\
+\bigskip
+Case 1: If the horsie starts on the $(x,y)$ then the horsie is on square that is the border of an $y \times y$ chessboard. However, we know that $y < n$, thus by the induction hypothesis $P(y)$ which means that the horsie can get to $(1,1)$ using squares in $y \times y$. This implies that $P(n)$. \\
+Case 2: If the horsie starts on $(n,i)$ or $(i,n)$, then because $n \geq 3$ the horsie can always move downwards if its on $(i,n)$ and it can always move left if its on $(i,n)$, thus, the horsie can move to  a square $(x,y) \in \{1,...,n-1\} \times \{1,...,n-1\}$, which reduces the problem to case 1. Using the induction hypothesis again, $P(y)$ so we can get to $(1,1)$ only using squares in $y \times y$. We can avoid the case where $y=2$ because if that is the case, then it can always move to a square in the $3 \times 3$ chessboard, thus $P(n)$. \\
+\bigskip
+Because $P(n)$ is true both cases, $P(n)$.
+
+\end{myproof}
+
+b)
+\begin{myproof}
+The statement is false. Consider the horsie starts on $(2,2)$ which is on the border of a $2 \times 2$ chessboard. The horsie cannot move anywhere because there is not enough space on the chessboard. Thus, it cannot get to $(1,1)$, thus $\Not P(2)$ as desired.
+\end{myproof}
+
+\end{flushleft}
+\end{document}
+
+

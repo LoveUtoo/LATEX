@@ -1,0 +1,136 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb, amsmath, amsthm, changepage, graphicx, caption, subcaption}
+
+\graphicspath{{./images/}}
+
+\title{MAT157 Problem Set 6}
+\author{Nicolas Coballe}
+
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\F}{\mathbb{F}}
+
+\newcommand{\Q}{\mathbb{Q}}
+
+\newenvironment{myproof}
+{\begin{proof} \begin{adjustwidth}{3em}{0pt}$ $\par\nobreak\ignorespaces}
+{\end{adjustwidth} \end{proof}} 
+
+\begin{document}
+
+\maketitle
+\begin{flushleft}
+
+\textit{Lemma 1.0} If $\lim_{x \to a} f(x) = L_1$ and $\lim_{x \to a} g(x) = L_2$, then $\lim_{x \to a} (f + g)(x) = \lim_{x \to a} f(x) + \lim_{x \to a} g(x) = L_1 + L_2$.
+\begin{myproof}
+By assumption $\forall \epsilon_1 > 0 \exists \delta_1 > 0 \forall x \in \R: 0 < |x-a| < \delta_1 \implies |f(x) - L_1| < \epsilon_1$ and $\forall \epsilon_2 > 0 \exists \delta_2 > 0 \forall x \in \R: 0 < |x-a| < \delta_2 \implies |g(x) - L_2| < \epsilon_2$. Choose $\delta = \text{min}\{ \delta_1, \delta_2 \}$ such that $\epsilon_1 < \frac{\epsilon}{2}$ and $\epsilon_2 < \frac{\epsilon}{2}$, then $|(f+g)(x) - (L_1+L_2)| = |f(x) + g(x) - L_1 - L_2| \leq |f(x) - L_1| + |g(x) - L_2| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$
+\end{myproof}
+
+%\textit{Lemma 1.1} If $\lim_{x \to a} f(x) = L_1$ and $\lim_{x \to a} (f+g)(x) = L_1 + L_2$, then $\lim_{x \to a} g(x) = L_2$.
+
+%\begin{myproof}
+%By assumption $\forall \epsilon_1 > 0 \exists \delta_1 > 0 \forall x \in \R: 0 < |x-a| < \delta_1 \implies |f(x) - L_1| < \epsilon_1$ and $\forall \epsilon_2 > 0 \exists \delta_2 > 0 \forall x \in \R: 0 < |x-a| < \delta_2 \implies |(f+g)(x) - L_1 - L_2| < \epsilon_2$. Consider for the sake of contradiction, that $\exists \epsilon > 0 \forall \delta > 0: 0 < |x-a| < \delta \text{ and } |g(x) - L_2| \geq \epsilon$. Thus, $\epsilon + f(x) - L_1 \leq g(x) - L_2 + f(x) - L_1 \leq  -\epsilon + f(x) - L_1$. However, $|f(x)-L_1| < \epsilon$. Therefore, $\epsilon \leq g(x) - L_2 + f(x) - L_1 \leq  -\epsilon$. Thus, $|(f+g)(x)-L_1 -L_2| \geq \epsilon$, a contradiction.
+
+
+%\end{myproof}
+
+1. a)
+
+\begin{myproof}
+
+By assumption, $\forall \epsilon > 0 \exists \delta_1 > 0 \forall x \in \R: 0 < |x-0| < \delta_1 \implies |\frac{\sin x}{x} - 1| < \epsilon$. Thus, consider $\delta = \text{min}\{ 1, \delta_1 \}$. Then, $ \epsilon > |\frac{\sin x}{x} - 1| \geq |x||\frac{\sin x}{x} - 1| \geq |\sin x - x| $. Thus, $\lim_{x \to 0} \sin x - x = 0$. By \textit{Lemma 1.0}, $\lim_{x \to 0} \sin x - x + \lim_{x \to a} x = \lim_{x \to 0} \sin x$. Therefore, $0 + 0 = 0$. Therefore, $\lim_{x \to 0} \sin x = 0$. \\
+\bigskip
+If $\lim_{x \to 0} \sin x = 0$, then $\lim_{x \to 0} 1 - \sin^2 x = 1$. Thus, $\lim_{x \to a}\cos^2 x = 1$. Thus, $\forall \epsilon > 0 \exists \delta' > 0: 0<|x-a| < \delta \implies |\cos^2 x - 1| < \epsilon$. Notice if $\delta = \text{min} \{ \delta' , \frac{\pi}{2} \}$, then $\cos x + 1 > 1$. Thus, $|\cos x - 1| < |(\cos x -1)(\cos x + 1)| = |\cos^2 x - 1| < \epsilon$. Therefore, $\lim_{x \to 0} \cos x = 1$.
+
+\end{myproof}
+
+\newpage
+
+2. a)
+
+\begin{myproof}
+
+Consider $a$ is a limit point of either $A_1$ or $A_2$. Thus either, $\forall \delta_1 > 0 \exists x \in A_1: 0<|x-a|<\delta_1$ or $\forall \delta_2 > 0 \exists x \in A_2: 0<|x-a|<\delta_2$. Because $\forall x \in A_1 \cup A_2, \ x \in A$. Then for any $\delta > 0$ we can simply choose the $x \in A_1$ or the $x \in A_2$ where $0<|x-a|<\delta$.
+
+\end{myproof}
+
+b)
+
+\begin{myproof}
+$\Rightarrow$ \\
+Suppose that $\lim_{x \to a} f(x) = \ell$, then $\forall \epsilon > 0 \exists \delta' > 0 \forall x \in A: 0 < |x-a| < \delta' \implies |f(x) - \ell| < \epsilon$. By assumption, $\forall \delta_1 > 0 \exists x \in A_1: 0 < |x-a| < \delta_1$ and $\forall \delta_2 > 0 \exists x \in A_2: 0 < |x-a| < \delta_2$. For $f|_{A_1}$ and $\forall \epsilon > 0$, take $\delta := \delta_1 < \delta'$. We can do this because $\delta_1$ is any positive real. Thus, $\forall x \in A_1: 0<|x-a|<\delta_1<\delta' \implies |f|_{A_1}(x) - \ell|< \epsilon$. Similarly, for $f|_{A_2}$ and $\epsilon > 0$, take $\delta := \delta_2 < \delta'$. Thus,  $\forall x \in A_2: 0<|x-a|<\delta_2<\delta' \implies |f|_{A_2}(x) - \ell|< \epsilon$ \\
+\bigskip
+$\Leftarrow$ \\
+Suppose that $\lim_{x \to a}f|_{A_1}(x) = \ell$ and $\lim_{x \to a}f|_{A_2}(x) = \ell$. Then $\forall \epsilon_1 > 0 \exists \delta_1 > 0 \forall x \in A_1: 0< |x-a| < \delta_1 \implies |f|_{A_1}(x) - \ell| < \epsilon_1$ and $\forall \epsilon_2 > 0 \exists \delta_2 > 0 \forall x \in A_2: 0< |x-a| < \delta_2 \implies |f|_{A_2}(x) - \ell| < \epsilon_2$. Notice that $\forall x \in A_1$ or $\forall x \in A_2$, $x \in A$. Thus if we choose $\delta := \text{min} \{ \delta_1 , \delta_2 \}$, then for all $x \in A$, if $0<|x-a|<\delta < \text{min} \{ \delta_1 , \delta_2 \} \implies |f(x) - \ell| < \epsilon$.
+
+\end{myproof}
+
+c)
+
+\begin{myproof}
+
+Consider $A_1 = \Q \cup \{ a \}$ and $A_2 = \bar{\Q} \cup \{ a \}$. If $a \neq 2$, then $\lim_{x \to a} f|_{A_1}(x) \neq \lim_{x \to a} f|_{A_2} (x)$. This is because $\forall x,y: x > 2$ and $y > 2, \ f|_{A_1}(x) >  f|_{A_2} (y)$ and $\forall x,y: x < 2$ and $y<2, \ f|_{A_1}(x) <  f|_{A_2} (y)$ However, if $a = 2$, then $\lim_{x \to a} f|_{A_1}(x) = \lim_{x \to a} f|_{A_2} (x) = 3$
+
+\end{myproof}
+
+\newpage
+
+3.
+
+\begin{myproof}
+
+Consider that $\lim_{x \to \infty} f(x) = \ell$. Then, $\forall \epsilon > 0 \exists S \in \R: x > S \implies |f(x) - \ell| < \epsilon$. Then, $\forall \epsilon > 0\forall T > 0$ if $x>S$ then $x+T>S$. Thus, $f(x+T) < \epsilon$. Thus if $f(x) < \frac{\epsilon}{2}$ and $f(x+T) < \frac{\epsilon}{2}$, then $|f(x) - f(x+T)|=|f(x)-f(x+T)-\ell + \ell| \leq |f(x) - \ell| + |f(x+T) - \ell| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$. Therefore, $\forall \epsilon > 0, \forall T > 0, \ |f(x) - f(x+T)| < \epsilon$. Now consider for the sake of contradiction that $f(x) \neq f(x+T)$. Then either there exists some $c \in \R$ such that $f(x) < c < f(x+T)$ or $f(x) > c > f(x+T)$. Consider the first case, then this suggests that if $\epsilon := |f(x)-c|, \ |f(x) - f(x+T)| > |f(x) - c| = \epsilon$; a contradiction. A similar thing happens for the second case. Thus $\forall T > 0, \ f(x) = f(x+T)$. Now because $f$ is defined on $\R$ then we can choose some $x>S \in \R$ arbitrarily, and thus $f(x) \in \R$. If we choose $\ell := f(x)$, then because $f(x) = f(x+T) = f(x-T), \ \forall T > 0$. Because $T$ is any positive real, and any real other than $x$ can be written as $x + T$ or $x -T$, $\forall x,y \in \R, \ f(x) = f(y) = \ell$. Therefore, $f(x) = \ell, \ \forall x \in \R$.
+\end{myproof}
+
+\newpage
+
+4. a)
+
+\begin{myproof}
+
+We only need to consider $a = 1$ because for any $\lambda > 0, \ \lim_{x \to \lambda} \sqrt[n]{x} = \sqrt[n]{\lambda} \lim_{x \to 1} \sqrt[n]{x}$. If $a \neq 1$ then if we choose $\delta := \text{min} \{ \frac{|a-1|}{2} , 1 \}$, then $\forall x \in (a - \delta, a + \delta), \ |\sqrt[n]{x} - \sqrt[n]{a}| < |\sqrt[n]{x} -1| < \epsilon$. This is because if $a<1$, then $0 < \sqrt[n]{a} < 1$, so $|\sqrt[n]{x} - \sqrt[n]{a}| < |\sqrt[n]{x} - 1| <\epsilon$. If $a > 1$, then $\sqrt[n]{a} > 1$, so $|\sqrt[n]{x} - \sqrt[n]{a}| < |\sqrt[n]{x} - 1| < \epsilon$. Consider were working on the interval $[0,\infty)$. Consider the function $f:[0, \infty) \rightarrow \R, \ f(x) = |x-1|+1$ and $g:(0, \infty) \rightarrow \R, \ g(x) = -|x-1|+1$. Now consider for the sake of contradiction that on the interval $[0, 1]$, $\sqrt[n]{x} \leq x$. But because $h_n: [0, \infty) \rightarrow \R, \ h(x) = x^n$ is always strictly increasing. $h_n(\sqrt[n]{x}) = x \leq x^n = h_n(x)$. Which is a contradiction because if $x \in [0, 1]$, then $x^n \leq x, \forall n \in \N$. Thus on the interval $[0,1]$, $g(x) = x \leq \sqrt[n]{x} \leq f(x)$. Now on the interval $[1, \infty)$, $\sqrt[n]{x} \leq x$. This is because $x \leq x^n, \ \forall x > 1$. Thus, on the interval $[1, \infty)$, $g(x) \leq \sqrt[n]{x} \leq x = f(x)$. We can now conclude that $\forall x \in [0, \infty), \ g(x)\leq \sqrt[n]{x} \leq f(x)$. Now let $\delta := \epsilon$, now if $0<|x-1|<\delta$, then $|f(x) - 1| = ||x-1|+1-1| = |x-1| < \delta = \epsilon$ and $|g(x) - 1| = |-|x-1|+1-1| = |x-1| < \delta = \epsilon$. Thus $\lim_{x \to 1} g(x) = 1$ and $\lim_{x \to 1}f(x) = 1$. Thus, by the \textit{Squeeze Theorem} $\lim_{x \to 1} g(x) = 1 \leq \lim_{x \to 1} \sqrt[n]{x} \leq 1 = \lim_{x \to 1} f(x)$. Therefore, $\forall a > 0, \ \lim_{x \to a} \sqrt[n]{x} = \sqrt[n]{a}$.
+
+\end{myproof}
+
+b)
+
+\begin{myproof}
+
+We only need to consider $a = 1$ or $a= 0$ because for any $\lambda > 0, \ \lim_{x \to \lambda} \frac{\sqrt[n]{ x} - \sqrt[n]{\lambda}}{ x- \lambda}= \frac{\sqrt[n]{\lambda}}{\lambda} \lim_{x \to 1} \frac{\sqrt[n]{x}-a}{x-a}$. This is because if $a > 1$ then $\sqrt[n]{x} - \sqrt[n]{a} < \sqrt[n]{x} -1$ and $x-a < x- 1$. Thus, if $\sqrt[n]{x} - \sqrt[n]{a} < \sqrt[n]{x} -1$ then $|\frac{\sqrt[n]{x}-\sqrt[n]{a}}{x-a}|<|\frac{\sqrt[n]{x} - \sqrt[n]{a}}{x-a} |<| \frac{\sqrt[n]{x}-1}{x-1}|$ If $a < 1$ then $|\frac{\sqrt[n]{x}-\sqrt[n]{a}}{x-a}|<|\frac{\sqrt[n]{x} - \sqrt[n]{a}}{x-0} |<| \frac{\sqrt[n]{x}-0}{x-0}|$. We claim that if $\lim_{x \to a} \frac{\sqrt[n]{x} - \sqrt[n]{a}}{ x- a} = a^{\frac{1}{n}-1}$. Let $a = 1$ and take $\delta' := \frac{2}{\epsilon}$. Thus if $0<|x-1|< \delta'$ then $|\frac{\sqrt[n]{x}-1}{x-1}|\leq|\sqrt[n]{x} - 1||\frac{1}{x-1}| < |\sqrt[n]{x} - 1|\frac{1}{\delta'} <  2 \frac{1}{\delta'}= 2\frac{\epsilon}{2} = \epsilon$. Thus, if $a > 1$, then choose $\delta := \text{min} \{ 1, \delta' \}$. Thus, if $0<|x-a|< \delta$, then $|\frac{\sqrt[n]{x}-\sqrt[n]{a}}{x-a} - a^{\frac{1}{n}-1}|<|\frac{\sqrt[n]{x} - \sqrt[n]{a}}{x-a} - a^{\frac{1}{n}-1}|<| \frac{\sqrt[n]{x}-1}{x-1} - a^{\frac{1}{n}-1}| < \epsilon$. Let $a = 0$ and take $\delta' :=  \text{min} \{ \frac{1}{\epsilon}, 1$. Then if $0<|x-a|< \delta'$ then $|\frac{\sqrt[n]{x}}{x}| \leq |\sqrt[n]{x} | |\frac{1}{x}| \leq |\frac{1}{x}| = \frac{1}{\delta'} = \epsilon$. Thus if $a < 1$ choose $\delta := \text{min} \{ 1, \delta' \}$. If $0<|x-a|< \delta$ then, $|\frac{\sqrt[n]{x}-\sqrt[n]{a}}{x-a} - a^{\frac{1}{n}-1}|<|\frac{\sqrt[n]{x} - \sqrt[n]{a}}{x-0} - a^{\frac{1}{n}-1}|<| \frac{\sqrt[n]{x}-0}{x-0} - a^{\frac{1}{n}-1}| < \epsilon$. Thus, $\lim_{x \to a} \frac{\sqrt[n]{x} - \sqrt[n]{a}}{ x- a} = a^{\frac{1}{n}-1}$.
+\end{myproof}
+
+\newpage
+
+5. a)                                                                                                                                   
+
+\begin{myproof}
+
+If $\delta_1 < \delta_2$, then $0 < |x-a| < \delta_1 < \delta_2$. Thus, $\{ f(x) : x \in A, 0 < |x-a| < \delta_1 \} \subseteq \{ f(x):  x \in A, 0 < |x-a| < \delta_2 \}$. Since both subsets are bounded, then  $\text{sup} \{ f(x):  x \in A, 0 < |x-a| < \delta_2 \} \geq \text{sup} \{ f(x) : x \in A, 0 < |x-a| < \delta_1 \}$. Therefore, $g(\delta_1) \leq g(\delta_2)$.
+
+\end{myproof}
+
+b)
+
+\begin{myproof}
+
+Consider the set $S := \bigcup_{ \delta > 0} g(\delta)$. Because $f(A)$ is bounded then, $S$ is bounded. Because $\emptyset \neq S \subseteq \R$ and $S$ is bounded then $S$ has a infimum. Let $\ell := \text{inf}(S)$. We will claim that $\lim_{\delta' \to 0^+} g(\delta') = \ell$. Choose $\delta$ arbitrarily. There are two cases: $\ell = \text{min}_{\delta > 0}g(\delta)$ or $\text{min}_{\delta > 0}g(\delta)$ does not exist. \\
+Case 1: $\ell = \text{min}_{\delta > 0}g(\delta)$. By assumption, there exists a $\delta$ such that $g(\delta) - \ell = 0 < \epsilon$. Thus, for all $\delta' < \delta, \ g(\delta') \leq g(\delta)$. But because $g(\delta)$ is the infimum, $g(\delta') = g(\delta)$. Thus, for all $0 <\delta' < \delta \implies g(\delta') - \ell = 0 < \epsilon$. \\
+Case 2: $\text{min}_{\delta > 0}g(\delta)$ does not exist. For any $\epsilon > 0$ the define $S' \subseteq S$ such that $S' := \{ x \in S: g(x) < \ell + \epsilon \}$ If this set was empty, than $\ell$ would not be an infimum; thus, $S'$ is non-empty. Using the \textit{Axiom of Choice} we can choose a $\delta$ such that $|g(\delta) - \ell| < \epsilon$. Thus, for all $ 0 <\delta' < \delta, \ |g(\delta') - \ell| \leq |g(\delta) - \ell| < \epsilon$. 
+
+\end{myproof}
+
+c)
+
+\begin{myproof}
+
+Because the maximum value of $sin(\frac{1}{x})$ over $\R$ is 1 and for any $\delta > 0$ and for $n$ arbitrary large, there exists $0 < \frac{2}{\pi(1+4n)}< \delta$. Since $\sin (\frac{1}{\frac{2}{\pi(1+4n)}})= \sin(\frac{\pi(1+4n}{2}) = 1$. Thus, $\forall \delta > 0$, $g(\delta) = 1$. Because $g(\delta) = 1, \ \forall \delta > 0$, the infimum of $\bigcup_{\delta > 0} g(\delta) = 1 = \text{min}( \bigcup_{\delta > 0} g(\delta))$. Because $\sin(\R)$ is bounded, we can choose $\delta$ such that $g(\delta) = 1$. Thus for all $0 < \delta' < \delta, \ |g(\delta') - 1| = |g(\delta) = 1| = 0 < \epsilon$.
+
+\end{myproof}
+
+\end{flushleft}
+\end{document}

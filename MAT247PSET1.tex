@@ -1,0 +1,96 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb, amsmath, amsthm, changepage, graphicx, caption, subcaption}
+
+\graphicspath{{./images/}}
+
+\title{MAT247 Problem Set 1}
+\author{Nicolas}
+
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\F}{\mathbb{F}}
+
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\Q}{\mathbb{Q}}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\inn}[2]{\langle#1,#2\rangle}
+
+\newenvironment{myproof}
+{\begin{proof} \begin{adjustwidth}{3em}{0pt}$ $\par\nobreak\ignorespaces}
+{\end{adjustwidth} \end{proof}} 
+
+\begin{document}
+
+\maketitle
+\begin{flushleft}
+
+1.
+
+\begin{myproof}
+
+Consider $\inn{(0,1,0)}{(0,1,0)} = 0$; however, $(0,1,0) \neq 0$, meaning that the function is not definite.
+
+\end{myproof}
+
+\newpage
+
+2.
+
+\begin{myproof}
+
+If there exists an $x \in V$ such that $(x,x) > 0$, then $x^2(1,1)>0$ by linearity and symmetry. Because $x^2$ is positive (if $x^2= 0$ then the inequality doesn't hold) then $(1,1)$ must also be positive. Thus for any $y \in V \setminus \{ 0 \}$, $(y,y) = y^2(1,1) > 0$. And for 0, $(0,0) = 0$. Thus, definiteness is achieved.
+
+\end{myproof}
+
+\newpage
+
+3.
+
+\begin{myproof}
+
+$\Leftarrow$ \\
+\bigskip
+Let $a,b \in \R$
+\begin{align*}
+\norm{au+bv}^2 = & \ \norm{bu + av}^2 \\
+\inn{au+bv}{au+bv} = & \ \inn{bu+av}{bu+av} \\
+\inn{au}{au+bv} + \inn{bv}{au+bv} = & \ \inn{bu}{bu+av} + \inn{av}{bu+av} \\
+\inn{au}{au} + \inn{au}{bv} + \inn{bv}{av} + \inn{bv}{bv} = & \ \inn{bu}{bu} +\inn{bu}{av} + \inn{av}{bu} + \inn{av}{av} \\
+a \norm{u}^2 + b \norm{v}^2 = & \ b \norm{u}^2 + a \norm{v}^2
+\end{align*}
+but because $a,b$ were arbitrary, this holds for $a=1$ and $b=0$. Then, we have $\norm{u}^2 = \norm{v}^2 \implies \norm{u} = \norm{v}$. \\
+\bigskip
+$\Rightarrow$ \\
+\bigskip
+Let $a,b \in \R$
+\begin{align*}
+\norm{u} = & \ \norm{v} \\
+\norm{u}^2 = & \ \norm{v}^2 \\
+\inn{u}{u} = & \ \inn{v}{v} \\
+\inn{au}{au} + \inn{au}{bv} + \inn{bv}{av} + \inn{bv}{bv} = & \ \inn{bu}{bu} +\inn{bu}{av} + \inn{av}{bu} + \inn{av}{av} \\
+\norm{au+bv}^2 = & \ \norm{bu + av}^2 \\
+\end{align*}
+As desired.
+
+\end{myproof}
+
+\newpage
+
+4.
+
+\begin{myproof}
+
+Consider the $V=\R^4$ with the the Euclidean Inner-product. Let $u = (\sqrt{a},\sqrt{b},\sqrt{c},\sqrt{d})$ and $v = (\sqrt{\frac1a} , \sqrt{\frac1b} , \sqrt{\frac1c} , \sqrt{\frac1d)}, \ a,b,c,d \in \R$. By \textit{Cauchy-Schwarz} $|\inn{u}{v}| \leq \norm{u} \norm{v}$; however, $\inn{u}{v} = 4$. Thus $4 \leq \norm{u} \norm{v}$. But because $\norm{x} = \sqrt{\inn{x}{x}}$ for all $x \in \R^4$. Thus, $4 \leq \sqrt{a + b + c + d} \sqrt{\frac1a + \frac1b + \frac1c + \frac1d} \implies 16 \leq (a+b+c+d)(\frac1a + \frac1b + \frac1c + \frac1d)$ as desired.
+
+\end{myproof}
+
+\end{flushleft}
+\end{document}

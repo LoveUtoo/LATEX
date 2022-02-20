@@ -1,0 +1,93 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb, amsmath, amsthm, changepage, graphicx, caption, subcaption}
+
+\graphicspath{{./images/}}
+
+\title{CSC240 Problem Set 1}
+\author{Nicolas}
+
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\F}{\mathbb{F}}
+
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\Q}{\mathbb{Q}}
+
+\newcommand{\andd}{\text{ AND}}
+
+\newcommand{\orr}{\text{ OR}}
+
+\newcommand{\nott}{\text{ NOT}}
+
+\newcommand{\xorr}{\text{ XOR}}
+
+\newcommand{\imp}{\text{ IMPLIES}}
+
+\newenvironment{myproof}
+{\begin{proof} \begin{adjustwidth}{3em}{0pt}$ $\par\nobreak\ignorespaces}
+{\end{adjustwidth} \end{proof}} 
+
+\begin{document}
+
+\maketitle
+\begin{flushleft}
+
+1. a) \\
+\bigskip
+Exists $n$ st. all indices after $n$ in $S$ are distinct pair-wise. \\
+\bigskip
+b) \\
+\bigskip
+
+If $(S_n)_{n=1}^\infty \in \Z^\infty$ st. $S_n := n$ then the statement is true.
+
+c) \\
+\bigskip
+
+If $(S_n)_{n=1}^\infty \in \Z^\infty$ st. $S_n := 1$ then the statement is false.
+\\
+\bigskip
+
+2. \\
+\bigskip
+$UScitizen(x) = $ ``Traveller $x$ is a US citizen" corresponds to ``All air travellers who are not US citizens." \\
+\bigskip
+$FVaccinated(x) = $ ``Traveller $x$ is fully vaccinated" corresponds to ``required to be fully vaccinated." \\
+\bigskip
+$Proof(x) = $ ``Traveller $x$ has provided proof of vaccination status" corresponds to ``provide proof of vaccination status prior to boarding." \\
+\bigskip
+$OverTwo(x) = $ ``Traveller $x$'s age is greater than equal to 2" corresponds to ``All airline passengers to the United States ages two years and older." \\
+\bigskip
+$CovidNeg(x) = $ ``Traveller $x$ provided negative COVID-19 viral test taken within one day" corresponds to ``must provide a negative COVID-19 viral test
+taken within one calendar day of travel." \\
+\bigskip
+$Document(x) = $ ``Traveller $x$ has provided documentation from a licensed health care provider of having recovered from COVID-19 90 days prior" corresponds to ``travellers to the United
+States may provide documentation from a licensed health care provider of having
+recovered from COVID-19 in the 90 days preceding travel." \\
+\bigskip
+$Air(x) = $ ``Traveller $x$ is travelling by plane" corresponds to ``Air travellers." \\
+\bigskip
+$Allowed(x) = (\nott_1 UScitizen(x) \imp_2 (Air(x) \andd_3 FVaccinated(x)) \orr_4 (\nott_5 Air(x) \andd_6 Proof(x)))$ \\
+$\andd_7 (OverTwo(x) \imp_8 CovidNeg(x) \orr_9 Document(x))$ \\
+\bigskip
+$\nott_1$ is because these are only conditions if the traveller is not a US citizen. \\
+$\imp_2$ is because if the person is not a US citizen they have to comply with the following two conditions. \\
+$\andd_3$ is because air travellers need to be fully vaccinated. \\
+$\orr_4$ is because this is the alternative conditional for non US-citizens. \\
+$\nott_5$ is because either $Air(x)$ is true or false; this is the false option. \\
+$\andd_6$ is because if the traveller is not taking a plane they must follow a different condition. I am just assuming that land ports of entry and ferries are the only other ways of entering the US. \\
+$\andd_7$ is because these are the other conditions regardless of the traveller being a US citizen or not. \\
+$\imp_8$ is to specify these conditions only to travellers over or equal to the age of two. \\
+$\orr_9$ is because there are two conditions. \\
+\bigskip
+We are also specifying our domain for $Allowed$ to only travellers entering the US, because that is the only situation where a US immigration officer makes sense.
+
+\end{flushleft}
+
+\end{document}

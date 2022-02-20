@@ -1,0 +1,92 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb, amsmath, amsthm, changepage, graphicx, caption, subcaption}
+
+\graphicspath{{./images/}}
+
+\title{MAT157 Problem Set 11}
+\author{Nicolas}
+
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\F}{\mathbb{F}}
+
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\Q}{\mathbb{Q}}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\inn}[2]{\langle#1,#2\rangle}
+
+\newenvironment{myproof}
+{\begin{proof} \begin{adjustwidth}{3em}{0pt}$ $\par\nobreak\ignorespaces}
+{\end{adjustwidth} \end{proof}} 
+
+\begin{document}
+
+\maketitle
+\begin{flushleft}
+
+1. a)
+
+
+\begin{myproof}
+Consider $g(x) := \int_0^x \sin(t^2)\,dt$. Then it is easy to see that $F(x) = g(x^3)$. Thus by \textit{chain rule}, $F'(x) = 3g'(x^3)x^2$. By \textbf{FTC} $g'(x) = \frac{d}{dx}\int_{0}^x \sin(t^2)\,dt = \sin(t^2)$. Thus $F'(x) = 3\sin(x^6)x^2$.
+\end{myproof}
+
+b)
+
+\begin{myproof}
+Consider $g(x) := \int_0^x \cos (t^2)\,dt$. Thus, $F(x) = g(x^2) - g(x)$ and $F'(x) = g'(x^2)2x - g'(x)$. Then, $g'(x) = \cos (x^2)$ by \textbf{FTC}. Therefore, $F'(x) = \cos(x^4)2x - \cos(x^2)$.
+\end{myproof}
+
+c)
+
+\begin{myproof}
+Just by \textit{chain rule} and \textbf{FTC} $F'(x) = \cos(\int_0^x \sin(\int_0^y \frac{1}{1+t^4} \,dt ) \,dy) \sin(\int_0^y \frac{1}{1+t^4} \,dt)$.
+\end{myproof}
+
+\newpage
+
+2.
+
+\begin{myproof}
+
+\end{myproof}
+
+\newpage
+
+3.
+\begin{myproof}
+Consider $f := \frac{1}{x^3}$ and $g := \frac{1}{x^3} - \frac{1}{\pi^2}$. Sine's output is always less than or equal to one so $f(x) \leq \frac{ \sin x}{x^3}$ and $\frac{ \sin x}{x^3} - g(x) = 0$ at $x = \pi$ and it is positive else where; thus, $ \forall x \in [ \frac{\pi}{2}, \pi ], \ g(x) \leq \frac{ \sin x}{x^3} \leq f(x)$. Since the integral of $f$ and $g$ are quite easily to evaluate (simply using powerrule for integration) we get $\frac{1}{\pi^2} = \int_{\pi/2}^\pi g(x) \,dx  \leq \frac{\sin x}{x^3} \,dx \leq \frac{3}{2\pi^2} = \int_{\pi/2}^\pi f(x) \,dx$, using the monotonicity of the integral to achieve the desired result.
+\end{myproof}
+
+\newpage
+
+4. a)
+
+\begin{myproof}
+It is clear that $\sup f(A) - \inf f(A)$ is an upper bound for $\sup \{|f(x) - f(y)|:x,y \in A \}$, so we will show that $\sup f(A) - \inf f(A)$ is the least upper bound.
+Consider $L = \sup f(A)$ and $l = \inf f(A)$. The supremum is always greater than or equal to the infimum; thus, $\sup f(A) - \inf f(A) = |L - l|$. Now consider, for the sake of contradiction, that there exists some $\varepsilon >0$ such that $|L-l|- \varepsilon$ is an upper bound for $\{|f(x) -f(y)| x,y \in A \}$. Because $\sup f(A)$ exists, then for all $\varepsilon' >0, \exists x \in A: |\sup f(A)-f(x)| < \varepsilon'$ and similarly we can find an $f(x)$ $\varepsilon'$-close to the $\inf f(A)$. Thus, if we choose $\varepsilon' = \frac{\varepsilon}{2}$. Then we can choose $x_0,x_1 \in A$ such that $|f(x_0) - L| < \varepsilon'$ and $|f(x_1) - l| < \varepsilon'$. This means that $f(x_0)> L-\varepsilon'$ and $f(x_1) > l + \varepsilon$. Thus, $|f(x_0) - f(x_1)| > |L - \varepsilon' -l - \varepsilon'| > |L - l - \varepsilon| > |L-l| - \varepsilon$ a contradiction.
+
+\end{myproof}
+
+b)
+
+\begin{myproof}
+Because $f$ is integrable, then forall $\varepsilon > 0$ there exists a partition, $P$ of $[a,b]$ such that $U(f,P) - L(f,P) < \varepsilon$. Thus, if we give the $g$ the same partition, for any $[t_i,t_{i+1}] \subseteq [a,b]$  $\sup \{g(x)|x \in [t_i,t_{i+1} \} - \inf \{g(x)|x \in [t_i,t_{i+1}] \}$ is less than  $\sup \{f(x)|x \in [t_i,t_{i+1} \} - \inf \{f(x)|x \in [t_i,t_{i+1}] \}$ by assumption; however, since $t_i,t_{i+1}$ was arbitrary, this hold for all $t \in P$. Thus it follows if the each Riemann summand for $g$ is less than $f$, then $U(g,P) - L(g,P) < \varepsilon$. Thus, $g$ is integrable as desired.
+\end{myproof}
+
+c)
+
+\begin{myproof}
+We can see that if $|f(x) - f(y)| \geq 1$ then $|\frac{1}{f(x)} - \frac{1}{f(y)}| \leq |f(x) - f(y)|$. However, if $|f(x) - f(y)| = \varepsilon < 1$ then without loss of generality, $f(x) = f(y) + \varepsilon$.
+\end{myproof}
+
+\end{flushleft}
+\end{document}

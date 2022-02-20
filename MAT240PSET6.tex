@@ -1,0 +1,273 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb, amsmath, amsthm, changepage, graphicx, caption, subcaption}
+
+\graphicspath{{./images/}}
+
+\title{MAT240 Problem Set 6}
+\author{Nicolas Coballe}
+
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\F}{\mathbb{F}}
+
+\newenvironment{myproof}
+{\begin{proof} \begin{adjustwidth}{3em}{0pt}$ $\par\nobreak\ignorespaces}
+{\end{adjustwidth} \end{proof}} 
+
+\begin{document}
+
+\maketitle
+\begin{flushleft}
+
+1.
+\begin{myproof}
+
+Consider any vector in $\R^3$ that can be expressed in terms of its standard basis: $v = a(1,0,0) + b(0,1,0) + c(0,0,1), \ a,b,c \in \R$. By the linearity of $T$, $Tv = aT(1,0,0) + bT(0,1,0) + cT(0,0,1)$. Thus the range of $T$ is all that can be produced from any linear combination of $(a,0,a,0), (0,b,0,b), (c,c,c,c)$. For any $c \in \R$, there exists a linear combination of $(a,0,a,0)$ and  $(0,b,0,b)$ that can result in $(c,c,c,c)$; thus, we can just remove it from our list. Thus, range$(T) = \{(x,y,x,y): x,y \in \R \}$. A basis that can span this subspace is $(1,0,1,0), (0,1,0,1)$. \\
+\bigskip
+For any vector $v \in \R^3$, $Tv = aT(1,0,0) + bT(0,1,0) + cT(0,0,1) = (a+c,b+c,a+c,b+c)$. Thus, the set of vectors that map to 0 are the vectors where $a + c = 0$ and $b + c = 0$. Thus, $a = b$. Therefore, the null$(T) = \{ (x,x,y): x+y=0, \ x,y \in \R \}$. A simple basis that spans this subspace is just the vector $(1,1,-1)$.
+
+\end{myproof}
+
+\newpage
+
+2.
+
+\begin{myproof}
+We will prove this using double inclusion. \\
+\bigskip
+$\subseteq$ \\
+Consider any $x \in \text{null}(S) \cap \text{null}(T)$. Thus, $Sx = 0$ and $Tx = 0$. Then $Sx + Tx = 0 + 0 = 0$ and $Sx - Tx = 0 - 0 = 0$. Thus $x \in \text{null}(S+T) \cap \text{null}(S-T)$. \\
+\bigskip
+$\supseteq$ \\
+Consider any $x \in \text{null}(S+T) \cap \text{null}(S-T)$. Thus, $Sx + Tx = 0$ and $Sx - Tx = 0$. Then, $Tx = -Tx = 0$. Therefore, $Sx + 0 = 0$, making $Sx = 0$. Henceforth, $x \in \text{null}(S) \cap \text{null}(T)$.
+\end{myproof}
+
+\newpage
+
+3. a)
+
+\begin{myproof}
+
+\begin{align*}
+Q^2 =& \ (I_v - P)^2 \\
+= & \ I_v^2 -I_vP -I_vP + P^2 \\
+= & \ I_v - P -P + P \\
+= & \ I_v - P \\
+= & \ Q
+\end{align*}
+
+\end{myproof}
+
+b)
+
+\begin{myproof}
+
+\begin{align*}
+PQ =& \ P(I_v - P) \\
+= & \ PI_v - P^2 \\
+= & \ P - P^2 \\
+= & \ P - P \\
+= & \ 0 \\
+QP = & \ (I_v - P)P \\
+= & \ I_vP - P^2 \\
+= & \ P - P^2 \\
+= & \ P - P \\
+= & \ 0
+\end{align*}
+
+\end{myproof}
+
+c)
+
+\begin{myproof}
+
+Consider $w \in \text{range}(P) \setminus \{ 0\}: w = Pv, \ v \in V$. Assume for the sake of contradiction that $Pw = 0$, but this means that $PPv = Pv = w = 0$. But this contradicts the fact that $w$ is non-zero. \\
+\bigskip
+Thus no non-zero element in the range of $P$ maps to 0. Therefore, $N \cap R = \{ 0\}$.
+
+\end{myproof}
+
+d)
+
+\begin{myproof}
+
+\begin{align*}
+Pv + Qv = & \ Pv + (I_v - P)v \\
+= & \ Pv + I_vv - Pv \\\
+= & \ Pv + v - Pv \\
+= & \ v + Pv - Pv, \text{ vector addition associative and commutative} \\
+= & \ v + 0 \\
+= & \ v
+\end{align*}
+
+\end{myproof}
+
+e)
+
+\begin{myproof}
+
+We have already shown that $P$ either maps a non-zero vector in $V$ to 0 or it maps it to a vector, $v$, with the property that $Pv \neq 0$. Because we know that if $w$ is in the range of $P$, then $Pw$ is also in the range of $P$; thus, $P(\text{range}(P)) \subseteq \text{range}(P)$. Now consider any $w \in \text{range}(P)$ and $P|_{R}$, which is $P$ restricted to the range of $P$. Assume for the sake of contradiction that $P|_R$ is not the identity map. Then consider any $P|_Rv \in \text{range}(P)$. Thus, $P|_RP|_Rv \neq P|_Rv$. But this is a contradiction because $P = P^2$. Thus, $P|_R = I_R$. Thus, for any $v \in V$, either, $Pv = 0$ or $Pv = v$. $\{ v \in V: Pv = 0 \} = N$ and $\{ v \in V: Pv = P \} = \text{range}(P)$. Therefore, $V = N \oplus R$ (we know this sum is direct because we already have proven that $N \cap R$ is non-zero disjoint).
+
+\end{myproof}
+
+\newpage
+
+4. a)
+
+\begin{myproof}
+
+\begin{align*}
+L=
+\begin{bmatrix}
+0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 & 0
+\end{bmatrix}
+\end{align*}
+
+\end{myproof}
+
+b)
+
+\begin{myproof}
+
+\begin{align*}
+L^2=
+\begin{bmatrix}
+0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0
+\end{bmatrix} \\
+L^3=
+\begin{bmatrix}
+0 & 0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0
+\end{bmatrix} \\
+L^4=
+\begin{bmatrix}
+0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0
+\end{bmatrix} \\
+L^5=
+\begin{bmatrix}
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0
+\end{bmatrix} 
+\end{align*}
+Because for $k = 5$, the matrix is the 0-matrix, every $k \geq 5$ is also the 0-matrix ($0 \cdot 0 = 0$).
+
+\end{myproof}
+
+\begin{myproof}
+
+$L$ \\
+Considering that the only vectors that get mapped to the 0-vector, are vectors in the form $(a,0,0,0,0) , \ a \in \R$. That means that the vector $(1,0,0,0,0)$ spans null$(L)$. Thus, the dimension of null$(L)$ is 1. Since $\R^5$ has a dimension of 5, then the dimension of the range$(L) = 4$. This is because the dim $\R^5$ = dim null$(L)$ + dim range$(L)$. \\
+\bigskip
+$L^2$ \\
+Considering the only vectors that get mapped to the 0-vector, are vectors in the form $(a,b,0,0,0), \ a,b \in \R$. That means that the vectors $(1,0,0,0,0)$ and $(0,1,0,0,0)$ span null$(L^2)$. Thus, the dimension of null$(L^2)$ is 2. Thus the dimension of the range$(L^2) = 3$. \\
+\bigskip
+$L^3$ \\
+The only vectors that get mapped to the 0-vector, are vectors in the form $(a,b,c,0,0), \ a,b,c \in \R$. That means that the vectors $(1,0,0,0,0), (0,1,0,0,0)$ and $(0,0,1,0,0)$ span null$(L^3)$. Thus, the dimension of null$(L^3)$ is 3. Thus the dimension of the range$(L^3) = 2$. \\
+\bigskip
+$L^4$ \\
+The only vectors that get mapped to the 0-vector are vectors in the form $(a,b,c,d,0), \ a,b,c \in \R$.  That means that the vectors $(1,0,0,0,0), (0,1,0,0,0), (0,0,1,0,0)$ and $(0,0,0,1,0)$ span null$(L^4)$. Thus, the dimension of the range$(L^4) = 1$. \\
+\bigskip
+$L^k, \ k \geq 5$ \\
+Because for $k \geq 5$, $L^k = 0$, then that means that $\R = \text{null}(L^K)$. Thus the dimension of null$(L^k) = 5$ and the dimension of the range$(L^k) = 0$.
+
+\end{myproof}
+
+\newpage
+
+5. a)
+
+\begin{myproof}
+
+
+Because $e_i([k]) = \begin{cases} 1 \text{ if } [k] = i \\ 0 \text{ otherwise} \end{cases}$, then we can break $\delta e_i$ into cases for $n \geq 2$. \\
+\bigskip
+Case 1: $[k] = i$. Then $\delta e_i([k]) = e_i([k]) - e_i([k+1]) = 1 - 0 = 1$. \\
+Case 2: $[k] = i + 1$. Then $\delta e_i([k]) = e_i([k]) - e_i([k+1]) = 0 - 1 = -1$ \\
+Case 3: $[k] \neq i$ and $[k] \neq i + 1$. Then $\delta e_i([k]) = e_i([k]) - e_i([k+1]) = 0 - 0 = 0$ \\
+\bigskip
+Thus, we can write $\delta e_i = f_i$ such that $f_i = \begin{cases} 1 \text{ if } [k] = i \\ -1 \text{ if } [k] = i+1 \\ 0 \text{ otherwise} \end{cases}$. Thus, the matrix of $\delta$ is as follows:
+\begin{align*}
+\delta = 
+\begin{bmatrix}
+f_1 & f_2 & \cdots & f_n
+\end{bmatrix}
+\end{align*}
+
+However, if $n = 1$ then $e_1([k]) = 1, \ \forall k \in \Z_n$. Thus $\delta e_1 = 1 - 1 = 0$. Thus, for the special case where $n = 1$, then $\delta = [0]$.
+
+\end{myproof}
+
+b)
+
+\begin{myproof}
+
+Again, because $e_i = \begin{cases} 1 \text{ if } k = i \\ 0 \text{ otherwise} \end{cases}$, then we can break $D e_i$ into cases. \\
+\bigskip
+Case 1: $k = 1 = i$. Then $De_i(k) = e_i(k) = 1$. \\
+Case 2: $k = 1 \neq i$. Then $De_i(k) = e_i(k) = 0$. \\
+Case 3: $i = k > 1$. Then $De_i(k) = e_i(k) - e_i(k-1) = 1 - 0 = 1$. \\
+Case 4: $i + 1 = k > 1$. Then $De_i(k) = e_i(k) - e_i(k-1) = 0 - 1 = -1$. \\
+Case 5: Otherwise. Then $De_i(k) = e_i(k) - e_i(k-1) = 0 - 0 = 0$. \\
+\bigskip
+Thus, we can write $De_i = g_i$ such that $g_i = \begin{cases} 1 \text{ if } k = 1 = i \\ 0 \text{ if } k = 1 \neq i \\ 1 \text{ if }i = k > 1 \\ -1 \text{ if }i + 1 = k > 1 \\ 0 \text{ otherwise} \end{cases}$. Then, the matrix of $D$ is as follows:
+\begin{align*}
+D=
+\begin{bmatrix}
+g_1 & g_2 & \cdots & g_n 
+\end{bmatrix}
+\end{align*}
+
+\end{myproof}
+
+c)
+
+\begin{myproof}
+
+Both maps are not invertible because the maps are not bijective.\\
+\bigskip
+For example consider $f,g \in \R^X$ such that $f(x) = 1$ and $g(x) = 2$. Clearly $f \neq g$ but $\delta f(x) = f(x) - f(x-1) = 1 - 1 = 0, \ \forall x \in \Z_n$ and $\delta g(x) = g(x) - g(x-1) = 2 - 2 = 0, \ \forall x \in \Z_n$. Because $f \neq g$ and $\delta f = \delta g$, then $\delta$ is not injective, and thus, it is not invertible.\\
+\bigskip
+Again consider $f, g \in \R^Y$ such that $f(x) = 0$ and $g(x) = 1$. Clearly $f \neq g$. For $x = 1$, then $Df(x) = 1$ and $Dg(x) = 1$. For $x > 1$, then $Df(x) = f(x) - f(x-1) = 1 - 1 = 0, \ \forall x \in Y \setminus \{ 1 \}$ and $Dg(x) = g(x) - g(x-1) = 0 - 0 = 0, \ \forall x \in Y \setminus \{ 1 \}$. Because $f \neq g$ and $Df = Dg$, then $D$ is not injective, and thus, it is not invertible.
+
+\end{myproof}
+
+d)
+
+\begin{myproof}
+
+First we will prove that $\delta$ is linear. Consider $\lambda \in \R$ and $f \in X$, then $\delta(\lambda f)(x) = \lambda f(x) - \lambda f(x-1) = \lambda(f(x) - f(x-1)) = \lambda \delta f(x), \ \forall x \in X$. Now consider $f,g \in X$, then $\delta(f+g)(x) = (f+g)(x) - (f+g)(x-1) = f(x) + g(x) -f(x-1) - g(x-1) = \delta f(x) - \delta g(x), \ \forall x \in X$. Thus, $\delta$ is linear. \\
+\bigskip
+$\delta$ \\
+Thus, $\delta^2f(x) = \delta ( f(x) -  f(x-1)) = \delta f(x) - \delta f(x-1) = f(x) - f(x-1) - f(x-1) + f(x_2)$. Thus $f(x)$ stays in the formula, whereas $f(x-1)$ gets subtracted iteratively, and $f(x-i)$ gets added or subtracted recursively based on its predecessor. Thus, we can express the recursive formula for $\delta^kf(x) = f(x) - kf(x-1) + (\sum_{i_1=1}^{k-1} i_1)f(x-2) - (\sum_{i_2=1}^{k-2}\sum_{i_0=1}^{i_2} i_1)f(x-3) - \cdots + \sum_{j=1}^{k-k}\cdots\sum_{i=1}^{i_2} i_1)f(x-k)$. \\
+\bigskip
+$D$ \\
+Because $D$ is defined almost identically to $\delta$ we can define $D$ similarly, but with a few difference because $Y$ is not cyclic. Most notably, it does not make sense to define $D^k$ for $k > n$. Also we have to define an explicit case for $Df(x)$ when $x = 1$. Thus, the formula for $D^k f(x) = \begin{cases} 1 \text{ if } x = 1 \\  \delta^kf(x) = f(x) - kf(x-1) + (\sum_{i_1=1}^{k-1} i_1)f(x-2) \\ - (\sum_{i_2=1}^{k-2}\sum_{i_0=1}^{i_2} i_1)f(x-3) \\ - \cdots + \sum_{j=1}^{k-k}\cdots\sum_{i=1}^{i_2} i_1)f(x-k) \text{ otherwise} \end{cases}$
+
+\end{myproof}
+
+
+\end{flushleft}
+\end{document}

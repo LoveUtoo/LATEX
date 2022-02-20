@@ -1,0 +1,135 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb, amsmath, amsthm, changepage, graphicx, caption, subcaption}
+
+\graphicspath{{./images/}}
+
+\title{MAT157 Problem Set 9}
+\author{Nicolas}
+
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\F}{\mathbb{F}}
+
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\Q}{\mathbb{Q}}
+
+\newenvironment{myproof}
+{\begin{proof} \begin{adjustwidth}{3em}{0pt}$ $\par\nobreak\ignorespaces}
+{\end{adjustwidth} \end{proof}} 
+
+\begin{document}
+
+\maketitle
+\begin{flushleft}
+
+1. 
+\begin{align*}
+\frac{d^2\sin^3(x^4)}{dx^2} = 6x^2\sin(x^4)(4x^4+3\sin(2x^4)+12x^4+12x^4\cos(2x^4))
+\end{align*} \\
+\bigskip
+2.
+\begin{align*}
+\frac{d}{dx}\Big(\frac{1}{1+\sin^2(x)}\Big)^3 = -3(1+\sin^2(x))^{-4}(2\sin(x)\cos(x))
+\end{align*}
+
+\newpage
+
+2.
+
+\begin{myproof}
+
+Consider the derivative of $f(x)$ at $a = 2$. We will use the limit definition.
+\begin{align*}
+& \ \lim_{h \to 0}\frac{f(a+h)-f(a)}{h} \\
+= & \ \lim_{h \to 0}\frac{f(2+h)}{h} \\
+= & \ \lim_{h \to 0}\frac{|(2+h)^2 - 4| - |2^2 -4|}{h} \\
+= & \ \lim_{h \to 0}\frac{|4 +4h + h^2 - 4| - |0|}{h} \\
+= & \ \lim_{h \to 0}\frac{|4h+h^2|}{h} \\
+= & \ \lim_{h \to 0}\frac{|h||4+h|}{h}
+\end{align*}
+However, if $h>0$ than, $\lim_{h \to 0}\frac{|h||4+h|}{h} = 4$, but if $h<0$ then $\lim_{h \to 0}\frac{|h||4+h|}{h} = -4$ Because the left and right side limit are not equal, the limit does not exist.
+
+\end{myproof}
+
+\newpage
+
+3.
+
+\begin{myproof}
+$g'(y) = \frac{1}{f'(g(y))}$ \\
+\bigskip
+$g''(y)$ \\
+\begin{align*}
+g''(y) = & \ \frac{d}{dy}\frac{1}{f'(g(y))} \\
+= & \ -\frac{1}{(f'(g(y)))^2}\frac{d}{dy}f'(g(y)) \\
+= & \ -\frac{1}{(f'(g(y)))^2}f''(g(y))\frac{d}{dy}g(y) \\
+= & \ -\frac{1}{(f'(g(y)))^2}f''(g(y))g'(y) \\
+= & \ -\frac{1}{(f'(x))^2}f''(x)\frac{1}{f'(x)} \\
+= & \ -\frac{f''(x)}{(f'(x))^3}
+\end{align*}
+$g'''(y)$ \\
+\bigskip
+\begin{align*}
+g'''(y) = & \ \frac{d}{dy}\frac{-f''(g(y))}{(f'(g(y)))^3} \\
+= & \ \frac{-f'''(g(y))g'(y)}{(f'(g(y)))^3} +3 \frac{f''(g(y))}{(f'(g(y)))^4}f''(g(y))g'(y) \\
+= & \ \frac{-f'''(x)}{(f'(x))^4} + 3\frac{(f''(x))^2}{(f'(x))^5}
+\end{align*}
+$g''''(y)$ \\
+\bigskip
+\begin{align*}
+g''''(y) = & \ \frac{d}{dy} \Bigg( \frac{-f'''(g(y))}{(f'(g(y)))^4} + 3\frac{(f''(g(y)))^2}{(f'(g(y)))^5} \Bigg) \\
+= & \ \frac{d}{dy}\frac{-f'''(g(y))}{(f'(g(y)))^4} + 3 \frac{d}{dy}\frac{(f''(g(y)))^2}{(f'(g(y)))^5} \\
+= & \ \frac{-f''''(g(y))g'(y)}{(f'(g(y)))^5} +4 \frac{f''(g(y))}{(f'(g(y)))^5}f''(g(y))g'(y) \\
+& \ +6\frac{f''(g(y))f'''(g(y))g'(y)}{(f'(g(y)))^5} -5 \frac{(f''(g(y)))^2}{(f'(g(y))^6}f''(g(y))g'(y) \\
+= & \ \frac{-f''''(x)}{(f'(x))^6} +4 \frac{(f''(x))^2}{(f'(x))^6}f''(x) +6\frac{f''(x)f'''(x)}{(f'(x))^6} -5 \frac{(f''(x))^3}{(f'(x))^7}
+\end{align*}
+
+
+\end{myproof}
+
+\newpage
+
+4. 
+
+\begin{myproof}
+
+Consider that the Max$f([a,b]) > 0$. Thus, by EVT, then there exists an $x \in [a,b]$ such that $f(x) = $Max$f([a,b])$. However, $x \neq a$ and $x \neq b$ because $f(a) = f(b) = 0 < $ Max$f([a,b])$. Because the maximum of $f|_{[a,b]}$ is not on the boundary, and $f|_{[a,b]}$ is differentiable, then $f'(x) = 0$. Thus, $x^2f''(x) = (x^2+1)$Max$f([a,b])$. Thus, let $\omega := f''(x)>0$. Thus $\forall \epsilon > 0, \exists \delta_1 > 0, \forall y \in [a,b]: 0<|y-x|<\delta_1 \implies |\frac{f'(y)-f'(x)}{y-x}-\omega|<\epsilon$. Therefore, for every $y \in (x,x+\delta_1)$, $f'(y) > 0$. Let $\gamma := f'(y) > 0$. Then
+$\forall \epsilon > 0, \exists \delta_2 > 0, \forall z \in [a,b]: 0<|z-x|<\delta_2 \implies |\frac{f(z)-f(x)}{z-x}-\gamma|<\epsilon$. Therefore, for every $z \in (x,x+\delta_2), f(z) > $ Max$f([a,b])$, a contradiction. Thus, the Max$f([a,b])$ cannot be greater than 0. \\
+\bigskip
+Consider the Min$f([a,b]) < 0$. Thus, by EVT< then there exists an $x \in [a,b]$ such that $f(x) = $ Min$f([a,b])$. Similarly to the other case $f'(x) = 0$. Thus, $f''(x) < 0$, meaning that $f'(y) < 0$ for any $y \in (x,x+\delta_1)$. Therefore, for every $z \in (x,x+\delta_2), \ f(z) < $ Min$f([a,b])$, a contradiction. Thus, the Min$f([a,b])$ cannot be less than 0. \\
+\bigskip
+If the Max$f([a,b])$ cannot be greater than 0 and the Min$f([a,b])$ cannot be less than 0. $f(x) = 0, \ \forall x \in [a,b]$.
+
+\end{myproof}
+
+\newpage
+
+5. a)
+
+\begin{myproof}
+
+By assumption, we can say that $\forall y \in J,\forall \varepsilon' > 0, \exists \delta > 0, \forall x \in J:0<|x-y|<\delta \implies |\frac{f(x)-f(y)}{x-y}-f'(y)| < \varepsilon'$. Thus, through the triangle inequality, $|\frac{f(x)-f(y)}{x-y}|-|f'(y)| < \varepsilon'$. From, this we get that $|\frac{f(x)-f(y)}{x-y}| < \varepsilon' + |f'(y)|$. If we choose $M := \varepsilon' + \sup |f'(J)|$, this implies that $|f(x)-f(y)| < M|x-y|$. But because $x,y$ and $\varepsilon'$ were arbitrary, this holds for all $x,y \in J$ and $\varepsilon' > 0$. \\
+\bigskip
+Now let $\varepsilon >0$ and choose $M' := \varepsilon + \sup |f'(J)|$ and $\delta := \frac{\varepsilon}{M}$. Thus, for every $x,y \in J$, if $0<|x-y|<\delta$ then $|f(x)-f(y)| < M'|x-y| < M'\delta = \epsilon$ as desired.
+
+\end{myproof}
+
+b)
+
+\begin{myproof}
+
+The function $f:(0, \infty), \ f(x) = \sqrt{x}$ is uniformly continuous because $\forall \varepsilon >0 $ let $\delta := \varepsilon^2$. Thus, $\forall x,y \in (0,\infty): 0<|x-y|<\delta$ then, $|\sqrt{x} -\sqrt{y}|^2 \leq |\sqrt{x} -\sqrt{y}||\sqrt{x} +\sqrt{y}| = |x-y| < \varepsilon^2$. Thus, $|\sqrt{x} -\sqrt{y}| < \varepsilon$ as desired. \\
+\bigskip
+However, $f'(x) = \frac{1}{\sqrt{x}}$ which is not bounded on the interval $(0,\infty)$. Thus, we have found a example.
+
+\end{myproof}
+
+\end{flushleft}
+
+\end{document}

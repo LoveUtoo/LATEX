@@ -1,0 +1,105 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb, amsmath, amsthm, changepage, graphicx, caption, subcaption}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{comment}
+\excludecomment{ignore}
+\includecomment{solution}
+\includecomment{question}
+\def\nats {{\mathbb N}}
+\def\ints {{\mathbb Z}}
+\newcommand{\Implies}{\mbox{ IMPLIES }}
+\newcommand{\Or}{\mbox{ OR }}
+\newcommand{\Andd}{\mbox{ AND }}
+\newcommand{\Not}{\mbox{NOT }}
+\newcommand{\Iff}{\mbox{ IFF }}
+\newcommand{\True}{\mbox{T}}
+\newcommand{\False}{\mbox{F}}
+\newcommand{\Subsets}[1]{\mathscr{P}_{#1}(\{1,\ldots N\})}
+
+\title{CSC240 Problem Set 4}
+\author{Nicolas}
+
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\F}{\mathbb{F}}
+
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\Q}{\mathbb{Q}}
+
+\newcommand{\nskip}{\\ \bigskip}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\inn}[2]{\langle#1,#2\rangle}
+
+
+\newenvironment{myproof}
+{\begin{proof} \begin{adjustwidth}{3em}{0pt}$ $\par\nobreak\ignorespaces}
+{\end{adjustwidth} \end{proof}} 
+
+\begin{document}
+
+\maketitle
+\begin{flushleft}
+
+Discussed $Q3$ with Aaron Ma and Adi Rao, discussed $Q4$ with Aaron Ma and Adi Rao.
+
+1.
+
+\begin{myproof}
+We will prove this using structural induction. \nskip
+
+Base Case: $\lambda \in R$. $\lambda$ is trivially in $S$. \nskip
+Induction Hypothesis: If $x, y \in R$ then $x,y \in S$. \nskip
+Constructor Case 1: $b = pxqy$. $x,y \in S$ by induction hypothesis. Thus $pxq \in S$, making $pxqy \in S$ because $mn \in S, \ \forall m,n \in S$. \nskip
+Constructor Case 2: $b = qxpy$. $x,y \in S$ by induction hypothesis. Thus, $qxp \in S$, making $qxpy$ also in $S$.
+\end{myproof}
+
+
+2.
+
+\begin{myproof}
+We will prove this using structural induction. \nskip
+Base Case: $\lambda \in R$. $\lambda$ is trivially in $T$ because $\lambda$ contains 0 $p$'s and 0 $q$'s. \nskip
+Induction Hypothesis: If $x, y \in S$ then $x,y \in T$. \nskip
+Constructor Case 1: $b = pxq$. $x$ in $T$ by induction hypothesis, meaning that $\exists n \in \N$ such that $x$ has $n$ $p$'s and $n$ $q$'s. Thus $pxq$ has $n+1$ $p$'s and $n+1$ $q$'s. Thus $pxq$ in $T$. \nskip
+Constructor Case 2: $b = qxp$. $x$ in $T$ by induction hypothesis,  meaning that $\exists n \in \N$ such that $x$ has $n$ $p$'s and $n$ $q$'s. Thus $qxp$ has $n+1$ $p$'s and $n+1$ $q$'s. Thus $qxp$ in $T$. \nskip
+Constructor Case 3: $b = xy$. $x,y \in T$ by induction hypothesis, meaning that $exists n,m \in \N$ such that $x$ has $n$ $p$'s and $q$'s and $y$ has $m$ $p$'s and $q$'s. Thus $xy$ has $m+n$ $p$'s and $m+n$ $q$'s. Hence, $xy \in T$.
+\end{myproof} 
+
+
+\textit{Lemma: If $w \in T$ and $w \neq \lambda$ then $\exists x,y \in T. w = pxqy$ or $\exists x,y \in T. w = qxpy$.}
+
+\begin{myproof}
+Consider any $w \in T$ with $n$ $p$'s and $q$'s. $w \neq \lambda$ so it must begin with either $p$ or $q$. \nskip
+Case 1: $w$ begins with $p$. Thus $w = pk$ where $k$ is string with $2n-1$ bits. Let $c=1$ represent a counter. Let $i = 1$ be an indexing variable that represents which bit of the binary string we are on. \nskip If $k^i = p$ add 1 to the $c$ and move to $i+1$.\\ If $k^i = q$  then subtract 1 from $c$ and if $c >0$ move to $i+1$ but if $c = 0$ then stop. \nskip After this process the substring of $k$ from $k^1$ to $k^{i-1}$ must have the same number of $p$'s and $q$'s because $c = 0$. This process must terminate because there are $n$ $q$'s and only $n-1$ $p$'s. Let us denote this substring as $h$. Thus $w = phqz$ where $z$ is the substring of $k^{i+1}$ to $k^{2n-1}$ (note that $h$ or $z$ can be the empty string). But because we know that $phq$ has the same number of $p$'s and $q$'s and $w$ has the same number of $p$'s and $q$'s, thus $z$ must have the same number of $p$'s and $q$'s. Thus $phqz = w$ and $h \in T$ and $z \in T$.\nskip
+Case 2 :$w$ begins with $q$. Thus $w = qk$ where $k$ is string with $2n-1$ bits. Let $c=1$ represent a counter. Let $i = 1$ be an indexing variable that represents which bit of the binary string we are on. \nskip If $k^i = p$ add 1 to the $c$ and move to $i+1$. \\ If $k^i = q$ then subtract 1 from $c$ and if $c >0$ move to $i+1$ but if $c = 0$ then stop. \nskip After this process the substring of $k$ from $k^1$ to $k^{i-1}$ must have the same number of $p$'s and $q$'s because $c = 0$. This process must terminate because there are $n$ $p$'s and only $n-1$ $q$'s. Let us denote this substring as $h$. Thus $w = phqz$ where $z$ is the substring of $k^{i+1}$ to $k^{2n-1}$ (note that $h$ or $z$ can be the empty string). But because we know that $phq$ has the same number of $p$'s and $q$'s and $w$ has the same number of $p$'s and $q$'s, thus $z$ must have the same number of $p$'s and $q$'s. Thus $phqz = w$ and $h \in T$ and $z \in T$.
+\end{myproof}
+
+3.
+\begin{myproof}
+We will prove this using strong induction on the number of $p$s and $q$s of a string in $T$. \nskip
+Base Case: $n = 0$. Let $x \in T$ such that there are $n$ $p$'s and $q$'s. This string must be $\lambda$ which is in $R$. \nskip
+Induction Hypothesis: If $j < n$ and $x$ is a string in $T$ of length $j$, then $x \in R$. \nskip
+Inductive Step: Let $w$ be an arbitrary element of $T$ with $n$ $p$'s and $q$'s. We have two cases $\exists x,y \in T.w = pxqy$ or $\exists x,y \in T. w = qxpy$. \nskip
+Case 1: $w = pxqy$. By induction hypothesis, $x,y \in R$ by induction hypothesis because $x$ has some $j<n$ $p$'s and $q$'s and $y$ has some $k < n$ $p$'s and $q$'s. Because $x,y \in R$, $pxqy \in \R$ by definition $R$. \nskip
+Case 2: $w = qxpy$. By induction hypothesis, $x,y \in R$ by induction hypothesis because $x$ has some $j<n$ $p$'s and $q$'s and $y$ has some $k < n$ $p$'s and $q$'s. Because $x,y \in R$, $qxpy \in \R$ by definition $R$.
+\end{myproof}
+
+
+4.
+
+\begin{myproof}
+Consider $ppqqqqpp \in T$. We claim that $ppqqqqpp$ cannot be in $U$. We know that every object in $U$ must have the same amount of $p$'s and $q$'s. Thus only the substrings $pq$, $qp$, $ppqq$, and $qqpp$ are in $U$. The substring $pq$ can be turned into $ppqq$ which is in $U$. However, $ppqq$ cannot be turned into $ppqqqqpp$ following the definition of $U$. The substring $qp$ can be transformed into $qqpp$. However, $qqpp$ cannot be transformed into $ppqqqqpp$  following the definition of $U$. $ppqq$ cannot be tranformed into $ppqqqqpp$ and $qqpp$ cannot be transformed into $ppqqqqpp$. Because we have shown that we cannot recursively derive $ppqqqqpp$ from anything in $U$, thus $U \neq T = R$.
+\end{myproof}
+
+
+\end{flushleft}
+\end{document}

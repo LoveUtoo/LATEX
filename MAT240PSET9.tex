@@ -1,0 +1,102 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb, amsmath, amsthm, changepage, graphicx, caption, subcaption}
+
+\graphicspath{{./images/}}
+
+\title{MAT240 Problem Set 9}
+\author{Nicolas Coballe}
+
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\F}{\mathbb{F}}
+
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\Q}{\mathbb{Q}}
+
+\newenvironment{myproof}
+{\begin{proof} \begin{adjustwidth}{3em}{0pt}$ $\par\nobreak\ignorespaces}
+{\end{adjustwidth} \end{proof}} 
+
+\begin{document}
+
+\maketitle
+\begin{flushleft}
+
+1. a)
+
+\begin{myproof}
+
+
+
+\end{myproof}
+
+\newpage
+
+3. 1)
+
+\begin{myproof}
+
+Consider two stochastic matrices $A=[a_{ij}]$ and $B=[b_{ij}]$ in $\F^{n \times n}$ with the property that $a_{1j} + a_{2j} + \cdots + a_{nj} = 1$ and $b_{1j} + b_{2j} + \cdots + b_{nj} = 1, \ \forall j, \ 1 \leq j \leq n$ and $a_{ij}, b_{ij} \in \R^+$. If we take the product of $A$ and $B$, $C = [c_{ij}]$ such that:
+\begin{align*}
+[c_{ij}] = a_{i1}b_{1j} + a_{i2}b_{2j} + \cdots + a_{in}b_{nj}
+\end{align*}
+Thus, if we take the sum of the $j$-th columns of $C$, we get:
+\begin{align*}
+c_{1j} + c_{2j} + \cdots + c_{nj} = & \ \sum_{k = 1}^n a_{1k}b_{kj} + \sum_{k = 1}^n a_{2k}b_{kj} + \cdots + \sum_{k = 1}^n a_{nk}b_{kj} \\
+= & \ b_{1j} \sum_{k = 1}^n a_{kj} + b_{2j} \sum_{k = 1}^n a_{kj} + \cdots + b_{nj} \sum_{k = 1}^n a_{kj}
+\end{align*}
+However, we know that $\sum_{k = 1}^n a_{kj} = 1, \ \forall j, 1 \leq j \leq n$. Thus:
+\begin{align*}
+= & \ b_{1j} + b_{2j} + \cdots b_{nj} \\
+= & \ 1
+\end{align*}
+Because we chose the column arbitrarily, each column in $C$ adds to 1. Because each entry in $C$ is a sum of non-negative real numbers (product of two non-negatives is non-negative), each entry in $C$ is also non-negative. Thus, the product of two stochastic matrices is indeed another stochastic matrix.
+
+
+\end{myproof}
+
+3. 2)
+
+\begin{myproof}
+
+\newpage
+
+4.
+
+\begin{myproof}
+
+Let $P$ be a pentagon consisting of vertices $\{1,2,3,4,5\}$. Then:
+\begin{align*}
+P_\Gamma = \begin{bmatrix}
+0 & 1 & 0 & 0 & 1 \\
+1 & 0 & 1 & 0 & 0 \\
+0 & 1 & 0 & 1 & 0 \\
+0 & 0 & 1 & 0 & 1 \\
+1 & 0 & 0 & 1 & 0
+\end{bmatrix}
+\end{align*}
+This matrix has a Eigenvalues $2$, $-\frac{1 + \sqrt{5}}{2}$ and $\frac{1+\sqrt{5}}{2}$. This is because $P(1,1,1,1,1) = (2,2,2,2,2)$, $P(-1, \frac{1 + \sqrt{5}}{2}, -\frac{1 + \sqrt{5}}{2}, 1, 0) = (\frac{1 + \sqrt{5}}{2}, -(\frac{1 + \sqrt{5}}{2})^2, (\frac{1 + \sqrt{5}}{2})^2, -(\frac{1 + \sqrt{5}}{2}), 0)$, and $P(-1, -\frac{1 + \sqrt{5}}{2}, \frac{1 + \sqrt{5}}{2}, 1, 0) = (-\frac{1 + \sqrt{5}}{2}, (\frac{1 + \sqrt{5}}{2})^2, -(\frac{1 + \sqrt{5}}{2})^2, (\frac{1 + \sqrt{5}}{2}), 0)$. We know that theses are all the Eigenvalues of because the null space of $A - \lambda I$ has dimension 3.
+
+\end{myproof}
+
+\end{myproof}
+
+\newpage
+
+5. 
+
+\begin{myproof}
+
+Consider the map $A: \F^X \oplus \F^Y \to F^{X \sqcup Y}, \ A(f,g) = h, \ h(x) = \begin{cases} f(x) \text{ if } x \in X \\ g(x) \text{ if } x \in Y \end{cases}$. This is indeed a map because $X$ and $Y$ are disjoint. This map is surjective because if we consider any function $h: X \sqcup Y \to \F$, there exists an element in $F^X \oplus F^Y, \ (f,g)$ such that if $\forall x \in X, \ h(x) = f(x)$ and if $\forall x \in Y, \ h(x) = g(x)$. This map is injective because consider $A(f,g) = A(f',g')$. Then, $\forall x \in X \sqcup Y, \ A(f,g)(x) = A(f',g')(x)$. If $x \in X$, then $A(f,g)(x) = f(x) = A(f',g')(x) = f'(x)$. Similarly, if $x \in Y$, then $A(f,g)(x) = g(x) = A(f',g')(x) = g'(x)$. Thus, if $A(f,g) = A(f',g')$, then $f=f'$ and $g=g'$. Thus we have shown that there exists a isomorphism between $\F^X \oplus \F^Y$ and $F^{X \sqcup Y}$.
+\end{myproof}
+
+
+\end{flushleft}
+
+\end{document}

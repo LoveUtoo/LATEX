@@ -1,0 +1,137 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb, amsmath, amsthm, changepage, graphicx, caption, subcaption}
+
+\graphicspath{{./images/}}
+
+\title{MAT157 Problem Set 7}
+\author{Nicolas Coballe}
+
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\F}{\mathbb{F}}
+
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\Q}{\mathbb{Q}}
+
+\newenvironment{myproof}
+{\begin{proof} \begin{adjustwidth}{3em}{0pt}$ $\par\nobreak\ignorespaces}
+{\end{adjustwidth} \end{proof}} 
+
+\begin{document}
+
+\maketitle
+\begin{flushleft}
+
+1.
+
+\begin{myproof}
+
+Consider $\forall x, \ g: [x,x+T] \rightarrow \R, \ x \mapsto f(x)$. Because $f$ is periodic, all elements in the $f(\R)$ are in $g([x,x+T])$. Similarly, all elements of $g([x,x+T])$ are in $f(\R)$. Thus, $f(\R) = g([x,x+T])$. However, because $f$ is continuous and $[x,x+T]$ is a bounded interval, $f$ must also be bounded through the boundedness theorem. Likewise, due to the extreme value theorem, because $[x,x+T]$ is closed and continuous, $g([x,x+T])$ also take on a minimum and a maximum.
+
+\end{myproof}
+
+\newpage
+
+2. \begin{myproof}
+
+Let $\epsilon > 0$.\\
+\bigskip
+If inf$\{|a-y|: y \in S\} = 0$, then let $\delta = \epsilon$. If $ 0 < |x-a| < \delta$ then:
+\begin{align*}
+|\text{inf}\{|x-y|\} - \text{inf}\{|a-y|\}| = & \ |\text{inf}\{|x-y|\}| \\
+\leq & \ |\text{inf}\{|x-y| + |a-y|\}| \\
+= & \ \text{inf}\{|x-a|\} \\
+\leq & \delta \\
+< & \epsilon
+\end{align*}
+If inf$\{|a-y|: y \in S\} > 0$, then let $c =$inf$\{|a-y|: y \in S\}$, and let $\delta = \frac{\epsilon}{2}$. Notice that if $x \in (a- \delta, a + \delta)$, then $\inf\{|x-y|\} \leq c + \delta$ or $\inf\{|x-y|\} \leq c - \delta$ If $ 0 < |x-a| < \delta$ then:
+\begin{align*}
+|\text{inf}\{|x-y|\} - c| = & \ \text{inf}\{|x-y| + |a-y|\} \\
+\leq & \ |c \pm \delta - c| \\
+= & \ \delta \\
+= & \ \frac{\epsilon}{2} < \epsilon
+\end{align*}
+Thus, $f$ is continuous for all $a \in \R$, making $f$ continuous.
+\end{myproof}
+
+\newpage
+
+3.
+
+\begin{myproof}
+
+$\subseteq$ \\
+Consider any open $U \subseteq \R$. Consider any $u \in U$. For $a \in A$ such that $f(a) = u$, then $a \in f^{-1}(U)$. Now consider the set of intervals $(u - 1, u + 1), \ \forall u \in U$. Clearly, all of these intervals cover $U$; however, because $f$ is continuous, then for each 1-interval of $U$, there exists a single or multiple corresponding $\delta$-interval around $a \in A$, such that $f(a) = u$. Thus, if we take the infinite union of these open intervals, $V$, $V$ is open and $f(V) = U$ and $f^{-1}(U) = V \cap A$.\\
+\bigskip
+$\supseteq$ \\
+We will prove the contrapostitve. Assume that $f$ is not continuous. Then there exists an $\epsilon > 0, \forall \delta > 0, \exists a \in A$ such that $0<|x-a|<\delta$ and $|f(x)-f(a)| \geq \epsilon$. Thus if $f^{-1}((f(a)-\epsilon, f(a) + \epsilon))$, surely $a$ is in this set. However, because $f$ is not continuous at $a$, there exists no corresponding $\delta$ interval around $a$ there is no $\delta$-interval around $a$ such that $(a-\delta, a + \delta) \subseteq f^{-1}((f(a)-\epsilon, f(a) + \epsilon))$, making $f^{-1}((f(a)-\epsilon, f(a) + \epsilon))$ not open. Therefore, there exists a open set of $U$ that does not have a corresponding open set $V$ such that $f^{-1}(U) = V \cap A$.
+
+\end{myproof}
+
+\newpage
+
+4.a)
+
+\begin{myproof}
+
+If $A$ has the Heine-Borel property, then for any cover of $A$, there exists a finite supcover. Consider $\bigcup_{i\in \R} U_i, \ U_i = (i-1,i+1), \ i \in \R$ is a cover of $A$, and thus, $A$ must have a finite subcover. A single open set in the cover of $A$ is bounded, thus if we take the finite union of the open sets the cover $A$ (the finite subcover), the union of those open sets is also bounded. Since those open sets cover $A$, $A$ must be bounded.
+
+\end{myproof}
+
+b)
+
+\begin{myproof}
+
+We will prove the contrapostive.\\
+\bigskip
+Consider $A$ is not closed. Then, $A$ has a limit point, $c \notin A$. Then we can construct a cover of $A$: $\bigcup_{n \in \N}U_n, \ U_n = (- \infty, c-\frac{1}{n}) \cup (c + \frac{1}{n}, \infty)$ Clearly this covers $A$ but if we take any finite subcover, of $\bigcup_{n \in \N}U_n$ with largest open set being $U_N, \ N \in \N$, then $(c-\frac{1}{N},c+\frac{1}{N})$ is not covered. But since $c$ is a limit point, there are points in $A$ that are always going to be some $\epsilon$-close to $c$ which are not going to be covered by our finite subcover. Therefore, $A$ does not have the Heine-Borel property.
+
+\end{myproof}
+
+c)
+
+\begin{myproof}
+
+Since $A$ is bounded, then we can create a close interval $[a,b]$ such that $A \subseteq [a,b]$. Consider any cover of $[a,b]$, $\bigcup_{i \in I}U_i$ where $I$ is any indexing set. Let $S := \{ x \in [a,b]:[a,x] \text{ has finite subcover} \}$. Clearly, $S$ is non-empty because there has to exist at least one open set in $\bigcup_{i \in I}U_i$ such that $a$ is in that open set. Notice that $S$ is also bounded above by $b$. Because $S$ is non-empty, then $S$ has a supremum. Thus, there must be some open set, $U$, that covers sup$(S)$. Because the set is open, we can choose some element $x <$ sup$(S), \ x \in U$. However, $x$ is not an upperbound for $S$, thus through completeness, we can choose $y$, such that $x < y <$ sup$(S)$ and $y \in S$. Since $y$ is in $S$, then there is a finite subcover of $[a,y]$. Now consider sup$(S) < b$. Then, we can choose some element greater than sup$(S)$ in $U$, which will also be in $S$, contradicting the fact that sup$(S)$ is the smallest upper bound. If sup$(S)$ cannot be less than $b$, but $S$ is bounded above by $b$, that implies that sup$(S) = b$. Because we know that $[a,y], \forall y <$ sup$(S)$ has finite subcover and $b \in U$, then $[a,y] \cup U$ is a finite subcover that covers $[a,b]$. Thus, $[a,b]$ has the Heine-Borel Property. \\
+\bigskip
+Now we will show that $A$ has the Heine-Borel property. Notice that if $A$ is closed, then $A^c$ is open. Consider any cover of $A$, $\bigcup_{i \in I}U_i$. Then $A^c \cup \bigcup_{i \in I}U_i$ is an open cover that covers $[a,b]$. We already have shown that this has finite subcover, $\bigcup_{i = 1}^nU_i$. Thus if we take the difference of this cover with $A^c$, we get a finite subcover that covers $A$ as desired. \\
+\bigskip
+Thus, if $A$ is closed and bounded, it has the Heine-Borel property.
+
+\end{myproof}
+
+\newpage
+
+5. a)
+
+\begin{myproof}
+
+Consider $f(x) = \begin{cases} 0 \text{ if } x = 0 \\ 1 \text{ otherwise} \end{cases}$. For any $a \in \R$, $f$ is locally bounded by 2. However, $f$ is not continuous at 0 because $\lim_{x \to 0} f(x) = 1  \neq f(0)$.
+
+\end{myproof}
+
+b)
+
+\begin{myproof}
+
+Consider $f(x) = \begin{cases} q \text{ if $x \in \Q$ with $x = \frac{p}{q}$ in reduced form} \\ 0 \text{ if } x \notin \Q \end{cases}$. Consider any $x_0 \in \R$ with any $\delta$-interval around $x_0$. Consider $f$ is bounded on this $\delta$-interval. Then it has some upperbound $C > 0$. Because the rationals are dense, then there exists $\frac{m}{n}, \frac{s}{t} \in (x_0 - \delta, x_0 + \delta): \frac{m}{n} < x < \frac{s}{t}$. Choose a prime number $p$ such that $p >$ max$\{ C, n \}$ such that $\frac{m}{n} + \frac{1}{p} < \frac{s}{t}$. Thus, $\frac{P + n}{np} \in (x_0 - \delta, x_0 + \delta)$. But notice that $n<P$, and thus, $P+n$ does not divide $np$, so this rational is in reduced form. Thus, $f(\frac{P + n}{np}) = np > C$. Thus, $f$ is nowhere locally bounded.
+
+\end{myproof}
+
+c)
+
+\begin{myproof}
+
+If $f$ is locally bounded on $[a,b]$ then there exists $\delta$-intervals around $x$ for all $x \in \R$ such that $f$ is locally bounded by some $C$. Let our open cover of $[a,b]$ be $\bigcup_{i \in \R} U_i$ such that $U_i$ is the corresponding locally-bounded $\delta$-interval around $i$ for all $i \in \R$. Clearly, this covers $[a,b]$. Since $[a,b]$ is closed and bounded, it has the Heine-Borel property. Which allows us to find finite subcover of $[a,b]$. Thus, we have a finite set of $n$ $\delta$-intervals that cover $[a,b]$. Induced by this we also have a finite set $\{ C_1, C_2, ..., C_n \}$ of bounds of $f$ for each $\delta$-interval. If we take the max of $\{ C_1, C_2, ..., C_n \}$, call it $C'$; thus $|f(x)| < C', \ \forall x \in [a,b]$, meaning that $f$ is bounded.
+
+\end{myproof}
+
+\end{flushleft}
+
+\end{document}

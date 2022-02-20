@@ -1,0 +1,104 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb, amsmath, amsthm, changepage, graphicx, caption, subcaption}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{comment}
+\excludecomment{ignore}
+\includecomment{solution}
+\includecomment{question}
+\def\nats {{\mathbb N}}
+\def\ints {{\mathbb Z}}
+\newcommand{\Implies}{\mbox{ IMPLIES }}
+\newcommand{\Or}{\mbox{ OR }}
+\newcommand{\Andd}{\mbox{ AND }}
+\newcommand{\Not}{\mbox{NOT }}
+\newcommand{\Iff}{\mbox{ IFF }}
+\newcommand{\True}{\mbox{T}}
+\newcommand{\False}{\mbox{F}}
+\newcommand{\Subsets}[1]{\mathscr{P}_{#1}(\{1,\ldots N\})}
+
+\title{MAT247 Problem Set 2}
+\author{Nicolas}
+
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\F}{\mathbb{F}}
+
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\Q}{\mathbb{Q}}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\inn}[2]{\langle#1,#2\rangle}
+
+
+
+\newenvironment{myproof}
+{\begin{proof} \begin{adjustwidth}{3em}{0pt}$ $\par\nobreak\ignorespaces}
+{\end{adjustwidth} \end{proof}} 
+
+\begin{document}
+
+\maketitle
+\begin{flushleft}
+
+1.
+
+\begin{myproof}
+$\Rightarrow$\\
+\bigskip
+Consider $L = v - \sum_{i=1}^m \inn{v}{e_i}e_i$. Because our list is orthonormal, this is equal to $\inn{v}{e_i} - \inn{v}{e_i} = 0, \ \forall 1 \leq i \leq m$ Thus, this shows that $L$ and all $e_i$ are orthogonal. Which means that $\norm{L}^2 = \norm{\inn{v - \sum_{i=1}^m \inn{v}{e_i}}{e_i}}^2 = \norm{v}^2$ by construction. However, we have an orthonormal list, so $\norm{\sum_{i=1}^m\inn{v}{e_i}e_i} = \sum_{i=1}^m | \inn{v}{e_i}|^2$, which by assumption means that $L = 0$.
+\\
+\bigskip
+$\Leftarrow$\\
+\bigskip
+This direction is trivial because if $v \in$ span$(e_1,e_2,...,e_m)$ then that list is a ONB for the subspace defined by the span of the list (following from \textit{Axler} 6.30).
+\end{myproof}
+ 
+\newpage
+
+2.
+
+\begin{myproof}
+Applying \textit{Gram-Schmidt Process} to the basis of vectors of $U$ gives us the ONB $((\frac{1}{\sqrt{2}},0,\frac{1}{\sqrt{2}},0),(0,\frac{i}{\sqrt{5}},0,\frac{2}{\sqrt{5}}))$. Thus, to find the $u \in U$ that minimizes $\norm{u - (1,2,3,4)}$ we simply need to find the projection of $(1,2,3,4)$ onto $U$. This is easy because we have a ONB. Thus $P_U(1,2,3,4) = \inn{(1,2,3,4)}{(\frac{1}{\sqrt{2}},0,\frac{1}{\sqrt{2}},0)} (\frac{1}{\sqrt{2}},0,\frac{1}{\sqrt{2}},0) + \inn{(1,2,3,4)}{(0,\frac{i}{\sqrt{5}},0,\frac{2}{\sqrt{5}})} (\frac{1}{\sqrt{2}},0,\frac{1}{\sqrt{2}},0)$. Thus, $u = \frac{4}{\sqrt{2}}(\frac{1}{\sqrt{2}},0,\frac{1}{\sqrt{2}},0) + \frac{2i}{\sqrt{5}} (\frac{1}{\sqrt{2}},0,\frac{1}{\sqrt{2}},0)$.
+\end{myproof}
+
+\newpage
+
+3.
+
+\begin{myproof}
+Let $U = P(V)$. Consider $x \in$ Image$(P)$ and $y \in $ null$(P)$ Because $P$ is linear $P(x+ \alpha y) = P(x) + P(\alpha y) = P(x) = x, \alpha \in F$. This implies that $\norm{x}^2 \leq \norm{x + \alpha y}^2$ by assumption. But if this is true for all $\alpha$, then $\inn{x}{y} = 0$. Thus we have can make an orthogonal decomposition of every vector in $V$, with $x \in U = P(v)$ and $y \in U^\perp$, which by definition is an orthogonal projection onto $U$.
+\end{myproof}
+
+\newpage
+
+4.
+
+\begin{myproof}
+$\subset$ \\
+\bigskip
+Let $x \in U^\star = (U^\perp)^\perp$. Then $\inn{x}{u} = 0, \forall u \in (U^\perp)^\perp)^\perp)$ which means by definition, $x \in (((U^\perp)^\perp)^\perp)^\perp) = (U^\star)^\star$
+\\
+\bigskip
+$\supset$ \\
+\bigskip
+Consider $x \notin U^\star$. This means that $\inn{x}{u} \neq 0, \ \forall u \in (U^\star)^\perp$ which means that $x \notin (U^\star)^\star$. Thus we have proven the contrapositive.
+\end{myproof}
+
+\newpage
+
+5.
+
+\begin{myproof}
+Consider the functional $L(v):V \to \C , \ L(v) = \sum_{n \in \N} f(n)$. This functional is linear because $L(\lambda v) = \sum_{n \in \N}  \lambda f(n) = \lambda \sum_{n \in \N} f(n)$. $L(u + v) = \sum_{n \in \N} (u+v)(n) = \sum_{n \in \N} u(n) + \sum_{n \in \N} v(n)$. However, this cannot be expressed as an inner product because inner products need require some form of a second vector.
+\end{myproof}
+
+\end{flushleft}
+\end{document}

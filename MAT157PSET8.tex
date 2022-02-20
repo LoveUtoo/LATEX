@@ -1,0 +1,152 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb, amsmath, amsthm, changepage, graphicx, caption, subcaption}
+
+\graphicspath{{./images/}}
+
+\title{MAT157 Problem Set 8}
+\author{Nicolas Coballe}
+
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\F}{\mathbb{F}}
+
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\Q}{\mathbb{Q}}
+
+\newenvironment{myproof}
+{\begin{proof} \begin{adjustwidth}{3em}{0pt}$ $\par\nobreak\ignorespaces}
+{\end{adjustwidth} \end{proof}} 
+
+\begin{document}
+
+\maketitle
+\begin{flushleft}
+
+1.
+
+\begin{myproof}
+
+Because $g$ is continuous and unbounded above and below, $f-g$ is continuous and unbounded above and below. Thus, we can choose $x_0$ such that $(f-g)(x_0) = 0$ (if we could not do this than there would have to be a infimum or supremum to $(f-g)(\R)$ which is a contradiction). Thus, if $(f-g)(x_0) = 0$ that means that $f(x_0) - g(x_0) = 0$, meaning $f(x_0) = g(x_0)$ as desired.
+
+\end{myproof}
+
+\newpage
+
+2. a)
+
+\begin{myproof}
+
+Because the equation of the tangent line for $f$ at $a$ is $g(a) = f(a) + f'(a)(x-a)$. $f(2) = 8$ and $f'(x) = 3x^2$; thus, $f'(2) = 12$. Thus $g(2) = f(2) + f'(2)(x-2) = 8 + 12(x-2)$ is the equation of the tangent line.
+
+\end{myproof}
+
+b)
+
+\begin{myproof}
+
+If $f(x-3) = (x-2)^2$ then $f(x) = ((x+3)-2)^2 = (x+1)^2 = x^2 + 2x + 1$. Then $f'(x) = 2x + 2$, making $f'(x^2 + 5) = 2(x^2 + 5) + 2 = 2x^2 + 12$.
+
+\end{myproof}
+
+\newpage
+
+3.
+
+\begin{myproof}
+
+Let $g_{a_0}(x) = \frac{1}{x - a_0}, \forall a_0,...,a_n$. Because these functions are all continuous (without their trivial holes), then the function $f: \R - \{a_0,...,a_n\}, \ f(x) = g_{a_0}(x) + \cdots + g_{a_n}(x)$ is continuous. Thus, if we take $f|_{(-\infty, a_0)}$. $f|_{(-\infty, a_0)}(x) \neq 0, \ \forall x \in (- \infty, a_0)$. This is because $\frac{1}{x-y} < 0, \forall x < y$ and in each function $g_{a_0}$, and $a_0$ is greater than $x$. Similarly we see that for $f|_{(a_n, \infty)}, \ f|_{(a_n, \infty)}(x) > 0, \ \forall x \in (a_n, \infty)$. Now consider any interval $(c,d)$ where $c = a_i$ and $d = a_{i+1}, \ \forall i \in \{0,...,n-1\}$. Now we will claim that $f|_{(c,d)}$ is not bounded above or below. \\
+\bigskip
+Consider $f|_{(c,d)}$. Every $g_{a_i}|_{(c,d)}(x)$ is bounded above and below for all $a_i \geq d$ or $a_i < c$ because $g_{a_i}|_{(c,d)}((c,d))$ is bounded above by $g_{a_i}(c)$ and below by $g_{a_i}(d)$. Thus, we know that $f|_{(c,d)} = \sum_{i < c \text{ or } i \geq d}g_i|_{(c,d)} + g_c|_{(c,d)}$. However, we know that $\sum_{i < c \text{ or } i \geq d} g_i|_{(c,d)}$ is strictly decreasing and bounded on $(c,d)$ and $ g_i|_{(c,d)}$ is strictly decreasing and not bounded above or below. Thus, $f|_{(c,d)}$ is strictly decreasing and not bounded above or below. This means that $f|_{(c,d)}$ is a bijection to $\R$, meaning that it has exactly one zero. \\
+\bigskip
+Thus we have shown that $f|_{(c,d)}$ has exactly one zero. And there are $n$ intervals of the form $(c,d)$ for our set $\{a_0,...,a_n \}$, and we know that $f|_{(-\infty, a_0)}$ and $f|_{(a_n, \infty)}$ have no zeroes. Thus $f$ has exactly $n$ zeroes as desired.
+
+\end{myproof}
+
+\newpage
+
+\textit{Lemma 4.1:} If $f:A \to \R$ is continuous and $A$ has the Heine-Borel property, then $f$ is uniformly continuous. (Heine-Cantor Theorem in the 1-dimensional Euclidean Metric).
+
+\begin{myproof}
+
+Let $\epsilon > 0$,  let $\delta_\alpha$ be the $\delta$ such that if $0<|x-\alpha|<\delta \implies |f(x)-f(\alpha)|< \frac{\epsilon}{2}$. Because $f$ is continuous, there exists a $\delta_\alpha > 0 , \ \forall \alpha \in A$. Consider the sets $U_\alpha = (\alpha - \delta_\alpha, \alpha + \delta_\alpha), \ \forall \alpha \in A$. Notice that $\bigcup_{\alpha \in A} U_\alpha$ covers $A$. Because $A$ has the Heine-Borel property, then $\bigcup_{\alpha \in A} U_\alpha$ has finite subcover, $\bigcup_{i = 1}^n U_i$ with a corresponding finite set of $\delta$s, $\Delta$. Consider the set $\Delta' = \{ \frac{\delta}{2}: \delta \in \Delta \}$ \\
+\bigskip
+Let $\epsilon > 0$, choose $\delta = \text{ min}(\Delta')$. If $0<|x-y|< \delta$ then there exists $1 \leq i \leq n$ such that $x \in U_i$. Let $x_i$ be the center of $U_i$, then $|x-x_i|<\frac{\delta_i}{2}$. Thus, $|x_i-y| = |x_i +x-x-y| \leq |x_i - x| + |x - y| \leq \frac{\delta_i}{2} + \delta \leq \delta_i$. This implies that $|y-x_i| \leq \delta_i$. Which means that $|f(x_i) -f(x)|<\frac{\epsilon}{2}$ and $|f(x_i)-f(y)|<\frac{\epsilon}{2}$. Thus, $|f(x)-f(y)| \leq |f(x)-f(x_i)| + |f(x_i)-f(y)| \leq \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$ as desired.
+\end{myproof}
+
+\newpage
+
+4. a)
+
+\begin{myproof}
+
+Because $f$ is bounded than there exists $M_f \in \R: |M_f| > |f(x)|, \ \forall x \in A$. Similarly, there exists $M_g \in \R: |M_g| > g(x), \ \forall x \in A$. We can simply choose $M_f$ and $M_g$ such that they are non-zero. Let $\delta_f$ be the $\delta$ such that $|f(x)-f(y)|< \frac{\epsilon}{2|M_g|}$ and let $\delta_g$ be the $\delta$ such that $|g(x)-g(y)| < \frac{\epsilon}{2|M_f|}$.\\
+\bigskip
+Let $\epsilon > 0$. Choose $\delta = \text{ min}\{ \delta_f, \delta_g \}$. If $0<|x-y|< \delta$, then:
+\begin{align*}
+|f(x)g(x) - f(y)g(y)|  = & \ |f(x)g(x) -f(x)g(y) + f(x)g(y) -f(y)g(y)| \\
+\leq & \ |f(x)g(x) - f(x)g(y)| + |f(x)g(y) - f(y)g(y)| \\
+= & \ |f(x)||g(x) - g(y)| + |g(x)||f(x)-f(y)| \\
+< & \ |M_f||g(x)-g(y)| + |M_g||f(x) - f(y)| \\
+< & \ |M_f|\frac{\epsilon}{2|M_f|} + |M_g|\frac{\epsilon}{2|M_g|} \\
+= & \ \frac{\epsilon}{2} + \frac{\epsilon}{2} \\
+= & \ \epsilon
+\end{align*}
+
+As desired.
+
+\end{myproof}
+
+b)
+
+\begin{myproof}
+
+$f$ \\
+Let $\epsilon > 0$. Choose $\delta = \epsilon$. If $0<|x-y|<\delta$ then $|f(x)-f(y)| = |x-y| < \delta = \epsilon$ as desired. \\
+\bigskip
+$g$ \\
+Because $g(x) = -g(x+1), \ \forall x \in \R$, then $g(x) = g(x+2), \ \forall x \in \R$. Thus $g$ is 2-periodic and we can describe every aspect of $g$ by taking on $g|_{[x,x+2]}, \ x \in \R$. However, $g|_{[x,x+2]}$ is continuous and its domain has the Heine-Borel property because it is closed and bounded, thus it must be uniformly continuous by \textit{Lemma 4.1}. Note for the next section because $g$ is continuous and $g(x) = -g(x+1)$, then there is some point in $a \in (x,x+1)$ where there exists a $\delta$-interval around $a$ such that $f(a) - f(x) \neq 0, \ \forall x \in (x,x+1) - \{a\}$ \\
+\bigskip
+$fg$ \\
+Consider for the sake of contradiction that $fg$ is uniformly continuous. Thus, $\forall \epsilon >0, \ \exists \delta > 0, \ \forall x,y \in \R: 0<|x-y|<\delta \implies |xg(x)-yg(y)| < \epsilon$. However, if fix $x$ and $y$ such that $x \neq y$ and $g(x) \neq g(y)$ we choose $M$ sufficiently large such that $M = 2N, \ N \in \N$ with $M > \frac{\epsilon}{|g(y)-g(x)|} + \frac{|xg(y)-x(gx)|}{|g(y)-g(x)} + \frac{|g(y)||x-y|}{|g(y)-g(x)|}$. $|(x-M)-(y-M)| = |x-y+M-M| < \delta$, but:
+\begin{align*}
+& \ |(x-M)g(x-M)-(y-M)g(y-M)|  \\
+= & \ |(x-M)g(x-M) - (x-M)g(y-M) + (x-M)g(y-M) - (y-M)g(y-M)| \\
+\geq & \ |(x-M)g(x-M) - (x-M)g(y-M)| - |(y-M)g(y-M) - (x-M)g(y-M)| \\
+= & \ |x-M||g(x-M) - g(y-M)| - |g(y-M)||(y-M) - (x-M)| \\
+= & \ |x-M||g(x) - g(y)| - |g(y)||x-y| \\
+= & \ |xg(x) - xg(y) - Mg(x) + Mg(y)| - |g(y)||x-y| \\
+\geq & \ |Mg(y)-Mg(x)| - |xg(y) - xg(x)| - |g(y)||x-y| \\
+= & \ |M||g(y)-g(x)| - |xg(y) - xg(x)| - |g(y)||x-y| \\
+> & \ \epsilon
+\end{align*}
+This is a contradiction, thus $fg$ is not uniformly continuous.
+
+\end{myproof}
+
+\newpage
+
+5. a)
+
+\begin{myproof}
+If we define $g:[a,b] \to \R, \ g(x) = \begin{cases} f(x) \text{ if } x \in (a,b] \\  \limsup_{x \to a^+} f(x) \text{ otherwise} \end{cases}$. Then because $g$ is continuous on a closed interval, $g$ is bounded. Because $f = g|_{(a,b]}$, that means that $f$ is also bounded.
+\end{myproof}
+
+b)
+
+\begin{myproof}
+
+Let $\ell = \limsup_{x \to a^+} f(x)$. Let $\epsilon > 0$. If $0<|x-a|<\delta$, then $|f(x) - \ell|
+
+\end{myproof}
+
+
+
+\end{flushleft}
+
+\end{document}

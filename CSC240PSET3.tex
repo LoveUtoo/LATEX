@@ -1,0 +1,135 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb, amsmath, amsthm, changepage, graphicx, caption, subcaption}
+\usepackage{fullpage}
+\usepackage{mathrsfs}
+\usepackage{comment}
+\includecomment{solution}
+\excludecomment{question}
+\setlength{\parindent}{0ex}
+\setlength{\parskip}{1ex}
+\def\nats {{\mathbb N}}
+\def\ints {{\mathbb Z}}
+\newcommand{\Implies}{\mbox{ IMPLIES }}
+\newcommand{\Or}{\mbox{ OR }}
+\newcommand{\Andd}{\mbox{ AND }}
+\newcommand{\Not}{\mbox{NOT }}
+\newcommand{\Iff}{\mbox{ IFF }}
+\newcommand{\True}{\mbox{T}}
+\newcommand{\False}{\mbox{F}}
+\newcommand{\Subsets}[1]{\mathscr{P}_{#1}(\{1,\ldots N\})}
+\newcounter{linenum}
+\def\codeTabSpace{\hspace*{4mm}}
+\newenvironment{formal}%
+{\begin{tabbing}%
+\codeTabSpace \= \hspace*{20mm} \= \hspace*{20mm} \= \hspace*{20mm} \= \kill%
+}%
+{\end{tabbing}%
+}
+\newcounter{ind}
+\newcommand{\n}{\addtocounter{ind}{5}\hspace*{5mm}}
+\newcommand{\p}{\addtocounter{ind}{-5}\hspace*{-5mm}}
+\newcommand{\nl}{\\\addtocounter{linenum}{1}{\scriptsize \arabic{linenum}}\>\hspace*{\value{ind}mm}}
+\newcommand{\ul}{\\\>\hspace*{\value{ind}mm}}
+\newcommand{\bl}{\\[-1.5mm]\>\hspace*{\value{ind}mm}}
+\newcommand{\firstline}{\stepcounter{linenum}{\scriptsize \arabic{linenum}}\>}
+\newcommand{\lref}[1]{\linenumref{#1}}
+
+\title{CSC240 Problem Set 2}
+\author{Nicolas}
+
+\newenvironment{myproof}
+{\begin{proof} \begin{adjustwidth}{3em}{0pt}$ $\par\nobreak\ignorespaces}
+{\end{adjustwidth} \end{proof}} 
+
+
+
+\begin{document}
+
+\maketitle
+\begin{flushleft}
+
+Discussed with Adi Rao (Q1, Q2), Aaron Ma (Q1), Kary Ishwaran (Q1).
+
+1.
+\begin{formal}
+We will use proof by contrapostitive. \ul
+Assume $\Not $2CR$(C)$. \ul
+$\Not $2CR$(C) \Implies \exists \alpha , \beta , \gamma \in \{1,...,N\}. $ \ul $\alpha \neq \beta \Andd \alpha \neq \gamma \Andd (\forall e \in C_\alpha(e \in C_\beta \Or e \in C_\gamma$ \ul
+\n By definition, $i \in C_j \Iff M_{[i,j]} = 1 \Iff j \in R_i$. \ul
+\p Let $\alpha \in \{1,...,N\}$ such that $\exists \beta \in \{1,...,N\}.\exists \gamma \in \{1,...,N\}.$ \ul $\alpha \neq \beta \Andd \alpha \neq \gamma \Andd (\forall e \in C_\alpha(e \in C_\beta \Or e \in C_\gamma$ \ul
+\n Let $e := \alpha \in \{a,b,c\}$ \ul
+\n Let $i \in \{1,...,N\}$ be arbitrary. \ul
+\n Either $\alpha \in R_i \Or \Not \alpha \in R_i$. \ul
+\n Case 1: $\Not \alpha \in R_i$. \ul
+\n $\Not e \in R_i$. \ul
+\p Case 2: $\alpha \in R_i$. \ul
+\n By above $\alpha \in R_i \Implies \beta \in R_i \Or \gamma \in R_i$ \ul
+$\exists d \in S. d \in T \Andd \Not d = e$, namely $\gamma$ or $\beta$. \ul
+\p \p Thus either $e \notin R_i \Or \exists d \in S. d \in T \Andd \Not d = e$ \ul
+\p $i$ was arbitrary so it holds for all $R_i$. \ul
+\p \p $\exists S \in \mathcal{P}_3(\{1,...,N\}).\exists e \in S \forall T \in R. e \notin T \Or \exists d \in S. d \in T \Andd \Not d = e$ \ul
+$\Not$SEL$(3,R)$.
+\end{formal}
+
+\newpage
+\setcounter{ind}{0}
+
+2. \bigskip
+\begin{formal}
+\firstline
+Assume $\Not$2CR$(C)$. \nl
+\n To obtain a contradiction, assume $\forall \alpha \in \{1,...,N\}. \forall \beta \in \{1,...,N\}. \forall \gamma \in \{1,...,N\}$. \ul
+$[(\Not (\alpha = \beta)) \Andd (\Not(\alpha = \gamma)) \Andd (\exists e \in C_\alpha(\Not \text{MEMBER} (e, C_\beta) \Andd \Not \text{MEMBER} (e, C_\gamma))]$ \nl
+$\exists S \in C. \exists X \in C. \exists Y \in C.$ \ul
+\n $[(\Not (S = X)) \Andd (\Not(S = Y)) \Andd (\exists e \in S( \text{MEMBER} (e, X) \Or\text{MEMBER} (e, Y))]$ \ul
+modus ponens: 1. \nl
+ Let $\alpha \in \{1,..., N\}$ such that $C_\alpha = S$. \nl
+ let $\beta \in \{1,..., N\}$ such that $C_\beta = X$. \nl
+ Let $\gamma \in \{1,..., N\}$ such that $C_\gamma = Y$. \nl
+ This is a contradiction: 3,4,5,6. \nl
+ \p Therefore $\exists \alpha \in \{1,...,N\}. \exists \beta \in \{1,...,N\}. \exists \gamma \in \{1,...,N\}$. \ul
+$[(\Not (\alpha = \beta)) \Andd (\Not(\alpha = \gamma)) \Andd (\forall e \in C_\alpha( \text{MEMBER} (e, C_\beta) \Or \text{MEMBER} (e, C_\gamma))]$ \nl
+Let $i \in \{1,...,n\}$ be arbitrary. \nl
+\n $\text{MEMBER}(i,C_n) \Implies M_{[i,n]} = 1$: modus ponens: by assumption. \nl
+$M{[i,n]} = 1 \Implies \text{MEMBER}(n,R_i)$: modus ponens: by assumption. \nl
+Since $i$ is an arbitrary element of $\{1,...,N\}$. \nl
+\p $\forall i \in \{1,...,N\}. \text{MEMBER}(i, C_n) \Implies \text{MEMBER}(n, R_i)$: generalization 9. \nl
+$\exists \alpha \in \{1,...,N\}. \exists \beta \in \{1,...,N\}. \exists \gamma \in \{1,...,N\}.$ \ul
+$[(\Not (\alpha = \beta)) \Andd (\Not(\alpha = \gamma)) (\exists e \in C_\alpha( \text{MEMBER} (e, C_\beta) \Or \text{MEMBER} (e, C_\gamma))]$; \ul modus ponens: 8. \nl
+\n let $a \in \{1,...,N\}$ be such that $ \forall b \in \{1,...,N\}. \exists c \in \{1,...,N\}.$ \ul
+$[(\Not (a = b)) \Andd (\Not(a = c)) \Andd (\forall e \in C_a( \text{MEMBER} (e, C_b) \Or \text{MEMBER} (e, C_c))]$ \ul 
+Instantiation: 8 \nl
+\n Let $\{a,b,c \} \in \mathcal{P}_3(\{1,...,N\})$. \nl
+\n Let $e := a \in \{a,b,c\}$ \nl
+\n Let $i \in \{1,...,n \}$ be arbitrary. \nl
+\n Either $\text{MEMBER}(a,R_i) \Or \Not \text{MEMBER}(a,R_i)$. \nl
+Case 1: Assume $\text{MEMBER}(a,R_i)$ \nl
+\n $\text{MEMBER}(a, R_i) \Implies \text{MEMBER}(i,C_a)$; modus ponens: by assumption. \nl
+$\text{MEMBER}(i,C_a) \Implies \exists b \in \{1,...,n \}. \exists c \in \{1,...,n\}$. \ul 
+$[(\Not (a = b)) \Andd (\Not(a = c)) \Andd ( \text{MEMBER} (i, C_b)$ \ul $ \Or \text{MEMBER} (i, C_c))]$; modus ponens: 15. \nl
+Either $\text{MEMBER}(i,C_b) \Or \Not \text{MEMBER}(i,C_b)$. \nl
+\n Case 1.a: Assume $\text{MEMBER}(i,C_b)$. \nl
+\n $\text{MEMBER}(i,C_b) \Implies \text{MEMBER}(b,R_i)$; modus ponens: 13. \nl
+Thus $\exists d \in R_i. \text{MEMBER}(d,\{a,b,c\}) \Andd \Not d = e$. \nl
+\p $\text{MEMBER}(i,C_b) \Implies \exists d \in R_i. \text{MEMBER}(d,\{a,b,c\}) \Andd \Not d = e$\ul direct proof: 25, 26. \nl
+Case 1.b: Assume $\Not \text{MEMBER}(i,C_b)$ \nl
+\n $\Not \text{MEMBER}(i,C_b) \Implies \text{MEMBER}(c,R_i)$; modus ponens: 13. \nl
+Thus $\exists d \in R_i. \text{MEMBER}(d,\{a,b,c\}) \Andd \Not d = e$. \nl
+\p $\Not \text{MEMBER}(i,C_b) \Implies \exists d \in R_i. \text{MEMBER}(d,\{a,b,c\}) \Andd \Not d = e$\ul direct proof: 29, 30. \nl
+\p $\text{MEMBER}(a,R_i) \Implies \exists d \in R_i. \text{MEMBER}(d,\{a,b,c\}) \Andd \Not d = e$; \ul direct proof: 24, 29. \nl
+Case 2: Assume $\Not \text{MEMBER}(a,R_i)$. \nl
+\n $\Not \text{MEMBER}(a,R_i) \Implies \Not \text{MEMBER}(e,R_i)$; modus ponens: 17. \nl
+\p $\Not \text{MEMBER}(a,R_i) \Implies \Not \text{MEMBER}(e,R_i)$; direct proof: 34 \nl
+ Since $i$ is an arbitrary element of $\{1,...,n\}$ \nl
+\p $\forall i \in \{1,...,n\}. \exists d \in R_i. \text{MEMBER}(d,\{a,b,c\}) \Andd \Not d = e \Or \Not \text{MEMBER}(e,R_i)$. \ul generalization: 18. \nl
+\p \p \p $\exists S \in \mathcal{P}_3(R). \exists e \in S. \forall T \in R. \exists d \in S. \text{MEMBER}(d, T) \Andd \Not d = e \Or \Not \text{MEMBER}(e,T)$. \ul
+Construction: 15, 16, 17. \nl
+\p $\Not $SEL$(R)$ \nl
+\p \p  \ SEL$(3,R) \Implies$2CF$(C)$; indirect proof: 1, 40.
+
+
+\end{formal}
+
+\end{flushleft}
+
+\end{document}

@@ -1,0 +1,140 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb, amsmath, amsthm, changepage, graphicx, caption, subcaption}
+
+\graphicspath{{./images/}}
+
+\title{CSC240 Problem Set 2}
+\author{Nicolas}
+
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\F}{\mathbb{F}}
+
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\Q}{\mathbb{Q}}
+
+\newcommand{\Implies}{\mbox{ IMPLIES }}
+\newcommand{\Or}{\mbox{ OR }}
+\newcommand{\Andd}{\mbox{ AND }}
+\newcommand{\Not}{\mbox{NOT }}
+\newcommand{\Iff}{\mbox{ IFF }}
+\newcommand{\True}{\mbox{T}}
+\newcommand{\False}{\mbox{F}}
+\newcommand{\Neither}{\mbox{N}}
+\newcommand{\gor}{\mbox{ GOR }}
+\newcommand{\gand}{\mbox{ GAND }}
+\newcommand{\gnot}{\mbox{GNOT }}
+\newcommand{\grot}{\mbox{GROT }}
+
+\newenvironment{myproof}
+{\begin{proof} \begin{adjustwidth}{3em}{0pt}$ $\par\nobreak\ignorespaces}
+{\end{adjustwidth} \end{proof}} 
+
+\begin{document}
+
+\maketitle
+\begin{flushleft}
+
+Discussed Q1 and Q2 with Aaron Ma, Vishnu Nittoor, and Kary Ishwaran.
+
+1.
+
+We start with:
+
+\begin{align*}
+&  (\forall i \in \Z . g(i,n)) \Implies [(\exists x \in \Z . e(i,x)) \Andd \forall j \in \Z . (g(j,i) \Implies \forall y \in \Z . e(j,y))] \\
+= & \ \exists a \in \Z . (g(a,n) \Implies [(\exists x \in \Z . e(i,x)) \Andd \forall j \in \Z . (g(j,i) \Implies \forall y \in \Z . e(j,y))] \\
+= & \ \exists a \in \Z . (g(a,n) \Implies \exists x \in \Z . (e(i,x) \Andd \forall j \in \Z . (g(j,i) \Implies \forall y \in \Z  . e(j,y) ) \\
+= & \ \exists a \in \Z . (g(a,n) \Implies \exists x \in \Z . (e(i,x) \Andd \forall j \in \Z . \forall y \in \Z . (g(j,i) \Implies e(j,y) ) \\
+= & \ \exists a \in \Z . (g(a,n) \Implies \exists x \in \Z . \forall j \in \Z . (e(i,x) \Andd \forall y \in \Z . (g(j,i) \Implies e(j,y) ) \\
+= & \ \exists a \in \Z . (g(a,n) \Implies \exists x \in \Z . \forall j \in \Z . \forall y \in \Z .  (e(i,x) \Andd (g(j,i) \Implies e(j,y) ) \\
+= & \ \exists a \in \Z . \exists x \in \Z . (g(a,n) \Implies \forall j \in \Z . \forall y \in \Z .  (e(i,x) \Andd (g(j,i) \Implies e(j,y) ) \\
+= & \ \exists a \in \Z . \exists x \in \Z . \forall j \in \Z . (g(a,n) \Implies \forall y \in \Z .  (e(i,x) \Andd (g(j,i) \Implies e(j,y) ) \\
+= & \ \exists a \in \Z . \exists x \in \Z . \forall j \in \Z . \forall y \in \Z . (g(a,n) \Implies  (e(i,x) \Andd (g(j,i) \Implies e(j,y) )
+\end{align*}
+
+Steps: \\
+1. $(\forall x \in D. p(x)) \Implies E$ is transformed into $\exists x \in D. (p(x) \Implies E)$. \\
+2. $(\exists x \in D. p(x)) \Andd E$ is transformed into $\exists x \in D. (p(x) \Andd E)$. \\
+3. $(E \Implies (\forall x \in D. q(x)$ is transformed into $\forall x \in D. (E \Implies q(x))$. \\
+4. $E \Andd (\forall x \in D. p(x))$ is transformed into $\forall x \in D. (E \Andd p(x))$. \\
+5. Same step as 4. \\
+6. $E \Implies (\exists x \in D. q(x))$ is transformed into $\exists x \in D. (E \Implies q(x))$. \\
+7. $E \Implies (\forall x \in D. q(x))$ is transformed into $\forall x \in D. (E \Implies q(x))$. \\
+8. Same step as 7.
+
+
+\newpage
+
+2. a)
+
+\begin{myproof}
+For all $i, \ 1 \leq i \leq 6$ define $f_i: \{ T, F, N \} \to \{ T, F, N \}$
+
+\begin{align*}
+f_1(P) := P, \ & f_1(T) = T, \ f_1(F) = F, \ f_1(N) = N. \\
+f_2(P) := \gnot P, \ & f_2(T) = F, \ f_2(F) = T, \ f_2(N) = N. \\
+f_3(P) := \grot P, \ & f_3(T) = N, \ f_3(F) = T, \ f_3(N) = F. \\
+f_4(P) := \grot (\grot P), \ & f_4(T) = F, \ f_4(F) = N, \ f_4(N) = T. \\
+f_5(P) := \gnot (\grot P), \ & f_5(T) = N, \ f_5(F) = F, \ f_5(N) = T. \\
+f_5(P) := \gnot (\grot P), \ & f_6(T) = N, \ f_6(F) = N, \ f_6(N) = F. \\
+\end{align*}
+We know these are all of these bijective functions because there are $n!$ bijections between a set of $n$ elements and itself, and this set has 3 elements.
+
+\end{myproof}
+
+b)
+
+\begin{myproof}
+
+Let us define $\mathcal{F},\mathcal{T},\mathcal{N}: \{T,F,N\} \to \{T,F,N\}$ \\ $\mathcal{F}(P) = (\grot P \gand \grot (\grot P)) \gand \grot (\grot (\grot P))$ \\ $\mathcal{T}(P) = (\grot P \gor \grot (\grot P)) \gor \grot (\grot (\grot P))$ \\ 
+$\mathcal{N}(P) = \grot (T(P)) \gand \grot (T(P))$ \\
+\bigskip
+Notice that $\forall P \in \{ T, F, N \}, \ \mathcal{T}(P) = T, \ \mathcal{F}(P) = F, \ \mathcal{N}(P) = N$ as desired.
+
+\end{myproof}
+
+c)
+
+\begin{myproof}
+
+Consider a function $f:\{T,F,N\} \to \{T,F,N\}$. Consider $f(T) = x_0, \ f(F) = x_1, \ f(N) = x_2, \ x_0,x_1,x_2 \in \{ T, F, N \}$. Then $f(P) = (( \grot (\mathcal{N}(P) \gor P)) \gand (\mathcal{T} \gand x_0))$\\ $\gor (( \grot (\mathcal{N}(P) \gor \grot (P))) \gand (\mathcal{T} \gand x_1))$ \\ $ \gor (( \grot (\mathcal{N}(P) \gor \grot (\grot(P)))) \gand (\mathcal{T} \gand x_2))$. \\
+\bigskip
+Because $x_0,x_1,x_2$ were arbitrary, any arbitrary function is expressible. Notice that we are using $( \grot (\mathcal{N}(P) \gor P))$ as a sort of indicator function.
+
+\end{myproof}
+
+d)
+
+\begin{myproof}
+
+$\grot$ is not expressible using only $\gand, \gor$, and $\gnot$. Because there is no univariable expression of compositions of $\gand, \gor$, $\gnot$ such that $f(N) = F$.
+
+\end{myproof}
+
+e)
+
+\begin{myproof}
+
+Because $\{T,F,N \} \times \{T, F, N\}$ has 9 elements and $\{ T, F, N \}$ has 3 elements, we can easily conclude combinatorially, that there are $3^9$ different functions from $\{T,F,N \} \times \{T, F, N\} \to \{ T,F,N \}$.
+
+\end{myproof}
+
+f)
+
+\begin{myproof}
+
+For any arbitrary function $\{T,F,N \} \times \{T, F, N\}$, we can similarly define a new indicator function defined to be the $\gand$ of the indicators between each coordinate in $\{ T,F,N \}$.
+
+\end{myproof}
+
+
+\end{flushleft}
+
+\end{document}
